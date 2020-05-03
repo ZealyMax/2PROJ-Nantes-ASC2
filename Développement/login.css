@@ -1,107 +1,115 @@
-﻿body{
-	background-color: #F9FAFC;
-	/*background-color: red;*/
+﻿body, html {
+	height: 100%;
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	overflow:hidden;
 }
 
-#logo{
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 2%;
-	margin-bottom: 2%;
-	width: 12%;
-}
-
-.formPanel{
-	text-align: center;
-	height: 450px; 
-	width: 350px; 
-	margin: auto; 
-	background-color: white;
-	display: block;
-	border-radius: 4px;
-	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
-}
-
-.formPanel h1{
-	text-align: center;
-	vertical-align: middle;
-	font-family: Arial, sans-serif;
-	color: #555555;
-	font-size: 16px;
-	padding-top: 45px; 
-	padding-bottom: 5px;
-}
-
-.formConnect{
-	margin: 15px 30px;
-}
-
-.formConnect input{
-	width: 100%;
-	padding: 8px 20px;
-	margin: 8px 0;
-	display: inline-block;
-	border: 2px solid #ccc;
-	border-radius: 4px;
+* {
 	box-sizing: border-box;
 }
 
-.formConnect input[type=submit] {
-	background-color: #4CAF50;
-	color: white;
-	padding: 6px 20px;
-	margin: 12px 0;
-	border: none;
-	cursor: pointer;
-}
-
-.formConnect input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-hr{
-	border: 0.5px solid gray;
-	margin: 15px 30px;
-}
-
-.signin{
-	display: inline-block;
-	font-family: Arial, sans-serif;
-	color: #555555;
-	font-size: 14px;
-}
-
-a {
-	font-family: Arial, sans-serif;
-	color: #002BEE;
-	font-size: 14px;
-}
-
-a:link {
-	text-decoration: none;
-}
-
-a:visited {
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-a:active {
-	text-decoration: underline;
-}
-
-.bgImg img{
-	position: absolute;
-	top: 300px;
+body:after{
+	content: "";
+	position: fixed;
+	top: 0;
+	bottom: 0;
 	left: 0;
-	transform: rotateY(0deg) rotate(-15deg);
+	right: 0;
+	background: rgba(0,0,0,0.4);
+	pointer-events: none;
 }
 
-.bgImg img{
-	max-width:20%;
-    height:auto;
+.bg-image {
+	/* Image du background login */
+	background-image: url("../Design/Images/Image_login.jpeg");
+	/* Effet de flou */
+	filter: blur(28px);
+	-webkit-filter: blur(28px);
+	/* Full height */
+	min-height: 100vh;
+	/* Centrer l'image et l'adapter à la taille */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	/*Pour éviter d'avoir les bordures blanches dues au blur*/
+	transform: scale(1.1);
+}
+
+
+/* Div au milieu de la page */
+.bg-login {
+	/*Style de la div login*/
+	background-color: rgba(227,212,212, 0.5); /* Background coloré avec opacité */
+	transform: translate(-50%, -50%);
+	position: absolute;
+	border-radius: 6px;
+	height: 80%;
+	width: 30%;
+	left: 50%;
+	top: 50%;
+	z-index: 2;
+}
+
+.Logo #rectangle {
+											/*Rectangle temporaire : remplacer par logo*/
+	transform: translate(-50%, -50%);
+	border: 1px solid black;
+	border-radius: 15px;
+	top: 20%;
+	left: 50%;
+	position: absolute;
+	width: 70px;
+	height: 70px;
+	background: white;
+}
+
+.Logo .txt {
+	/*Font style*/
+	text-align: center;
+	font-size: 35px;
+	font-family: 'Segoe UI';
+	color: white;
+	font-weight: normal;
+
+	/*Font position*/
+	transform: translate(-50%, -50%);
+	top: 25%;
+	left: 50%;
+	position: absolute;
+}
+
+form {
+	transform: translate(-50%, -50%);
+	top: 45%;
+	left: 50%;
+	position: absolute;
+	width:70%;
+}
+
+::placeholder{
+  color: white;
+}
+
+.Credentials input {
+	border: 1px solid white;
+	border-radius: 8px;
+	width: 100%;
+	padding: 10px;
+	color: white;
+	margin-top: 20px;
+	background-color: rgba(0,0,0,0);
+	padding-left: 35px;
+}
+
+.Credentials input[name=login]{
+	background: url("../Design/SVG/User.svg") no-repeat scroll 7px 7px;
+	background-size:20px;
+	background-position-y:center;
+}/**/
+
+.Credentials input[name=password]{
+	background: url("../Design/SVG/Lock.svg") no-repeat scroll 7px 7px;
+	background-size:20px;
+	background-position-y:center;
 }
