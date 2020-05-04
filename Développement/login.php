@@ -42,10 +42,7 @@ include "connect_database.php";
                                 <a id="fPassword" href="">Forgot your password ?</a>
                             </div>
                         </div>
-                        <p>FHGUYGbdscbhjfhdjbjhdfg</p>
-                        <p>FHGUYGbdscbhjfhdjbjhdfg</p>
-                        <p>FHGUYGbdscbhjfhdjbjhdfg</p>
-                        <p>FHGUYGbdscbhjfhdjbjhdfg</p>
+                        </div>
                     </form>
                 </div>
             <script>
@@ -59,7 +56,7 @@ include "connect_database.php";
                 }
             </script>
 
-            </div>
+            <div>Plop plop plop</div>
 
         </div>
 
