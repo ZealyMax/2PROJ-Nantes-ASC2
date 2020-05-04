@@ -10,7 +10,7 @@ include "connect_database.php";
         <title>Connexion</title>
     </head>
     <body>
-        <div name="Content">
+        <div class="Content">
 
             <div class="bg-image"></div>
 
@@ -38,24 +38,18 @@ include "connect_database.php";
                             <input class="btn" name="submit" type="submit" value="LOGIN">
 
                             <div class="links">
-                                <a id="signIn" href="" onclick="registerDiv()">Sign up</a>
-                                <a id="fPassword" href="">Forgot your password ?</a>
+                                <a id="signIn">Sign up</a>
+                                <a id="fPassword">Forgot your password ?</a>
                             </div>
                         </div>
                     </form>
                 </div>
-            <script>
-                function registerDiv() {
-                    $.ajax({
-                        type: "POST",
-                        url: 'loginDiv.php',
-                        data:{action:'call_this'},
-                        success:function(html) {alert(html);}
-                    });
-                }
-            </script>
-          
-            <div>Plop plop plop</div>
+            </div>
         </div>
     </body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script src='switchLogin.js'></script>
+
 </html>
