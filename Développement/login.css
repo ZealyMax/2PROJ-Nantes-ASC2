@@ -3,6 +3,8 @@
 	margin: 0;
 	font-family: Arial, Helvetica, sans-serif;
 	overflow:hidden;
+	min-width: 300px;
+	min-height: 550px;
 }
 
 * {
@@ -46,6 +48,8 @@ body:after{
 	border-radius: 6px;
 	height: 80%;
 	width: 30%;
+	min-height:550px;
+	min-width:400px;
 	left: 50%;
 	top: 50%;
 	z-index: 2;
@@ -81,7 +85,7 @@ body:after{
 
 form {
 	transform: translate(-50%, -50%);
-	top: 45%;
+	top: 60%;
 	left: 50%;
 	position: absolute;
 	width:70%;
@@ -98,18 +102,128 @@ form {
 	padding: 10px;
 	color: white;
 	margin-top: 20px;
-	background-color: rgba(0,0,0,0);
+	background: none;
 	padding-left: 35px;
+	user-select:none;
+}
+
+.Credentials input:hover{
+	border: 1px solid lightgray;
+	border-radius: 8px;
+}
+
+.Credentials input:focus{
+	border: 1px solid blue;
+	border-radius: 8px;
 }
 
 .Credentials input[name=login]{
-	background: url("../Design/SVG/User.svg") no-repeat scroll 7px 7px;
+	background: url("../Design/icons/usr/icon_User@2x.png") no-repeat scroll 7px 7px;
 	background-size:20px;
 	background-position-y:center;
-}/**/
+}
 
-.Credentials input[name=password]{
-	background: url("../Design/SVG/Lock.svg") no-repeat scroll 7px 7px;
-	background-size:20px;
-	background-position-y:center;
+.Credentials input[name=password] {
+	background: url("../Design/icons/lock/icon_Lock@2x.png") no-repeat scroll 7px 7px;
+	background-size: 20px;
+	background-position-y: center;
+}
+
+.btn {
+	background-color: rgb(84,97,209);
+	border: none;
+	border-radius: 8px;
+	width: 100%;
+	padding: 12px;
+	color: white;
+	margin-top: 20px;
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+.btn:hover {
+	opacity: 1;
+}
+
+
+/*Style du label à côté de la checkbox */
+.container {
+	display: block;
+	position: relative;
+	padding-top:30px;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	color:white;
+	font-size: 14px;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+/* On cache la checkbox du navigateur par défaut */
+.container input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+
+/* Style de la checkbox */
+.checkmark {
+	position: absolute;
+	top: 27px;
+	left: 0;
+	height: 22px;
+	width: 22px;
+	border-radius:3px;
+	border:1px solid white;
+	background-color: none;
+}
+
+/* Style Hover */
+.container:hover input ~ .checkmark {
+	background-color: #ccc;
+}
+
+/* Style checked */
+.container input:checked ~ .checkmark {
+	background-color: #2196F3;
+}
+
+/* On crée une icone de validation cachée lorsque la checkbox n'est pas cochée */
+.checkmark:after {
+	content: "";
+	position: absolute;
+	opacity:0;
+}
+
+/* On affiche l'icone */
+.container input:checked ~ .checkmark:after {
+	opacity:1;
+}
+
+/* Style de l'icone */
+.container .checkmark:after {
+	left: 6px;
+	top: 2px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+
+.Other a {
+	margin-top:20px;
+	color: white;
+	font-size:14px;
+	outline: none;
+	text-decoration: none;
+}
+
+.Other a:hover {
+	border-bottom: 1px solid;
 }

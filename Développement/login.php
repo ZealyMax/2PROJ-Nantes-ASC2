@@ -27,7 +27,21 @@ include "connect_database.php";
                         <input class="inputFields" name="login" type="text" placeholder="Username or email">
                         <input class="inputFields" name="password" type="password" placeholder="Password">
                     </div>
-                    <div class="Other"></div>
+
+                    <div class="Other">
+                        <label class="container">Remember me
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+
+                        <input class="btn" name="submit" type="submit" value="LOGIN">
+
+                        <div>
+                            <a id="signIn" href="./signIn.php">Sign up</a>
+                            <a id="fPassword" href="">Forgot your password ?</a>
+                        </div>
+                    </div>
+
                 </form>
 
             </div>

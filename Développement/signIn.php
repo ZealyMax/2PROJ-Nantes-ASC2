@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
@@ -14,7 +13,7 @@
                     <h1>Inscrivez vous à ToDoU2</h1>
                     <?php 
                         if($_GET['error'] == "1"){
-                            echo "Le compte que vous avez voulu créer existe déjà.";
+                            echo "Nom d'utilisateur ou email déjà utilisé.";
                         }
                     ?>
                     <div class="formConnect">
