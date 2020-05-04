@@ -17,15 +17,19 @@
                 <option value="list">Liste déroulante</option>
                 <option value="linear-scale">Echelle linéaire</option>
                 <option value="grid-multiple">Grille à choix multiple</option>
+                <option value="grid-checkbox">Grille de case à coher</option>
+                <option value="date">Date</option>
+                <option value="hour">Heure</option>
             </select><button class=rm-div>X</button><br>
             <div class=question-content>
-                <input placeholder="Répoonse">
+                <input placeholder="Réponse">
             </div>
+            <input type=checkbox><input placeholder=Obligatoire READONLY>
         </div>
         <input name=Titre placeholder="Titre">
         <input name=Description placeholder="Description">
         <button class="btn-add">+</button>
-        <input name=submit type=submit value="Envoyer">
+        <input name=submit type=submit value="Créer">
         <div class=form>
            
         </div>
