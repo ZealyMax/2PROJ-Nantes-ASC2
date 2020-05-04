@@ -36,7 +36,7 @@ include "connect_database.php";
 
                         <input class="btn" name="submit" type="submit" value="LOGIN">
 
-                        <div>
+                        <div class="links">
                             <a id="signIn" href="./signIn.php">Sign up</a>
                             <a id="fPassword" href="">Forgot your password ?</a>
                         </div>

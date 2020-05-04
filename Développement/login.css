@@ -58,7 +58,7 @@ body:after{
 .Logo #rectangle {
 											/*Rectangle temporaire : remplacer par logo*/
 	transform: translate(-50%, -50%);
-	border: 1px solid black;
+	border: 1px solid rgb(112,112,112);
 	border-radius: 15px;
 	top: 20%;
 	left: 50%;
@@ -216,14 +216,22 @@ form {
 }
 
 
-.Other a {
+.Other .links {
 	margin-top:20px;
+	position:relative;
+}
+
+.Other a {
 	color: white;
-	font-size:14px;
-	outline: none;
+	font-size: 14px;
 	text-decoration: none;
+	outline: none;
 }
 
 .Other a:hover {
 	border-bottom: 1px solid;
+}
+
+.Other #fPassword{
+	float:right;
 }
