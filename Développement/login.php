@@ -7,7 +7,7 @@ include "connect_database.php";
     <head>
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="login.css">
-        <title>Connextion</title>
+        <title>Online Survey#Connexion</title>
     </head>
     <body>
         <div name="Content">
@@ -21,28 +21,40 @@ include "connect_database.php";
                     <p class="txt">Online Survey</p>
                 </div>
 
-                <form>
+                <div id="Content">
+                    <form action="connect.php" method="post">
 
-                    <div class="Credentials">
-                        <input class="inputFields" name="login" type="text" placeholder="Username or email">
-                        <input class="inputFields" name="password" type="password" placeholder="Password">
-                    </div>
-
-                    <div class="Other">
-                        <label class="container">Remember me
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <input class="btn" name="submit" type="submit" value="LOGIN">
-
-                        <div class="links">
-                            <a id="signIn" href="./signIn.php">Sign up</a>
-                            <a id="fPassword" href="">Forgot your password ?</a>
+                        <div class="Credentials">
+                            <input class="inputFields login" name="login" type="text" placeholder="Username or email">
+                            <input class="inputFields password" name="password" type="password" placeholder="Password">
                         </div>
-                    </div>
 
-                </form>
+                        <div class="Other">
+                            <label class="container">Remember me
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+
+                            <input class="btn" name="submit" type="submit" value="LOGIN">
+
+                            <div class="links">
+                                <a id="signIn" href="" onclick="registerDiv()">Sign up</a>
+                                <a id="fPassword" href="">Forgot your password ?</a>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            <script>
+                function registerDiv() {
+                    $.ajax({
+                        type: "POST",
+                        url: 'loginDiv.php',
+                        data:{action:'call_this'},
+                        success:function(html) {alert(html);}
+                    });
+                }
+            </script>
 
             </div>
 

@@ -2,7 +2,7 @@
 	height: 100%;
 	margin: 0;
 	font-family: Arial, Helvetica, sans-serif;
-	overflow:hidden;
+	overflow: hidden;
 	min-width: 300px;
 	min-height: 550px;
 }
@@ -95,32 +95,33 @@ form {
   color: white;
 }
 
-.Credentials input {
+.inputFields {
 	border: 1px solid white;
 	border-radius: 8px;
 	width: 100%;
 	padding: 10px;
 	color: white;
 	margin-top: 20px;
-	background: none;
+	background: transparent;
 	padding-left: 35px;
-	user-select:none;
+	user-select: none;
 }
 
-.Credentials input:hover{
+.inputFields:hover {
 	border: 1px solid lightgray;
 	border-radius: 8px;
 }
 
-.Credentials input:focus{
-	border: 1px solid blue;
+.inputFields:focus {
+	border: 1px solid #2196F3;
 	border-radius: 8px;
+	outline: none;
 }
 
-.Credentials input[name=login]{
+.Credentials input[name=login] {
 	background: url("../Design/icons/usr/icon_User@2x.png") no-repeat scroll 7px 7px;
-	background-size:20px;
-	background-position-y:center;
+	background-size: 20px;
+	background-position-y: center;
 }
 
 .Credentials input[name=password] {
