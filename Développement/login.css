@@ -124,7 +124,13 @@ form {
 	background-position-y: center;
 }
 
-.Credentials input[name=password] {
+.Credentials input[name=mail] {
+	background: url("../Design/icons/email/icon_Email@2x.png") no-repeat scroll 7px 7px;
+	background-size: 20px;
+	background-position-y: center;
+}
+
+.Credentials input[name=password], input[name=confirmPassword] {
 	background: url("../Design/icons/lock/icon_Lock@2x.png") no-repeat scroll 7px 7px;
 	background-size: 20px;
 	background-position-y: center;

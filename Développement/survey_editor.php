@@ -8,7 +8,6 @@
     <body>
         <div class=question style="display:none">
             <br>
-            <p>lklkjljlkjljkl</p>
             <input name=question-desc placeholder="Question"> 
             <select class=selector>
                 <option value="short">Réponse courte</option>
