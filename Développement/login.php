@@ -7,7 +7,7 @@ include "connect_database.php";
     <head>
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="login.css">
-        <title>Online Survey#Connexion</title>
+        <title>Connexion</title>
     </head>
     <body>
         <div name="Content">
@@ -42,7 +42,6 @@ include "connect_database.php";
                                 <a id="fPassword" href="">Forgot your password ?</a>
                             </div>
                         </div>
-                        </div>
                     </form>
                 </div>
             <script>
@@ -55,12 +54,8 @@ include "connect_database.php";
                     });
                 }
             </script>
-
+          
             <div>Plop plop plop</div>
-
         </div>
-
     </body>
 </html>
-
-<!---->
