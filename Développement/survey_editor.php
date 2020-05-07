@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php  include('redirect_to_connection.php') ?>
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
@@ -26,13 +27,15 @@
             </div>
             <input type=checkbox><input placeholder=Obligatoire READONLY>
         </div>
-        <input name=Titre placeholder="Titre">
-        <input name=Description placeholder="Description">
-        <button class="btn-add">+</button>
-        <input name=submit type=submit value="Créer">
-        <div class=form>
-           
-        </div>
+        <form method=POST action=create_form.php>
+            <input name=Titre placeholder="Titre">
+            <input name=Description placeholder="Description">
+            <button class="btn-add">+</button>
+            <input name=submit type=submit value="Créer">
+            <div class=form>
+                
+            </div>
+        </form>
     </body>
 </html>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
