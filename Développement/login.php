@@ -10,27 +10,46 @@ include "connect_database.php";
         <title>Connexion</title>
     </head>
     <body>
-        <div class="container">
-            <img id="logo" src="./Images/Logo/logoFull.png">
-            <div class="formPanel">
-                <form action="connect.php" method="post">
-                    <h1>Se connecter au créateur de formulaires</h1>
-                    <div class="formConnect">
-                        <input name="login" type="text" placeholder="Saisissez votre nom d'utilisateur">
-                        <input name="password" type="password" placeholder="Saisir le mot de passe">
-                        <input name="submit" type="submit" value="Se connecter">
-                    </div>
-                    <hr>
-                    <div class="signin">
-                        <p>Vous n'avez pas encore de compte ?</p>
-                        <a href="signin.php">Créer un compte</a>
-                    </div>
-                </form>
-            </div>
-            <p>lklklkllklklk</p>
-            <div class="bgImg">
-                <img src="./Images/TDL.png">
+        <div class="Content">
+
+            <div class="bg-image"></div>
+
+            <div class="bg-login">
+
+                <div class="Logo">
+                    <div id="rectangle"></div>
+                    <p class="txt">Online Survey</p>
+                </div>
+
+                <div id="Content">
+                    <form action="connect.php" method="post">
+
+                        <div class="Credentials">
+                            <input class="inputFields login" name="login" type="text" placeholder="Username or email">
+                            <input class="inputFields password" name="password" type="password" placeholder="Password">
+                        </div>
+
+                        <div class="Other">
+                            <label class="container">Remember me
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+
+                            <input class="btn" name="submit" type="submit" value="LOGIN">
+
+                            <div class="links">
+                                <a id="signIn">Sign up</a>
+                                <a id="fPassword">Forgot your password ?</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script src='switchLogin.js'></script>
+
 </html>
