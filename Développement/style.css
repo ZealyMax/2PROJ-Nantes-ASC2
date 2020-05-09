@@ -22,7 +22,7 @@ body, html {
 }
 
 .contentHead {
-	margin:5px 25px;
+	margin: 5px 25px;
 	color: white;
 	display: flex;
 	/*justify-content:space-between;*/
@@ -30,13 +30,13 @@ body, html {
 
 .Logo {
 	display: flex;
-	justify-content:flex-start;
-	align-items:center;
-	width:25%;
+	justify-content: flex-start;
+	align-items: center;
+	width: 25%;
 }
 
-.txt{
-	margin-left:20px;
+.txt {
+	margin-left: 20px;
 }
 
 .Recherche {
@@ -50,16 +50,16 @@ body, html {
 	background: url("../Design/icons/search/icon_Search@2x.png") no-repeat scroll 7px 7px;
 	background-size: 20px;
 	background-position-y: center;
-	width:60%;
+	width: 60%;
 	padding: 8px 20px 8px 40px;
 	background-color: white;
 	border: none;
 	border-radius: 20px;
 }
 
-.Search:focus{
-	outline: none;
-}
+	.Search:focus {
+		outline: none;
+	}
 
 .User {
 	display: flex;
@@ -68,17 +68,17 @@ body, html {
 	width: 25%;
 }
 
-.User div {
-	background-image: url("../Design/icons/usr/icon_User@2x.png");
-	background-position: 50% 50%;
-	background-repeat:no-repeat;
-	background-color: #FF6153;
-	background-size: contain;
-	background-size : 20px;
-	border-radius: 50px;
-	height: 50px;
-	width: 50px;
-}
+	.User div {
+		background-image: url("../Design/icons/usr/icon_User@2x.png");
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+		background-color: #FF6153;
+		background-size: contain;
+		background-size: 15px;
+		border-radius: 50px;
+		height: 35px;
+		width: 35px;
+	}
 
 .Logo #rectangle {
 	/*Rectangle temporaire : remplacer par logo*/
@@ -95,23 +95,29 @@ body, html {
 
 /*Style du Contenu de la page*/
 .Content {
-	display:flex;
-	flex-direction:column;
-	align-items:center;
-	margin:60px 0 0 0;
-	width: 80%;
+	display: flex;
+	justify-content: space-around;
+	top: 0;
+	margin: 100px 0 50px 0;
+	width: 100%;
 	position: relative;
 	z-index: 50;
 }
 
-
+.mainContent {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	width: 60%;
+	background-color: blue;
+}
 
 
 
 /*Style du footer*/
 
-.Footer{
-	color:gray;
+.Footer {
+	color: gray;
 }
 
 
