@@ -10,10 +10,6 @@ body, html {
 	box-sizing: border-box;
 }
 
-.Main {
-}
-
-
 
 /*Style du Header*/
 .Header {
@@ -99,15 +95,10 @@ body, html {
 
 /*Style du Contenu de la page*/
 .Content {
-<<<<<<< Updated upstream
-	top: 0;
-	margin: 60px 0 0 0;
-=======
 	display: flex;
 	justify-content: space-around;
 	top: 0;
 	margin: 100px 0 50px 0;
->>>>>>> Stashed changes
 	width: 100%;
 	position: relative;
 	z-index: 50;
