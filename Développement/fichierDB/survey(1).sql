@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  Dim 03 mai 2020 à 20:17
+-- Généré le :  sam. 09 mai 2020 à 23:56
 -- Version du serveur :  10.4.11-MariaDB
 -- Version de PHP :  7.4.1
 
@@ -25,6 +25,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `questions`
+--
+
+CREATE TABLE `questions` (
+  `id_questions` int(4) NOT NULL,
+  `id_surveys` int(4) NOT NULL,
+  `question` varchar(25) NOT NULL,
+  `type` varchar(25) NOT NULL,
+  `mustDo` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `surveys`
 --
 
@@ -34,6 +48,13 @@ CREATE TABLE `surveys` (
   `title` varchar(25) NOT NULL,
   `description` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `surveys`
+--
+
+INSERT INTO `surveys` (`id_surveys`, `id_users`, `title`, `description`) VALUES
+(10, 1, 'lol1', '');
 
 -- --------------------------------------------------------
 
@@ -59,6 +80,14 @@ INSERT INTO `users` (`id_users`, `login`, `password`) VALUES
 --
 
 --
+-- Index pour la table `questions`
+--
+ALTER TABLE `questions`
+  ADD PRIMARY KEY (`id_questions`),
+  ADD UNIQUE KEY `id_questions` (`id_questions`),
+  ADD KEY `fk_id_question_id_survey` (`id_surveys`);
+
+--
 -- Index pour la table `surveys`
 --
 ALTER TABLE `surveys`
@@ -78,10 +107,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT pour la table `questions`
+--
+ALTER TABLE `questions`
+  MODIFY `id_questions` int(4) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT pour la table `surveys`
 --
 ALTER TABLE `surveys`
-  MODIFY `id_surveys` int(25) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_surveys` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `users`
@@ -92,6 +127,12 @@ ALTER TABLE `users`
 --
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `questions`
+--
+ALTER TABLE `questions`
+  ADD CONSTRAINT `fk_id_question_id_survey` FOREIGN KEY (`id_surveys`) REFERENCES `surveys` (`id_surveys`);
 
 --
 -- Contraintes pour la table `surveys`
