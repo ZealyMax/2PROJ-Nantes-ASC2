@@ -9,6 +9,7 @@ include "connect_database.php" ;?>
         <title>Home</title>
     </head>
     <body>
+<<<<<<< Updated upstream
 
         <input type="button" onclick="location.href='survey_editor.php'" value="Créer un formulaire" />
         <p>Liste des formulaires récents</p>
@@ -25,6 +26,8 @@ include "connect_database.php" ;?>
             </ul>
         </nav>
 
+=======
+>>>>>>> Stashed changes
         <div class=Main>
             <div class=Header>
                 <div class=contentHead>
@@ -45,8 +48,30 @@ include "connect_database.php" ;?>
             </div>        
         
             <div class=Content>
+<<<<<<< Updated upstream
                 <br>Test test plop <br>
             </div>        
+=======
+                <div class=mainContent>
+                    <p>Trier par:</p>
+                    <div class=homeSelectButton>
+                        <input type="button" onclick="location.href='survey_editor.php'" value="Créer un formulaire" />
+                        <p>Liste des formulaires récents</p>
+                        <nav>
+                            <ul>
+                                <?php 
+                                    $sql = "SELECT title FROM surveys WHERE id_users = '$_SESSION[id_users]'";
+                                    $res = mysqli_query($conn, $sql);
+                                    while ( $result = $res->fetch_assoc()){
+                                        echo "<a>". $result['title'] . "</a>";
+					                }
+                                ?>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+>>>>>>> Stashed changes
         
             <div class=Footer>
                 <div class=Footer_1>

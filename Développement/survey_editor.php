@@ -25,12 +25,12 @@
             <div class=question-content>
                 <input placeholder="Réponse">
             </div>
-            <input type=checkbox><input placeholder=Obligatoire READONLY>
+            <input name=mustDo[] type=checkbox><input placeholder=Obligatoire READONLY>
         </div>
         <form method=POST action=create_form.php>
             <input name=Titre placeholder="Titre">
             <input name=Description placeholder="Description">
-            <button class="btn-add">+</button>
+            <input class="btn-add" type=button value=+>
             <input name=submit type=submit value="Créer">
             <div class=form>
                 
