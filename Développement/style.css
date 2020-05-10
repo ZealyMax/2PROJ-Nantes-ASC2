@@ -106,16 +106,45 @@ body, html {
 
 .mainContent {
 	display: flex;
-	justify-content: space-around;
-	flex-wrap: wrap;
+	flex-direction:column;
 	width: 60%;
-	background-color: blue;
+	background-color: azure;/*A suppr*/
 }
 
+.home-Sort-Button {
+	display: flex;
+	justify-content: flex-end;
+	margin-top:20px;
+}
 
+.Select-Form-Section {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	
+}
+
+.Sort{
+	margin-right:3%;
+}
+
+.parent-Form{
+	width:20%;
+	margin-top: 20px;
+	background-color:crimson;/*A suppr*/
+	display:flex;
+	justify-content:center;
+}
+
+.child-Form {
+	background-color: antiquewhite; /*A suppr*/
+	width: 170px;
+	height: 200px;
+	border: none;
+	border-radius: 5px;
+}
 
 /*Style du footer*/
-
 .Footer {
 	color: gray;
 }
