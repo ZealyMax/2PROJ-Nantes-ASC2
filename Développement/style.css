@@ -11,7 +11,11 @@ body, html {
 }
 
 
-/*Style du Header*/
+/*#region Header*/
+/*Style du header*/
+
+/*#region headerMain*/
+/*Mise en forme globale du Header*/
 .Header {
 	top: 0;
 	margin: 0;
@@ -27,7 +31,10 @@ body, html {
 	display: flex;
 	/*justify-content:space-between;*/
 }
+/*#endregion headerMain*/
 
+/*#region logo*/
+/*Mise en forme du logo*/
 .Logo {
 	display: flex;
 	justify-content: flex-start;
@@ -35,10 +42,22 @@ body, html {
 	width: 25%;
 }
 
-.txt {
-	margin-left: 20px;
+.Logo #rectangle {
+	/*Rectangle temporaire : remplacer par logo*/
+	border: 1px solid rgb(112,112,112);
+	border-radius: 5px;
+	width: 40px;
+	height: 40px;
+	background: white;
 }
 
+.Logo p{
+	margin-left: 20px;
+}
+/*#endregion logo*/
+
+/*#region searchBar*/
+/*Mise en forme de la barre de recherche*/
 .Recherche {
 	display: flex;
 	justify-content: center;
@@ -57,10 +76,14 @@ body, html {
 	border-radius: 20px;
 }
 
-	.Search:focus {
-		outline: none;
-	}
+.Search:focus {
+	outline: none;
+}
+/*#endregion searchBar*/
 
+
+/*#region user*/
+/*Mise en forme de l'icone d'utilisateur*/
 .User {
 	display: flex;
 	justify-content: flex-end;
@@ -68,32 +91,63 @@ body, html {
 	width: 25%;
 }
 
-	.User div {
-		background-image: url("../Design/icons/usr/icon_User@2x.png");
-		background-position: 50% 50%;
-		background-repeat: no-repeat;
-		background-color: #FF6153;
-		background-size: contain;
-		background-size: 15px;
-		border-radius: 50px;
-		height: 35px;
-		width: 35px;
-	}
-
-.Logo #rectangle {
-	/*Rectangle temporaire : remplacer par logo*/
-	border: 1px solid rgb(112,112,112);
-	border-radius: 5px;
-	width: 40px;
-	height: 40px;
-	background: white;
+.User button:focus{
+	outline:none;
 }
 
+.dropButton {
+	background-image: url("../Design/icons/usr/icon_User@2x.png");
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-color: #FF6153;
+	background-size: contain;
+	background-size: 15px;
+	border-radius: 50px;
+	border: none;
+	height: 35px;
+	width: 35px;
+}
+
+.dropButton:hover, .dropButton:focus {
+	background-color: #2980B9;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-Content {
+	display: none;
+	position: absolute;
+	right:0;
+	background-color: #f1f1f1;
+	min-width: 160px;
+	overflow: auto;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+.dropdown-Content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+/*#endregion user*/
+
+/*Fin du style du header*/
+/*#endregion Header*/
 
 
+/*#region Content*/
+/*Style du contenu de la page*/
 
-
-/*Style du Contenu de la page*/
 .Content {
 	display: flex;
 	justify-content: space-around;
@@ -144,7 +198,14 @@ body, html {
 	border-radius: 5px;
 }
 
+/*Fin du style du contenu de la page*/
+/*#endregion Content*/
+
+
+/*#region Footer*/
 /*Style du footer*/
+
+
 .Footer {
 	color: gray;
 }
@@ -171,3 +232,7 @@ body, html {
 	background-color: #140301;
 	z-index: 100;
 }
+
+
+/*Fin du style du footer*/
+/*#endregion Footer*/

@@ -12,7 +12,7 @@ include "connect_database.php" ;?>
         <div class=Main>
             <div class=Header>
                 <div class=contentHead>
-                    <div class=Logo><!--Partie gauche du Header, logo + texte-->
+                    <div href="home.php" class=Logo><!--Partie gauche du Header, logo + texte-->
                         <div id=rectangle></div>
                         <p class=txt><b>Online Survey</b></p>
                     </div>
@@ -21,8 +21,15 @@ include "connect_database.php" ;?>
                             <input class=Search name="search" type="text" placeholder="Rechercher">
                     </div>
             
-                    <div class=User><!--Partie droite : zone compte (déconexion...)-->
-                        <div></div>
+                    <div class=User> <!--Partie droite : zone compte (Home, Déconexion...)-->
+                        <div class=dropdown>
+                            <button onclick="dropMenuUser()" class="dropButton"></button>
+                        
+                            <div id="droppedMenu" class="dropdown-Content">
+                                <a href="home.php">Home</a>
+                                <a href="login.php">Déconnexion</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             
@@ -39,7 +46,7 @@ include "connect_database.php" ;?>
 
                     <!--Affichage des formulaires + bouton de création d'un formulaire-->
                     <div class=Select-Form-Section>
-                        <div class=parent-Form>
+                        <div class=parent-Form> <!--Bouton ajouter formulaire-->
                             <input class=child-Form type="button" onclick="location.href='survey_editor.php'"/>
                         </div>
 
@@ -70,4 +77,5 @@ include "connect_database.php" ;?>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         crossorigin="anonymous"></script>
+    <script src="dropMenuUser.js"></script>
 </html>
