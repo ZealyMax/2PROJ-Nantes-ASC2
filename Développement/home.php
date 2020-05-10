@@ -47,7 +47,8 @@ include "connect_database.php" ;?>
                         </nav>
                     </div>
                 </div>
-            </div>        
+            </div>
+        
             <div class=Footer>
                 <div class=Footer_1>
                     Some text
