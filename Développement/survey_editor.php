@@ -7,9 +7,9 @@
         <title>créer un formulaire</title>
     </head>
     <body>
-        <div class=question style="display:none">
+        <div class=question-div style="display:none">
             <br>
-            <input name=question-desc placeholder="Question"> 
+            <input name=question[] placeholder="Question"> 
             <select class=selector>
                 <option value="short">Réponse courte</option>
                 <option value="long">Paragraphe</option>
@@ -23,9 +23,9 @@
                 <option value="hour">Heure</option>
             </select><button class=rm-div>X</button><br>
             <div class=question-content>
-                <input placeholder="Réponse">
+                <input name="short" placeholder="Réponse courte" READONLY>
             </div>
-            <input name=mustDo[] type=checkbox><input placeholder=Obligatoire READONLY>
+            <input name=mustDo[] type=checkbox value=1 ><input placeholder=Obligatoire READONLY>
         </div>
         <form method=POST action=create_form.php>
             <input name=Titre placeholder="Titre">
