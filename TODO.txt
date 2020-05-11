@@ -1,0 +1,3 @@
+Design :
+
+	- Survey Shared : bas de page, barre de progression (indique à l'utilisateur où il en est dans le formulaire)
