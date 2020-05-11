@@ -7,26 +7,6 @@
         <title>créer un formulaire</title>
     </head>
     <body>
-        <div class=question style="display:none">
-            <br>
-            <input name=question-desc placeholder="Question"> 
-            <select class=selector>
-                <option value="short">Réponse courte</option>
-                <option value="long">Paragraphe</option>
-                <option value="multiple">Choix multiple</option>
-                <option value="checkbox">Case à cocher</option>
-                <option value="list">Liste déroulante</option>
-                <option value="linear-scale">Echelle linéaire</option>
-                <option value="grid-multiple">Grille à choix multiple</option>
-                <option value="grid-checkbox">Grille de case à coher</option>
-                <option value="date">Date</option>
-                <option value="hour">Heure</option>
-            </select><button class=rm-div>X</button><br>
-            <div class=question-content>
-                <input placeholder="Réponse">
-            </div>
-            <input name=mustDo[] type=checkbox><input placeholder=Obligatoire READONLY>
-        </div>
         <form method=POST action=create_form.php>
             <input name=Titre placeholder="Titre">
             <input name=Description placeholder="Description">
