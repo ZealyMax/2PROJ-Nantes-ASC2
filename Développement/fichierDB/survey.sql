@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  Dim 03 mai 2020 à 20:17
+-- Généré le :  lun. 11 mai 2020 à 18:45
 -- Version du serveur :  10.4.11-MariaDB
 -- Version de PHP :  7.4.1
 
@@ -21,6 +21,33 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `survey`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `questions`
+--
+
+CREATE TABLE `questions` (
+  `id_questions` int(4) NOT NULL,
+  `id_surveys` int(4) NOT NULL,
+  `question` varchar(25) CHARACTER SET latin7 COLLATE latin7_general_cs NOT NULL,
+  `type` varchar(25) NOT NULL,
+  `mustDo` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sub_questions`
+--
+
+CREATE TABLE `sub_questions` (
+  `id_sub_questions` int(25) NOT NULL,
+  `id_questions` int(4) NOT NULL,
+  `type` varchar(25) NOT NULL,
+  `value` varchar(25) CHARACTER SET latin7 COLLATE latin7_general_cs NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -48,15 +75,24 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `users`
---
-
-INSERT INTO `users` (`id_users`, `login`, `password`) VALUES
-(1, 'Zealy', 'Zealy');
-
---
 -- Index pour les tables déchargées
 --
+
+--
+-- Index pour la table `questions`
+--
+ALTER TABLE `questions`
+  ADD PRIMARY KEY (`id_questions`),
+  ADD UNIQUE KEY `id_questions` (`id_questions`),
+  ADD KEY `fk_id_question_id_survey` (`id_surveys`);
+
+--
+-- Index pour la table `sub_questions`
+--
+ALTER TABLE `sub_questions`
+  ADD PRIMARY KEY (`id_sub_questions`),
+  ADD UNIQUE KEY `id_sub_questions` (`id_sub_questions`),
+  ADD KEY `id_sub_quesitions_id_questions` (`id_questions`);
 
 --
 -- Index pour la table `surveys`
@@ -78,6 +114,18 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT pour la table `questions`
+--
+ALTER TABLE `questions`
+  MODIFY `id_questions` int(4) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `sub_questions`
+--
+ALTER TABLE `sub_questions`
+  MODIFY `id_sub_questions` int(25) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT pour la table `surveys`
 --
 ALTER TABLE `surveys`
@@ -87,11 +135,23 @@ ALTER TABLE `surveys`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_users` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_users` int(4) NOT NULL AUTO_INCREMENT;
 
 --
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `questions`
+--
+ALTER TABLE `questions`
+  ADD CONSTRAINT `fk_id_question_id_survey` FOREIGN KEY (`id_surveys`) REFERENCES `surveys` (`id_surveys`);
+
+--
+-- Contraintes pour la table `sub_questions`
+--
+ALTER TABLE `sub_questions`
+  ADD CONSTRAINT `id_sub_quesitions_id_questions` FOREIGN KEY (`id_questions`) REFERENCES `questions` (`id_questions`);
 
 --
 -- Contraintes pour la table `surveys`
