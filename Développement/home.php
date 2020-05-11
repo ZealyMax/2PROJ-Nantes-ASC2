@@ -17,8 +17,11 @@ include "connect_database.php" ;?>
                         <p class=txt><b>Online Survey</b></p>
                     </div>
                 
-                    <div class=Recherche><!--Partie centrale : zone de recherche de formulaire-->
+                    <div class=search-Container><!--Partie centrale : zone de recherche de formulaire-->
+                        <div>
+                            <button class=search-Icon>&nbsp;</button>                                               <!--Ici mettre option pour rechercher avec ce qu'il y a dans l'input-->
                             <input class=Search name="search" type="text" placeholder="Rechercher">
+                        </div>
                     </div>
             
                     <div class=User> <!--Partie droite : zone compte (Home, Déconexion...)-->
@@ -32,22 +35,27 @@ include "connect_database.php" ;?>
                         </div>
                     </div>
                 </div>
-            
             </div>        
         
             <div class=Content>
                 <div class=mainContent>
 
                     <!--Bouton de tri des formulaires-->
-                    <div class=home-Sort-Button role=button> <!--Bouton de tri des formulaires-->
-                        <div class=Sort-Btn></div><!--div Icon-->
-                        <div class=Sort>Trier</div><!--Texte-->
+                    <div class=home-Sort-Button> <!--Bouton de tri des formulaires-->
+                        <div role=button onclick="lol()">
+                            <div class=Sort-Btn>&nbsp;</div><!--div Icon-->
+                            <div class=Sort>Trier</div><!--Texte-->
+                        </div>
                     </div>
 
                     <!--Affichage des formulaires + bouton de création d'un formulaire-->
                     <div class=Select-Form-Section>
+
                         <div class=parent-Form> <!--Bouton ajouter formulaire-->
-                            <input class=child-Form type="button" onclick="location.href='survey_editor.php'"/>
+                            <div class=child-Form type="button" onclick="location.href='survey_editor.php'">
+                                <div id=createForm>&nbsp;</div>
+                                <p>Cr&eacute;er un formulaire</p>
+                            </div>
                         </div>
 
                         <?php
@@ -55,8 +63,9 @@ include "connect_database.php" ;?>
                             $res = mysqli_query($conn, $sql);
                             while ( $result = $res->fetch_assoc()){
                                 echo "<div class=\"parent-Form\">"; /*div extern des formulaires à sélectionner*/
-                                echo "<div class=\"child-Form\">"; /*div inside des formulaires à sélectionner*/
-                                echo "<a>". $result['title'] . "</a>";
+                                echo "<div class=\"child-Form\" type=\"button\" onclick=\"location.href='survey_editor.php'\">"; /*div inside des formulaires à sélectionner*/
+                                echo "<div id=upperBtn>&nbsp;</div>";
+                                echo "<p id=downBtn>". $result['title'] . "</p>";
                                 echo "</div>";
                                 echo "</div>";
 					        }
@@ -64,7 +73,7 @@ include "connect_database.php" ;?>
                     </div>
                 </div>
             </div>
-        
+
             <div class=Footer> <!--Footer à compléter-->
                 <div class=Footer_1>
                     Some text
@@ -72,10 +81,11 @@ include "connect_database.php" ;?>
                 <div class=Footer_2>Some text</div>
             </div>
         </div>
-
+        
     </body>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         crossorigin="anonymous"></script>
     <script src="dropMenuUser.js"></script>
+    <script>function lol(){alert("Insérer fonction de tri (par date d\'ouverture ou alphabet)");}</script>
 </html>
