@@ -6,10 +6,10 @@
         if (isset($POST['Description'])){
             $description = $POST['Description'];
             $sql = "INSERT INTO surveys (title, description, id_users) VALUES ('$titre', '$description', $_SESSION[id_users])";
-		}
+		    }
         else{
             $sql = "INSERT INTO surveys (title, id_users) VALUES ('$titre', $_SESSION[id_users])";  
-		}
+		    }
         $res = mysqli_query($conn, $sql);
         $sql = "SELECT id_surveys FROM surveys WHERE id_users = $_SESSION[id_users] ORDER BY id_surveys DESC";  
         $res = mysqli_query($conn, $sql);
@@ -21,13 +21,13 @@
             if (isset($mustDoPrevious)){
                 for($y = 0; $y < $mustDo - $mustDoPrevious-1; $y++){
                     array_push($mustDoArray, 0);  
-			    }
+			          }
             }
             else{
                 for($y = 0; $y < $mustDo; $y++){
                     array_push($mustDoArray, 0);  
-			    }
-			}
+			          }
+			      }
             array_push($mustDoArray, 1);  
             $mustDoPrevious = $mustDo;
         }
@@ -37,14 +37,12 @@
             $type = $_POST['selectType'][$i];
             if(isset($mustDoArray[$i])){
                 $sql = "INSERT INTO questions (id_surveys, question, type, mustDo) VALUES ('$id_surveys', '$question', '$type' ,'$mustDoArray[$i]')";
-                echo "first insert";
                 $res = mysqli_query($conn, $sql);
             }
             else{
                 $sql = "INSERT INTO questions (id_surveys, question, type, mustDo) VALUES ('$id_surveys', '$question', '$type', 0)";
                 $res = mysqli_query($conn, $sql); 
-                echo "second insert";
-			}
+			      }
             if($type == "multiple" || $type == "grid-multiple" || $type == "grid-checkbox" || $type == "list" || $type == "checkbox" || $type == "linear-scale"){
                 $sql = "SELECT id_questions FROM questions WHERE id_surveys = $id_surveys ORDER BY id_questions DESC";  
                 $res = mysqli_query($conn, $sql);
@@ -60,10 +58,8 @@
                 }
                 $indexSubQuestions += 1;
                 
-			}
-		}
-        
-
-       header("location:home.php");
-       }
+			       }
+		   }
+    header("location:home.php");
+    }
 ?>

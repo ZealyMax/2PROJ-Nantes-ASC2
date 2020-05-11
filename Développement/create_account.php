@@ -8,7 +8,7 @@
 		if ($res->num_rows== 0){
 			$sql = "INSERT INTO users (login, password) VALUES ('$login','$password')";
 			$res = mysqli_query($conn, $sql);
-			$sql = "SELECT login, password,id_users FROM users WHERE login = '$login' AND password = '$password'";
+			$sql = "SELECT id_users FROM users WHERE login = '$login' AND password = '$password' ORDER BY id_users DESC ";
 			$res = mysqli_query($conn, $sql);
 			$result = $res->fetch_assoc();
 			session_start();
@@ -16,7 +16,7 @@
 			header("location:home.php");
 		}
 		else{
-			header("location:signIn.php?error=1");
+			header("location:login.php?error=1");
 		}
 		if($res===false){
 
