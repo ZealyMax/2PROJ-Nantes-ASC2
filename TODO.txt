@@ -1,3 +1,12 @@
 Design :
 
-	- Survey Shared : bas de page, barre de progression (indique � l'utilisateur o� il en est dans le formulaire)
+	- Survey Shared : bas de page, barre de progression (indique à l'utilisateur où il en est dans le formulaire)
+	- Bouton supprimer Form directement sur la Home page (+ date d'ouverture)
+	
+Développement :
+
+	- 
+	
+Marketing :
+
+	- Identify your targets : Associations (sportives, BDE...) / écoles (Supinfo...)
