@@ -27,19 +27,19 @@ $(document).on('click', '.add-list', function () {
 });
 
 $(document).on('click', '.add-line', function () {
-    var string = "<div><input name=sub_questions[] type=hidden value=line><input placeholder=Ligne><button class=rm-div>X</button></div><button class=add-line-multiple>Ajouter</button>";
+    var string = "<div><input name=sub_questions[] type=hidden value='line'><input name=sub_questions[] placeholder=Ligne><button class=rm-div>X</button></div><button class=add-line>Ajouter</button>";
     $(this).parent().append(string);
     $(this).remove();
 });
 
 $(document).on('click', '.add-column-multiple', function () {
-    var string = "<div><input name=sub_questions[] type=hidden value=column-multiple><input type=radio><input placeholder=Colonne><button class=rm-div>X</button></div><button class=add-column-multiple>Ajouter</button>";
+    var string = "<div><input name=sub_questions[] type=hidden value='column-multiple'><input type=radio><input name=sub_questions[] placeholder=Colonne><button class=rm-div>X</button></div><button class=add-column-multiple>Ajouter</button>";
     $(this).parent().append(string);
     $(this).remove();
 });
 
 $(document).on('click', '.add-column-checkbox', function () {
-    var string = "<div><input name=sub_questions[] type=hidden value=column-checkbox><input type=checkbox><input placeholder=Colonne><button class=rm-div>X</button></div><button class=add-column-multiple>Ajouter</button>";
+    var string = "<div><input name=sub_questions[] type=hidden value='column-checkbox'><input type=checkbox><input name=sub_questions[] placeholder=Colonne><button class=rm-div>X</button></div><button class=add-column-checkbox>Ajouter</button>";
     $(this).parent().append(string);
     $(this).remove();
 });
@@ -68,10 +68,10 @@ $(document).on('change', 'select', function () {
         $(this).parent(".question-div").children(".question-content").html("<input name=sub_questions[] type=hidden value='min-scale'><select name=sub_questions[] class=min-scale><option>0</option><option>1</option></select><input type=hidden name=sub_questions[] value=max-scale><select name=sub_questions[] class=max-scale><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></div>");
     }
     if ($(this).children('option:selected').val() == "grid-multiple") {
-        $(this).parent(".question-div").children(".question-content").html("<div class=line><input name=sub_questions[]  type=hidden value=line><input name=sub_questions[] placeholder=Ligne><button class=add-line>Ajouter</button></div><div class=column><input name=sub_questions[] type=hidden value=column-multiple><input type=radio><input placeholder=Colonne><button class=add-column-multiple>Ajouter</button></div>");
+        $(this).parent(".question-div").children(".question-content").html("<div class=line><input name=sub_questions[]  type=hidden value='line'><input name=sub_questions[] placeholder=Ligne><button class=add-line>Ajouter</button></div></div><div class=column><input name=sub_questions[] type=hidden value='column-multiple'><input type=radio><input name=sub_questions[] placeholder=Colonne><button class=add-column-multiple>Ajouter</button></div>");
     }
     if ($(this).children('option:selected').val() == "grid-checkbox") {
-        $(this).parent(".question-div").children(".question-content").html("<div class=line><input name=sub_questions[]  type=hidden value=line-checkbox><input name=sub_questions[] placeholder=Ligne><button class=add-line>Ajouter</button></div><div class=column><input name=sub_questions[] type=hidden value=column-checkbox><input type=checkbox><input placeholder=Colonne><button class=add-column-checkbox>Ajouter</button></div>");
+        $(this).parent(".question-div").children(".question-content").html("<div class=line><input name=sub_questions[]  type=hidden value='line'><input name=sub_questions[] placeholder=Ligne><button class=add-line>Ajouter</button></div></div><div class=column><input name=sub_questions[] type=hidden value='column-checkbox'><input type=checkbox><input name=sub_questions[] placeholder=Colonne><button class=add-column-checkbox>Ajouter</button></div>");
     }
     if ($(this).children('option:selected').val() == "date") {
         $(this).parent(".question-div").children(".question-content").html("<input placeholder=Date READONLY>");

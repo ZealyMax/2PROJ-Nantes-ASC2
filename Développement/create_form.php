@@ -3,33 +3,35 @@
     session_start();
     if (isset($_POST['submit'])) {
         $titre = $_POST['Titre'];
-        if (isset($POST['Description'])){
-            $description = $POST['Description'];
+        if (isset($_POST['Description'])){
+            $description = $_POST['Description'];
             $sql = "INSERT INTO surveys (title, description, id_users) VALUES ('$titre', '$description', $_SESSION[id_users])";
-		    }
+		}
         else{
             $sql = "INSERT INTO surveys (title, id_users) VALUES ('$titre', $_SESSION[id_users])";  
-		    }
+		}
         $res = mysqli_query($conn, $sql);
         $sql = "SELECT id_surveys FROM surveys WHERE id_users = $_SESSION[id_users] ORDER BY id_surveys DESC";  
         $res = mysqli_query($conn, $sql);
         $result = $res->fetch_assoc();
         $id_surveys = $result['id_surveys'];
         $mustDoArray = [];
-        for($i = 0; $i < count($_POST['mustDo']); $i++){  
-            $mustDo = $_POST['mustDo'][$i];
-            if (isset($mustDoPrevious)){
-                for($y = 0; $y < $mustDo - $mustDoPrevious-1; $y++){
-                    array_push($mustDoArray, 0);  
-			          }
+        if(isset($_POST['mustDo'])){
+            for($i = 0; $i < count($_POST['mustDo']); $i++){  
+                $mustDo = $_POST['mustDo'][$i];
+                if (isset($mustDoPrevious)){
+                    for($y = 0; $y < $mustDo - $mustDoPrevious-1; $y++){
+                        array_push($mustDoArray, 0);  
+			        }
+                }
+                else{
+                    for($y = 0; $y < $mustDo; $y++){
+                        array_push($mustDoArray, 0);  
+			        }
+			    }
+                array_push($mustDoArray, 1);  
+                $mustDoPrevious = $mustDo;
             }
-            else{
-                for($y = 0; $y < $mustDo; $y++){
-                    array_push($mustDoArray, 0);  
-			          }
-			      }
-            array_push($mustDoArray, 1);  
-            $mustDoPrevious = $mustDo;
         }
         $indexSubQuestions = 0;
         for($i = 0; $i < count($_POST['question']); $i++){  
@@ -42,7 +44,7 @@
             else{
                 $sql = "INSERT INTO questions (id_surveys, question, type, mustDo) VALUES ('$id_surveys', '$question', '$type', 0)";
                 $res = mysqli_query($conn, $sql); 
-			      }
+			}
             if($type == "multiple" || $type == "grid-multiple" || $type == "grid-checkbox" || $type == "list" || $type == "checkbox" || $type == "linear-scale"){
                 $sql = "SELECT id_questions FROM questions WHERE id_surveys = $id_surveys ORDER BY id_questions DESC";  
                 $res = mysqli_query($conn, $sql);
@@ -58,8 +60,10 @@
                 }
                 $indexSubQuestions += 1;
                 
-			       }
-		   }
-    header("location:home.php");
-    }
+			}
+		}
+        
+
+       header("location:home.php");
+       }
 ?>
