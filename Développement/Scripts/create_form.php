@@ -64,6 +64,6 @@
 		}
         
 
-       header("location:home.php");
+       header("location:../Pages/home.php");
        }
 ?>

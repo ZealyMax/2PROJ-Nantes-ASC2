@@ -86,7 +86,7 @@ body, html {
 
 /*#region Search button*/
 .search-Icon {
-	background-image: url("../Design/icons/search/icon_Search@2x.png");
+	background-image: url("../../Design/icons/search/icon_Search@2x.png");
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	margin-left:5px;
@@ -142,7 +142,7 @@ body, html {
 	}
 
 .dropButton {
-	background-image: url("../Design/icons/usr/icon_User@2x.png");
+	background-image: url("../../Design/icons/usr/icon_User@2x.png");
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 	background-color: #FF6153;
@@ -231,7 +231,7 @@ body, html {
 }
 
 .Sort-Btn {
-	background-image: url("../Design/icons/sort/icon_Sort@2x.png");
+	background-image: url("../../Design/icons/sort/icon_Sort@2x.png");
 	background-position: 50% 50%;
 	background-size: 15px 15px;
 	background-repeat: no-repeat;
@@ -292,7 +292,7 @@ body, html {
 }
 
 .child-Form #createForm {
-	background-image: url("../Design/icons/cross/icon_Cross@1x.png");
+	background-image: url("../../Design/icons/cross/icon_Cross@1x.png");
 }
 /*#endregion mainForms*/
 

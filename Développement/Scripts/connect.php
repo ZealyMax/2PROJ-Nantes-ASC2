@@ -9,11 +9,11 @@
             $result = $res->fetch_assoc();
             session_start();
             $_SESSION['id_users'] = $result['id_users'];
-            header("location:home.php");
+            header("location:../Pages/home.php");
         }
         else{
             echo "Veuillez vérifier votre identifiant et votre mot de passe <br>
-            <a href='login.php'>Retour à la connexion</a>";
+            <a href='../Pages/login.php'>Retour à la connexion</a>";
         }
 
         if($res===false){

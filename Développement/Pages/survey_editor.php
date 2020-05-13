@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php  include('redirect_to_connection.php') ?>
+<?php  include('../Scripts/redirect_to_connection.php') ?>
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
@@ -21,4 +21,4 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
-<script src='survey_editor.js'></script>
+<script src='../Scripts/survey_editor.js'></script>

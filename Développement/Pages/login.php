@@ -1,12 +1,12 @@
 ﻿<!DOCTYPE html>
 
 <?php 
-include "connect_database.php";
+include "../Scripts/connect_database.php";
 ?>
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" type="text/css" href="login.css">
+        <link rel="stylesheet" type="text/css" href="../CSS/login.css">
         <title>Connexion</title>
     </head>
     <body>
@@ -22,7 +22,7 @@ include "connect_database.php";
                 </div>
 
                 <div id="Content">
-                    <form action="connect.php" method="post">
+                    <form action="../Scripts/connect.php" method="post">
 
                         <div class="Credentials">
                             <input class="inputFields login" name="login" type="text" placeholder="Username or email">
@@ -50,6 +50,6 @@ include "connect_database.php";
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
-    <script src='switchLogin.js'></script>
+    <script src='../Scripts/switchLogin.js'></script>
 
 </html>
