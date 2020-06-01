@@ -1,0 +1,68 @@
+/*#region searchBar*/
+/*Mise en forme de la barre de recherche*/
+
+.search-Container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.search-Container div {
+	display: flex;
+	align-items: center;
+	background-color: #eeeeee;
+	border-radius: 5px;
+	width: 60%;
+}
+
+.search-Icon, .Search {
+	background-color: transparent;
+	padding-right: 20px;
+	padding: 15px;
+	border: none;
+}
+
+/*#region Search button*/
+.search-Icon {
+	background-image: url("../../../Design/icons/search/icon_Search@2x.png");
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	margin-left: 5px;
+	margin-right: 5px;
+	height: 40px;
+	width: 40px;
+	background-size: 20px;
+	border-radius: 5px 0px 0px 5px;
+	padding-left: 20px;
+}
+
+	.search-Icon:hover {
+		background-color: lightgray;
+		border-radius: 20px;
+	}
+
+	.search-Icon:focus {
+		outline: none;
+	}
+/*#endregion Search button*/
+
+/*#region Search input*/
+.Search {
+	border-radius: 0px 5px 5px 0px;
+	padding: 15px 20px 15px 0px;
+	padding-left: 10px;
+	width: 100%;
+}
+
+	.Search:focus {
+		outline: none;
+		background-color: white;
+	}
+
+	.Search:hover {
+		background-color: white;
+	}
+/*#endregion Search input*/
+
+/*#endregion searchBar*/

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  lun. 11 mai 2020 à 18:45
+-- Généré le :  lun. 01 juin 2020 à 12:50
 -- Version du serveur :  10.4.11-MariaDB
 -- Version de PHP :  7.4.1
 
@@ -58,7 +58,7 @@ CREATE TABLE `sub_questions` (
 CREATE TABLE `surveys` (
   `id_surveys` int(25) NOT NULL,
   `id_users` int(25) NOT NULL,
-  `title` varchar(25) NOT NULL,
+  `title` varchar(50) NOT NULL,
   `description` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

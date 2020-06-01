@@ -5,7 +5,9 @@ include "../Scripts/connect_database.php" ;?>
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="../CSS/style.css">
+        <link rel="stylesheet" type="text/css" href="../CSS/Main/global.css">
+        <link rel="stylesheet" type="text/css" href="../CSS/Home/homeHeader.css">
+        <link rel="stylesheet" type="text/css" href="../CSS/Home/homeContent.css">
         <title>Home</title>
     </head>
     <body>
@@ -52,18 +54,18 @@ include "../Scripts/connect_database.php" ;?>
                     <div class=Select-Form-Section>
 
                         <div class=parent-Form> <!--Bouton ajouter formulaire-->
-                            <div class=child-Form type="button" onclick="location.href='survey_editor.php'">
+                            <div class=child-Form type="button" onclick="SessionSurvey(0)">
                                 <div id=createForm>&nbsp;</div>
                                 <p>Cr&eacute;er un formulaire</p>
                             </div>
                         </div>
-
                         <?php
-                            $sql = "SELECT title FROM surveys WHERE id_users = '$_SESSION[id_users]'";
+                            $sql = "SELECT title,id_surveys FROM surveys WHERE id_users = '$_SESSION[id_users]' ORDER BY id_surveys DESC";
                             $res = mysqli_query($conn, $sql);
                             while ( $result = $res->fetch_assoc()){
-                                echo "<div class=\"parent-Form\">"; /*div extern des formulaires à sélectionner*/
-                                echo "<div class=\"child-Form\" type=\"button\" onclick=\"location.href='survey_editor.php'\">"; /*div inside des formulaires à sélectionner*/
+                                echo "<div id=\"". $result['id_surveys'] ."\" class=\"parent-Form\">"; /*div extern des formulaires à sélectionner*/ 
+                                echo "<button class=\"rm-survey\" onclick=RemoveSurvey(". $result['id_surveys'] .")>X</button>";
+                                echo "<div class=\"child-Form\" type=\"button\" onclick=\"SessionSurvey(". $result['id_surveys'] .")\">"; /*div inside des formulaires à sélectionner*/
                                 echo "<div id=upperBtn>&nbsp;</div>";
                                 echo "<p id=downBtn>". $result['title'] . "</p>";
                                 echo "</div>";
@@ -88,4 +90,26 @@ include "../Scripts/connect_database.php" ;?>
         crossorigin="anonymous"></script>
     <script src="../Scripts/dropMenuUser.js"></script>
     <script>function lol(){alert("Insérer fonction de tri (par date d\'ouverture ou alphabet)");}</script>
+    <script>
+    function SessionSurvey(id){
+        $.ajax({
+            type: 'POST',
+            url: '../Scripts/session_survey.php',
+            data:{action: id},
+            success:function(data) {
+                window.location.href = "survey_editor.php";
+            }
+        })
+    }
+    function RemoveSurvey(id_surveys){
+        $.ajax({
+            type: 'POST',
+            url: '../Scripts/remove_survey.php',
+            data:{action: id_surveys},
+            success:function(data) {
+                document.getElementById(id_surveys).remove();
+            }
+        })
+    }
+    </script>
 </html>

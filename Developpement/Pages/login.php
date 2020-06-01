@@ -6,7 +6,7 @@ include "../Scripts/connect_database.php";
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" type="text/css" href="../CSS/login.css">
+        <link rel="stylesheet" type="text/css" href="../CSS/Login/login.css">
         <title>Connexion</title>
     </head>
     <body>

@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Développement"
+    "\\Développement",
+    "\\Développement\\Pages",
+    "\\Développement\\Scripts"
   ],
-  "SelectedNode": "\\Développement\\Scripts",
+  "SelectedNode": "\\Développement\\Scripts\\survey_editor.js",
   "PreviewInSolutionExplorer": false
 }
