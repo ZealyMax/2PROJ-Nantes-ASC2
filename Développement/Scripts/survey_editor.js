@@ -1,6 +1,9 @@
 var i = 0;
+
+
 $(".btn-add").on('click', function () {
-    var string = "<div class=question-div><br><input name=question[] placeholder=\"Question\"><select name=selectType[] class=selector><option value=\"short\">Réponse courte</option><option value=\"long\">Paragraphe</option><option value=\"multiple\">Choix multiple</option><option value=\"checkbox\">Case à cocher</option><option value=\"list\">Liste déroulante</option><option value=\"linear-scale\">Echelle linéaire</option><option value=\"grid-multiple\">Grille à choix multiple</option><option value=\"grid-checkbox\">Grille de case à cocher</option><option value=\"date\">Date</option><option value=\"hour\">Heure</option></select><button class=rm-div>X</button><br><div class=question-content><input name=\"short\" placeholder=\"Réponse courte\" READONLY><input type=hidden name=sub_questions[] value='new question'></div><input name=mustDo[] type=checkbox value= " + i + "><input placeholder=Obligatoire READONLY></div>";
+    var string = "<div class=question-div>  <br>  <br>   <input name=question[] placeholder=\"Question\"> <select name=selectType[] class=selector>  <option value=\"short\">Réponse courte</option><option value=\"long\">Paragraphe</option><option value=\"multiple\">Choix multiple</option><option value=\"checkbox\">Case à cocher</option><option value=\"list\">Liste déroulante</option><option value=\"linear-scale\">Echelle linéaire</option><option value=\"grid-multiple\">Grille à choix multiple</option><option value=\"grid-checkbox\">Grille de case à cocher</option><option value=\"date\">Date</option><option value=\"hour\">Heure</option></select><button class=rm-div>X</button><br><div class=question-content><input name=\"short\" placeholder=\"Réponse courte\" READONLY>  <input type=hidden name=sub_questions[] value='new question'>  </div>  <input name=mustDo[] type=checkbox value= " + i + ">  <input placeholder=Obligatoire READONLY></div>";
+
     $(".form").append(string);
     $(".form").append("<input type=hidden name=sub_questions[] value='new question'>");
     i += 1;
@@ -50,10 +53,12 @@ $(document).on('click', '.rm-div', function () {
 
 $(document).on('change', 'select', function () {
     if ($(this).children('option:selected').val() == "short") {
-        $(this).parent(".question-div").children(".question-content").html("<div><input value='Réponse courte' READONLY></div>");
+
+        $(this).parent(".question-div").children(".question-content").html("<div><input placeholder='Réponse courte' READONLY></div>");
     }
     if ($(this).children('option:selected').val() == "long") {
-        $(this).parent(".question-div").children(".question-content").html("<textarea value='Réponse longue' READONLY></textarea>");
+        $(this).parent(".question-div").children(".question-content").html("<textarea placeholder='Réponse longue' READONLY></textarea>");
+
     }
     if ($(this).children('option:selected').val() == "multiple") {
         $(this).parent(".question-div").children(".question-content").html("<input name=sub_questions[] type=hidden value='radio'><input type=radio><input name=sub_questions[] placeholder=Option><br><button class=add-choice>Ajouter</button></div>");
