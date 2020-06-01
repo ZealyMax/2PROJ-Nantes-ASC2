@@ -90,6 +90,7 @@ include "../Scripts/connect_database.php" ;?>
         crossorigin="anonymous"></script>
     <script src="../Scripts/dropMenuUser.js"></script>
     <script>function lol(){alert("Insérer fonction de tri (par date d\'ouverture ou alphabet)");}</script>
+
     <script>
     function SessionSurvey(id){
         $.ajax({
@@ -101,6 +102,7 @@ include "../Scripts/connect_database.php" ;?>
             }
         })
     }
+
     function RemoveSurvey(id_surveys){
         $.ajax({
             type: 'POST',
@@ -111,5 +113,6 @@ include "../Scripts/connect_database.php" ;?>
             }
         })
     }
+
     </script>
 </html>
