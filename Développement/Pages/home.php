@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <?php  
-include "redirect_to_connection.php" ;
-include "connect_database.php" ;?>
+include "../Scripts/redirect_to_connection.php" ;
+include "../Scripts/connect_database.php" ;?>
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="../CSS/style.css">
         <title>Home</title>
     </head>
     <body>
@@ -85,7 +85,7 @@ include "connect_database.php" ;?>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         crossorigin="anonymous"></script>
-    <script src="dropMenuUser.js"></script>
+    <script src="../Scripts/dropMenuUser.js"></script>
     <script>function lol(){alert("Insérer fonction de tri (par date d\'ouverture ou alphabet)");}</script>
     <script>
     function SessionSurvey(id){

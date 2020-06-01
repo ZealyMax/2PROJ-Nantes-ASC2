@@ -50,11 +50,6 @@
                     $res = mysqli_query($conn, $sql);
                 }
 
-<<<<<<< Updated upstream:Développement/create_form.php
-       header("location:home.php");
-       }
-?>
-=======
                 else{
                     $sql = "INSERT INTO questions (id_surveys, question, type, mustDo) VALUES ('$id_surveys', '$question', '$type', 0)";
                     $res = mysqli_query($conn, $sql); 
@@ -90,4 +85,3 @@
     }
 ?>
 <a href=../Pages/home.php>Next</a>
->>>>>>> Stashed changes:Développement/Scripts/create_form.php
