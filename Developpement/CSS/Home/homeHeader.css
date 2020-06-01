@@ -37,14 +37,14 @@
 	padding-left: 20px;
 }
 
-	.search-Icon:hover {
-		background-color: lightgray;
-		border-radius: 20px;
-	}
+.search-Icon:hover {
+	background-color: lightgray;
+	border-radius: 20px;
+}
 
-	.search-Icon:focus {
-		outline: none;
-	}
+.search-Icon:focus {
+	outline: none;
+}
 /*#endregion Search button*/
 
 /*#region Search input*/
@@ -55,14 +55,14 @@
 	width: 100%;
 }
 
-	.Search:focus {
-		outline: none;
-		background-color: white;
-	}
+.Search:focus {
+	outline: none;
+	background-color: white;
+}
 
-	.Search:hover {
-		background-color: white;
-	}
+.Search:hover {
+	background-color: white;
+}
 /*#endregion Search input*/
 
 /*#endregion searchBar*/

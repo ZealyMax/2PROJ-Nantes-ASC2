@@ -14,10 +14,10 @@ include "../Scripts/connect_database.php" ;?>
         <div class=Main>
             <div class=Header>
                 <div class=contentHead>
-                    <div href="home.php" class=Logo><!--Partie gauche du Header, logo + texte-->
-                        <div id=rectangle></div>
+                    <a href="home.php" class=Logo><!--Partie gauche du Header, logo + texte-->
+                        <img src="../../Design/icons/logo/Logo@2x.png" id=rectangle>
                         <p class=txt><b>Online Survey</b></p>
-                    </div>
+                    </a>
                 
                     <div class=search-Container><!--Partie centrale : zone de recherche de formulaire-->
                         <div>
@@ -90,7 +90,6 @@ include "../Scripts/connect_database.php" ;?>
         crossorigin="anonymous"></script>
     <script src="../Scripts/dropMenuUser.js"></script>
     <script>function lol(){alert("Insérer fonction de tri (par date d\'ouverture ou alphabet)");}</script>
-
     <script>
     function SessionSurvey(id){
         $.ajax({
@@ -102,7 +101,6 @@ include "../Scripts/connect_database.php" ;?>
             }
         })
     }
-
     function RemoveSurvey(id_surveys){
         $.ajax({
             type: 'POST',
@@ -113,6 +111,5 @@ include "../Scripts/connect_database.php" ;?>
             }
         })
     }
-
     </script>
 </html>

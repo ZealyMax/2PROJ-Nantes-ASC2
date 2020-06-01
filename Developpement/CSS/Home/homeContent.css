@@ -19,7 +19,7 @@
 }
 
 .child-Form { /*Bouton clickable*/
-	background-color: #eaeaea;
+	background-color: #E4EBEF;
 	display: flex;
 	text-align: center;
 	flex-direction: column;
@@ -47,7 +47,7 @@
 }
 
 .child-Form #createForm {
-	background-image: url("../../Design/icons/cross/icon_Cross@1x.png");
+	background-image: url("../../../Design/icons/cross/icon_Cross@1x.png");
 	/*Régler le background : plus d'affichage de la croix*/
 }
 
