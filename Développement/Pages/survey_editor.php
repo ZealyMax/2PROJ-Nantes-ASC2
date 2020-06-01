@@ -1,6 +1,8 @@
 <!DOCTYPE html>
+
 <?php  include('../Scripts/redirect_to_connection.php');
 include "../Scripts/connect_database.php" ;?>
+
 
 <html lang="fr">
     <head>
@@ -9,6 +11,7 @@ include "../Scripts/connect_database.php" ;?>
         <title>créer un formulaire</title>
     </head>
     <body>
+
     <div class="tab">
             <button class="tablinks" onclick="changeTab(event, 'Question')" id="defaultOpen"> Question </button>
             <button class="tablinks" onclick="changeTab(event, 'Réponse')"> Réponse </button>
@@ -150,6 +153,7 @@ include "../Scripts/connect_database.php" ;?>
             document.getElementById("defaultOpen").click();
 
         </script>
+
 
 
 
