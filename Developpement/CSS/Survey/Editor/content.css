@@ -1,6 +1,84 @@
+/*#region General*/
+.Content {
+	margin: 150px 0 50px 0;
+}
+
 .mainContent {
 	display: flex;
 	flex-direction: column;
 	width: 40%;
 	background-color: red;
 }
+/*#endregion General*/
+
+
+/*#region questions Form*/
+
+/*#region tab Header Form*/
+.tab{
+	display:flex;
+	justify-content:space-around;
+}
+
+.tab button{
+	padding:10px 0px;
+	width:50%;
+	background-color:white;
+	border:none;
+	font-size:18px;
+	color:#888888;
+	font-weight:bold;
+}
+
+.tab #b1{
+	border-radius: 15px 0 0 0;
+	border-right:1px solid #F08700;
+}
+
+.tab #b2{
+	border-radius: 0 15px 0 0;
+}
+
+.tab button:active, button:hover{
+	border-style:none;
+}
+/*#endregion tab Header Form*/
+
+/*#region content Header Form*/
+
+.tabcontent form .container{
+	display:flex;
+	flex-direction:column;
+	background-color:white;
+}
+
+.tabcontent form .container div{
+	margin:10px 3% 20px 3%;
+}
+
+.tabcontent form .container input{
+	width:100%;
+	border:none;
+	border-bottom:1px solid #dadada;
+	margin-bottom:10px;
+}
+
+.tabcontent form .container input:active{
+	border:none;
+}
+
+.mainTitle{
+	font-size:35px;
+}
+
+.mainDesc {
+	font-size: 18px;
+}
+
+/*#endregion content HeaderForm*/
+
+
+/*#region main Form Content*/
+/*#endregion main Form Content*/
+
+/*#endregion questions Form*/

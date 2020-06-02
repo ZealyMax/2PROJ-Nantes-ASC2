@@ -169,12 +169,19 @@
             }   
         }
     }
-    #si $_SESSION['survey'] = 0 / si l'utilisateur est en création
+    #si $_SESSION['survey'] = 0 : l'utilisateur est en création
     else{
-        echo "<input name=Titre placeholder='Titre'>
-        <input name=Description placeholder='Description'>
-        <input class='btn-add' type=button value=+>
-        <input name=submit type=submit value='Modifier le formulaire'>
+        echo "
+        <div class=container>
+            <div>
+                <input class=mainTitle name=Titre placeholder='Titre du formulaire'>
+                <input class=mainDesc name=Description placeholder='Description du formulaire'>
+            </div>
+        </div>
+        <div>
+            <input class='btn-add' type=button value=+>
+            <input name=submit type=submit value='Modifier le formulaire'>
+        </div>
         <div class=form></div>";
     }
 ?>  

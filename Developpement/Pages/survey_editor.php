@@ -15,12 +15,10 @@ include "../Scripts/connect_database.php" ;?>
         <div class=Main>
             <div class=Header>
                 <div class=contentHead>
-                    <div class=Logo>
-                        <a href=home.php><!--Partie gauche du Header, logo + texte-->
-                            <div id=rectangle></div>
-                            <p class=txt><b>Online Survey</b></p>
-                        </a>
-                    </div>
+                    <a href=home.php class=Logo><!--Partie gauche du Header, logo + texte-->
+                        <img src="../../Design/icons/logo/Logo@2x.png"></img>
+                        <p class=txt><b>Online Survey</b></p>
+                    </a>
 
                     <div class=formTitle>
                         <div>
@@ -77,8 +75,8 @@ include "../Scripts/connect_database.php" ;?>
                 <div class=mainContent>
                     <div class="survey_editor">
                         <div class="tab">
-                            <button class="tablinks" onclick="changeTab(event, 'Question')" id="defaultOpen"> Question </button>
-                            <button class="tablinks" onclick="changeTab(event, 'Réponse')"> Réponse </button>
+                            <button id=b1 class="tablinks" onclick="changeTab(event, 'Question')" id="defaultOpen"> Question </button>
+                            <button id=b2 class="tablinks" onclick="changeTab(event, 'Réponse')"> Réponse </button>
                         </div>
                         <div id="Question" class="tabcontent">
                             <form method=POST action=../Scripts/create_form.php>

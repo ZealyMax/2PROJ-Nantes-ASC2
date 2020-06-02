@@ -15,7 +15,7 @@ include "../Scripts/connect_database.php" ;?>
             <div class=Header>
                 <div class=contentHead>
                     <a href="home.php" class=Logo><!--Partie gauche du Header, logo + texte-->
-                        <img src="../../Design/icons/logo/Logo@2x.png" id=rectangle>
+                        <img src="../../Design/icons/logo/Logo@2x.png">
                         <p class=txt><b>Online Survey</b></p>
                     </a>
                 

@@ -1,13 +1,5 @@
 /*#region Header*/
 
-.Header{
-	height:75px;
-}
-
-.contentHead{
-	justify-content:space-between;
-}
-
 .formTitle {
 	display: flex;
 	justify-content: center;
@@ -16,9 +8,18 @@
 
 .formTitle div {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
-	width: 32%;
+	width: 75%;
+}
+
+.formTitle h1 {
+	font-size:20px;
+}
+
+.formTitle h2 {
+	font-size:15px;
+	margin-left:10px;
 }
 
 /*#endregion Header*/
@@ -28,12 +29,12 @@
 
 /*#region Main*/
 .secondHeader {
-	top: 75px;
+	top: 65px;
 	margin: 0;
 	width: 100%;
 	position: fixed;
 	z-index: 100;
-	background-color: yellow;
+	background-color: #F08700;
 }
 
 .contentSecondHeader {
