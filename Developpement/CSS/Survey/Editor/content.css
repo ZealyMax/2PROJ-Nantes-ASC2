@@ -7,64 +7,70 @@
 	display: flex;
 	flex-direction: column;
 	width: 40%;
-	background-color: red;
 }
+
+.tabcontent form .container{
+	display:flex;
+	flex-direction:column;
+}
+
+
 /*#endregion General*/
 
 
 /*#region questions Form*/
 
 /*#region tab Header Form*/
-.tab{
-	display:flex;
-	justify-content:space-around;
+.tab {
+	display: flex;
+	justify-content: space-around;
+	box-shadow: 0px 0px 3px #B7ADA1;
+	border-radius: 20px 20px 0 0;
 }
 
 .tab button{
 	padding:10px 0px;
 	width:50%;
-	background-color:white;
 	border:none;
+	outline:none;
 	font-size:18px;
 	color:#888888;
 	font-weight:bold;
+	background-color: #FFF2E3;
 }
 
 .tab #b1{
-	border-radius: 15px 0 0 0;
+	border-radius: 20px 0 0 0;
 	border-right:1px solid #F08700;
 }
 
 .tab #b2{
-	border-radius: 0 15px 0 0;
+	border-radius: 0 20px 0 0;
+}
+.tab button.active{
+	background-color: white;
 }
 
-.tab button:active, button:hover{
-	border-style:none;
-}
 /*#endregion tab Header Form*/
 
-/*#region content Header Form*/
 
-.tabcontent form .container{
-	display:flex;
-	flex-direction:column;
-	background-color:white;
+/*#region content Header Form*/
+.tabcontent form .container .headQuestion {
+	border-radius: 0 0 8px 8px;
+	box-shadow: 0 -3px 0 #fff, 0 1px 3px #B7ADA1;
+	background-color: white;
+	padding: 10px 25px;
 }
 
-.tabcontent form .container div{
-	margin:10px 3% 20px 3%;
+.tabcontent form .container input:active, input:focus{
+	outline:none;
 }
 
 .tabcontent form .container input{
 	width:100%;
 	border:none;
 	border-bottom:1px solid #dadada;
-	margin-bottom:10px;
-}
-
-.tabcontent form .container input:active{
-	border:none;
+	margin-bottom:20px;
 }
 
 .mainTitle{
@@ -74,8 +80,34 @@
 .mainDesc {
 	font-size: 18px;
 }
-
 /*#endregion content HeaderForm*/
+
+
+/*#region divContent*/
+/*Contenu des divs*/
+
+#Question .form .question-div {
+	background-color: white;
+	box-shadow: 0 0 3px #B7ADA1;
+	margin-top: 25px;
+	padding: 50px 25px 50px 25px;
+	border-radius: 8px;
+}
+
+/* Barre de droite qui ne bouge pas. Faire en fonction du temps qui nous reste une animation pour le scroll*/
+.tabcontent form .container .contentQuestion .module {
+	position: fixed;
+	top: 250px;
+	right: 15%;
+	background-color: white;
+	box-shadow: 0 0 3px #B7ADA1;
+	border-radius: 8px;
+}
+
+#Reponse {
+	display: none;
+}
+/*#endregion divContent*/
 
 
 /*#region main Form Content*/

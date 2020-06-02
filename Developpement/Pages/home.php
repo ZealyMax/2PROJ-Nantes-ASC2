@@ -63,7 +63,7 @@ include "../Scripts/connect_database.php" ;?>
                             $sql = "SELECT title,id_surveys FROM surveys WHERE id_users = '$_SESSION[id_users]' ORDER BY id_surveys DESC";
                             $res = mysqli_query($conn, $sql);
                             while ( $result = $res->fetch_assoc()){
-                                echo "<div id=\"". $result['id_surveys'] ."\" class=\"parent-Form\">"; /*div extern des formulaires à sélectionner*/ 
+                                echo "<div id=\"". $result['id_surveys'] ."\" class=\"parent-Form\" draggable='true'>"; /*div extern des formulaires à sélectionner*/ 
                                 echo "<button class=\"rm-survey\" onclick=RemoveSurvey(". $result['id_surveys'] .")>X</button>";
                                 echo "<div class=\"child-Form\" type=\"button\" onclick=\"SessionSurvey(". $result['id_surveys'] .")\">"; /*div inside des formulaires à sélectionner*/
                                 echo "<div id=upperBtn>&nbsp;</div>";
@@ -91,6 +91,7 @@ include "../Scripts/connect_database.php" ;?>
     <script src="../Scripts/dropMenuUser.js"></script>
     <script>function lol(){alert("Insérer fonction de tri (par date d\'ouverture ou alphabet)");}</script>
     <script>
+
     function SessionSurvey(id){
         $.ajax({
             type: 'POST',

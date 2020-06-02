@@ -1,7 +1,21 @@
 <?php
     include "connect_database.php";
     session_start();
-    if (isset($_POST['submit'])) {
+    if($_SESSION['survey'] != 0){
+        $sql = "SELECT id_questions FROM questions WHERE id_surveys =" .$_SESSION['survey'];
+        $resQuestion = mysqli_query($conn, $sql);
+        if($resQuestion -> num_rows > 0){
+            while($resultQuestion = $resQuestion -> fetch_assoc()){
+                $sql = "DELETE FROM sub_questions WHERE id_questions =" . $resultQuestion['id_questions'];
+                $resDeleteSub = mysqli_query($conn, $sql);
+		    }
+            $sql = "DELETE FROM questions WHERE id_surveys =" . $_SESSION['survey'];
+            $resDeleteQuestion = mysqli_query($conn,$sql);
+        }
+        $sql = "DELETE FROM surveys WHERE id_surveys=" . $_SESSION['survey'];
+        $resDeleteSurvey = mysqli_query($conn, $sql);
+	}
+    if (isset($_POST['Titre'])) {
         $titre = $_POST['Titre'];
         if (isset($_POST['Description'])){
             $description = $_POST['Description'];
@@ -32,13 +46,14 @@
                 array_push($mustDoArray, 1);  
                 $mustDoPrevious = $mustDo;
             }
+            print_r($_POST['mustDo']);
+            print_r($mustDoArray);
         }
-
+        
 
         if(isset($_POST['question'])){
             
             $indexSubQuestions = 0;
-            print_r($_POST['sub_questions']);
             for($i = 0; $i < count($_POST['question']); $i++){  
 
                 $question = $_POST['question'][$i];
@@ -65,7 +80,6 @@
 
                     $id_questions = $resultQuestion['id_questions'];
                     
-                    echo "<script type='text/javascript'>alert('Index subQuesttion : " . $indexSubQuestions ." , valuePOST : ".$_POST['sub_questions'][$indexSubQuestions]  ." ');</script>";
                     while($_POST['sub_questions'][$indexSubQuestions] != 'new question'){
 
                         $indexSubQuestionsValue = $indexSubQuestions +1;

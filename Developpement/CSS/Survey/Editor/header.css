@@ -58,9 +58,21 @@
 }
 
 .shareButton {
-
+	background-color: #004970;
+	color:white;
+	border:none;
+	padding:5px 20px 5px 20px;
+	border-radius:5px;
 }
-
+.shareButton:hover  {
+	background-color: #2980B9;
+	color: white;
+	cursor:pointer;
+	outline:none;
+}
+.shareButton:focus{
+	outline:none;
+}
 .burgerMenu {
 
 }
@@ -74,6 +86,10 @@
 .share-popup {
 	display: none;
 	position: fixed;
+	top: 110px;
+	right: 50px;
+	box-shadow: 0px 0px 3px #B7ADA1;
+	border-radius: 8px;
 }
 
 /* Ajoute un style minimum au container */
@@ -81,6 +97,7 @@
 	max-width: 300px;
 	padding: 10px;
 	background-color: white;
+	border-radius: 8px;
 }
 
 /*#endregion Bouton Partage*/

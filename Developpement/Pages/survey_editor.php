@@ -3,6 +3,19 @@
 include('../Scripts/redirect_to_connection.php');
 include "../Scripts/connect_database.php" ;?>
 <html lang="fr">
+    <!--<style>
+        .question-div{
+            border: 2px solid #666666;
+	        background-color:blue;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+            /* Required to make elements draggable in old WebKit */
+            -khtml-user-drag: element;
+            -webkit-user-drag: element;
+		}
+    </style> -->
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=100%, initial-scale=1.0">
@@ -45,7 +58,7 @@ include "../Scripts/connect_database.php" ;?>
             <div class=secondHeader>
                 <div class=contentSecondHeader>
                     <button class=overview>
-                        
+                        <!--A compléter-->
                     </button>
                     <button class=shareButton style="display:block;" onclick="shareForm()">Partager</button> <!-- TODO: enlever display:none   -->
                         <div class="share-popup" id="myForm">
@@ -53,7 +66,7 @@ include "../Scripts/connect_database.php" ;?>
                                 <h1>Partager</h1>
 
                                 <!-- TODO: TROUVER LE LIEN DE PARTAGE   -->
-                                <input type="text" value="lien de partage" name="lien" disabled>
+                                <input type="text" value="http://93.26.58.131/Final_Project/Developpement/Pages/survey_shared.php?survey=<?php echo $_SESSION['survey']?>" name="lien" disabled>
 
                                 <div  id="divContentToPopup">
                                     <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
@@ -66,7 +79,7 @@ include "../Scripts/connect_database.php" ;?>
                             </form>
                         </div>
                     <button class=burgerMenu>
-                        
+                        <!--A compléter-->
                     </button>
                 </div>
             </div>
@@ -75,16 +88,17 @@ include "../Scripts/connect_database.php" ;?>
                 <div class=mainContent>
                     <div class="survey_editor">
                         <div class="tab">
-                            <button id=b1 class="tablinks" onclick="changeTab(event, 'Question')" id="defaultOpen"> Question </button>
-                            <button id=b2 class="tablinks" onclick="changeTab(event, 'Réponse')"> Réponse </button>
+                            <button id=b1 class="tablinks active" onclick="changeTab(event, 'Question')" id="defaultOpen"> Question </button>
+                            <button id=b2 class="tablinks" onclick="changeTab(event, 'Reponse')"> Réponse </button>
                         </div>
                         <div id="Question" class="tabcontent">
                             <form method=POST action=../Scripts/create_form.php>
-                               <?php include "../Scripts/getSurvey.php" ?>
+                                <?php include "../Scripts/get_survey_edit.php" ?>
+                                
                             </form>
                         </div>
 
-                        <div id="Réponse" class="tabcontent">
+                        <div id="Reponse" class="tabcontent">
                             <h1>Test</h1>
                         </div>
                     </div>
@@ -97,30 +111,31 @@ include "../Scripts/connect_database.php" ;?>
     function changeTab(evt, tabName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
+
         for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+            tabcontent[i].style.display = "none";
         }
         tablinks = document.getElementsByClassName("tablinks");
+
         for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
         document.getElementById(tabName).style.display = "block";
         evt.currentTarget.className += " active";
     }
-    document.getElementById("defaultOpen").click();
-</script>
-<script>
+    /*document.getElementById("defaultOpen").click();*/
+      
     function shareForm() {
-    document.getElementById("myForm").style.display = "block";
+    document.getElementById("myForm").style.display = "flex";
     }
 
     function closeShareForm() {
     document.getElementById("myForm").style.display = "none";
-    }
-</script>
+    }</script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
+<script src='../Scripts/focusableQuestions.js'></script>
 <script src='../Scripts/survey_editor.js'></script>
 <script async src="https://static.addtoany.com/menu/page.js"></script>
 
