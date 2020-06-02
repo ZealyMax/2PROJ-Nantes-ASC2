@@ -137,6 +137,7 @@ include "../Scripts/connect_database.php" ;?>
     crossorigin="anonymous"></script>
 <script src='../Scripts/focusableQuestions.js'></script>
 <script src='../Scripts/survey_editor.js'></script>
+<script src='../Scripts/drag_and_drop.js'></script>
 <script async src="https://static.addtoany.com/menu/page.js"></script>
 
 

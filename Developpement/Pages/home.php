@@ -37,11 +37,18 @@ include "../Scripts/connect_database.php" ;?>
                         </div>
                     </div>
                 </div>
-            </div>        
+            </div>   
         
             <div class=Content>
                 <div class=mainContent>
+                    
+                    <div id='poubelle' >
+                        <button id='b_poubelle'>Poubelle</button>
+                    </div>
 
+                    <div id='partage' >
+                        <button id='b_partage'>Partager</button>
+                    </div>
                     <!--Bouton de tri des formulaires-->
                     <div class=home-Sort-Button> <!--Bouton de tri des formulaires-->
                         <div role=button onclick="lol()">
@@ -84,11 +91,13 @@ include "../Scripts/connect_database.php" ;?>
             </div>
         </div>
         
+        
     </body>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         crossorigin="anonymous"></script>
     <script src="../Scripts/dropMenuUser.js"></script>
+    <script src='../Scripts/drag_and_drop.js'></script>
     <script>function lol(){alert("Insérer fonction de tri (par date d\'ouverture ou alphabet)");}</script>
     <script>
 
@@ -112,5 +121,7 @@ include "../Scripts/connect_database.php" ;?>
             }
         })
     }
+
+       
     </script>
 </html>
