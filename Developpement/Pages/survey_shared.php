@@ -30,8 +30,30 @@
         <title>Repondre au Formulaire</title>
     </head>
     <body>
-        <form action="">
-            <?php include "..\Scripts\get_survey_share.php"; ?>
-        </form>
+          <?php  if(isset($_GET['survey'])){
+                    $sql = "SELECT title, description FROM surveys WHERE id_surveys =". $_GET['survey'];
+                    $resSurvey = mysqli_query($conn, $sql);
+                    if ($resultSurvey = $resSurvey->fetch_assoc()) {
+                        echo " <form method=POST action='../Scripts/respond_to_survey.php'>
+                                    <div class=container>
+                                    <div class=headQuestion>
+                                        <p class=mainTitle name=Titre>" . $resultSurvey['title']. "</p>
+                                        <p class=mainDesc name=Description>". $resultSurvey['description'] ."</p>
+                                        <input type=submit name=submit value='Répondre'>
+                                    </div>
+                                    <div class=contentQuestion>
+                                    <div class=form>";
+
+                        include "..\Scripts\get_survey_share.php"; 
+                        echo "</form>"; 
+                    }
+                    else{
+                        echo "<h2>Error 404</h2>";        
+					}
+                }
+                else{
+                    echo "<h2>Error 404</h2>";
+                }?>
+       
     </body>
 </html>

@@ -46,8 +46,6 @@
                 array_push($mustDoArray, 1);  
                 $mustDoPrevious = $mustDo;
             }
-            print_r($_POST['mustDo']);
-            print_r($mustDoArray);
         }
         
 
@@ -96,8 +94,6 @@
 		    }
         }
         unset($_SESSION['survey']);
-        
+        header('location:../Pages/home.php');   
     }
 ?>
-<br>
-<a href=../Pages/home.php>Next</a>

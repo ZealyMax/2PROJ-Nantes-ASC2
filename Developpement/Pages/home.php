@@ -51,14 +51,15 @@ include "../Scripts/connect_database.php" ;?>
                     </div>
                     <!--Bouton de tri des formulaires-->
                     <div class=home-Sort-Button> <!--Bouton de tri des formulaires-->
-                        <div role=button onclick="lol()">
-                            <div class=Sort-Btn>&nbsp;</div><!--div Icon-->
-                            <div class=Sort>Trier</div><!--Texte-->
-                        </div>
+                        <select id="cars">
+                          <option value="titre">Titre</option>
+                          <option value="date">Date</option>
+                          <option value="perso">Personnalisé</option>
+                        </select>
                     </div>
 
                     <!--Affichage des formulaires + bouton de création d'un formulaire-->
-                    <div class=Select-Form-Section>
+                    <div class=Select-Form-Section id=Select-Form-Section>
 
                         <div class=parent-Form> <!--Bouton ajouter formulaire-->
                             <div class=child-Form type="button" onclick="SessionSurvey(0)">
@@ -67,11 +68,11 @@ include "../Scripts/connect_database.php" ;?>
                             </div>
                         </div>
                         <?php
-                            $sql = "SELECT title,id_surveys FROM surveys WHERE id_users = '$_SESSION[id_users]' ORDER BY id_surveys DESC";
+                            $sql = "SELECT title,id_surveys FROM surveys WHERE id_users = '$_SESSION[id_users]' ORDER BY order_surveys DESC";
                             $res = mysqli_query($conn, $sql);
                             while ( $result = $res->fetch_assoc()){
                                 echo "<div id=\"". $result['id_surveys'] ."\" class=\"parent-Form\" draggable='true'>"; /*div extern des formulaires à sélectionner*/ 
-                                echo "<button class=\"rm-survey\" onclick=RemoveSurvey(". $result['id_surveys'] .")>X</button>";
+                                echo "<button class=\"rm-survey\" onclick=RemoveSurvey(". $result['id_surveys'] .")>X</button>"; #bouton remove
                                 echo "<div class=\"child-Form\" type=\"button\" onclick=\"SessionSurvey(". $result['id_surveys'] .")\">"; /*div inside des formulaires à sélectionner*/
                                 echo "<div id=upperBtn>&nbsp;</div>";
                                 echo "<p id=downBtn>". $result['title'] . "</p>";
@@ -98,7 +99,12 @@ include "../Scripts/connect_database.php" ;?>
         crossorigin="anonymous"></script>
     <script src="../Scripts/dropMenuUser.js"></script>
     <script src='../Scripts/drag_and_drop.js'></script>
-    <script>function lol(){alert("Insérer fonction de tri (par date d\'ouverture ou alphabet)");}</script>
+    <script>
+        function lol(){
+            alert("Insérer fonction de tri (par date d\'ouverture ou alphabet)");
+
+        }
+    </script>
     <script>
 
     function SessionSurvey(id){
@@ -111,17 +117,24 @@ include "../Scripts/connect_database.php" ;?>
             }
         })
     }
-    function RemoveSurvey(id_surveys){
+    
+    $(document).on('change', 'select', function () {
         $.ajax({
             type: 'POST',
-            url: '../Scripts/remove_survey.php',
-            data:{action: id_surveys},
+            url: '../Scripts/select_surveys.php',
+            data:{action: $(this).children('option:selected').val()},
             success:function(data) {
-                document.getElementById(id_surveys).remove();
+                document.getElementById("Select-Form-Section").innerHTML = "\
+                <div class=parent-Form> <!--Bouton ajouter formulaire--> \
+                    <div class=child-Form type='button' onclick='SessionSurvey(0)>\
+                            <div id=createForm>&nbsp;</div>\
+                            <p>Cr&eacute;er un formulaire</p>\
+                            </div>\
+                        </div>" + data;
             }
         })
-    }
-
+            
+    });
        
     </script>
 </html>

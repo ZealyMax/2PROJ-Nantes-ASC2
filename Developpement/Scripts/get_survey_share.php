@@ -1,17 +1,5 @@
 <?php 
     if(isset($_GET['survey'])){
-        $sql = "SELECT title, description FROM surveys WHERE id_surveys =". $_GET['survey'];
-        $resSurvey = mysqli_query($conn, $sql);
-        $resultSurvey = $resSurvey->fetch_assoc();
-
-        echo "
-        <div class=container>
-            <div class=headQuestion>
-                <p class=mainTitle name=Titre>". $resultSurvey['title']."</p>
-                <p class=mainDesc name=Description>". $resultSurvey['description'] ."</p>
-            </div>
-            <div class=contentQuestion>
-            <div class=form>";
         $sql = "SELECT question, id_questions, type, mustDo FROM questions WHERE id_surveys =". $_GET['survey'];
         $resQuestion = mysqli_query($conn, $sql);
         $i = 0;
@@ -22,7 +10,7 @@
             #Réponse Courte
             if($resultQuestion['type'] == "short"){                                    
                 echo "
-                 <div class=question-content>
+                <div class=question-content>
                     <input name=\"short\" placeholder=\"Réponse courte \">          
                 </div>";
             }   
@@ -30,7 +18,7 @@
             else if($resultQuestion['type'] == "long"){
                 echo "          
                 <div class=question-content>
-                    <textarea name=\"long\" placeholder=\"Réponse longue\" READONLY></textarea>      
+                    <textarea name=\"long\" placeholder=\"Réponse longue\" ></textarea>      
                 </div>"; 
             }
             #Choix Multiple
@@ -44,9 +32,8 @@
                     echo "
                         <div>
                         <input name=sub_questions[] type=hidden value='radio'>
-                        <input type=radio disabled><input name=sub_questions[] placeholder='Option' value='". $resultSub['value'] ."' READONLY><button class=rm-div>X</button></div>";	        
+                        <input type=radio ><input name=sub_questions[] placeholder='Option' value='". $resultSub['value'] ."' READONLY></div>";	        
                 }
-                echo "<button class=add-choice>Ajouter</button></div>"; 
             }
             #Case à cocher
             else if($resultQuestion['type'] == "checkbox"){
@@ -59,24 +46,24 @@
                     echo "
                     <div>
                         <input name=sub_questions[] type=hidden value='checkbox'>
-                        <input type=checkbox disabled><input name=sub_questions[] placeholder='Option' value='". $resultSub['value'] ."' READONLY><button class=rm-div>X</button></div>";
+                        <input type=checkbox ><input name=sub_questions[] placeholder='Option' value='". $resultSub['value'] ."' READONLY></div>";
                 }
-                echo "<button class=add-check>Ajouter</button></div>"; 
             }
             #liste
             else if($resultQuestion['type'] == "list"){
                 echo "
-                <div class=question-content>";
+                <div class=question-content>
+                    <div>
+                    <select>";
 
                 $sql = "SELECT value FROM sub_questions WHERE id_questions =". $resultQuestion['id_questions'];
                 $resSub = mysqli_query($conn, $sql);
                 while($resultSub = $resSub->fetch_assoc()){
-                    echo "
-                    <div>
-                        <input name=sub_questions[] type=hidden value='list'>
-                        <input name=sub_questions[] placeholder='Option' value='". $resultSub['value'] ."' READONLY><button class=rm-div>X</button></div>";
+                    echo "       
+                    <option> ". $resultSub['value'] ."</option>
+                    ";
                 }
-                echo "<button class=add-list>Ajouter</button></div>"; 
+                echo "</select></div>";
             }
             #échelle linéaire
             else if($resultQuestion['type'] == "linear-scale"){
@@ -93,10 +80,10 @@
                        $maxScale = $resultSub['value'];
                     }
                 }
-                for($i = $minScale; $i <= $maxScale; $i++){
+                for($y = $minScale; $y <= $maxScale; $y++){
                     echo "
                         <div>
-                            <p>". $i ."</p><input type=radio>
+                            <p>". $y ."</p><input type=radio>
                         </div>";
                 }
                 echo "</div>";
@@ -106,77 +93,79 @@
                 echo "
                 <div class=question-content>";
 
-                $sql = "SELECT value, type FROM sub_questions WHERE id_questions =". $resultQuestion['id_questions'];
+                $sql = "SELECT value, type FROM sub_questions WHERE id_questions =". $resultQuestion['id_questions'] . " AND type = 'line'";
                 $resSub = mysqli_query($conn, $sql);
                 echo "<div class=line>";
-                $closeDivLine = false;
+                $numberOfLines = 0;
                 while($resultSub = $resSub->fetch_assoc()){
-                    if($resultSub['type'] == "column-multiple"){
-                        if ($closeDivLine == false){
-                            echo "</div><button class=add-line>Ajouter</button></div><div class=column>";
-                            $closeDivLine = true;              
-						}
-                        echo "
-                            <div>
-                            <input type=radio disabled><input name=sub_questions[] type=hidden value='column-multiple'>
-                            <input name=sub_questions[] placeholder='Ligne' value='". $resultSub['value'] ."'><button class=rm-div>X</button></div>"; 
-                    }
-                    
-                    else{
-                         echo "
+                    echo "
                          <div>
                             <input name=sub_questions[] type=hidden value='line'>
-                            <input name=sub_questions[] placeholder='Colonne' value='". $resultSub['value'] ."'><button class=rm-div>X</button></div>";
-				    }
+                            <input name=sub_questions[] placeholder='Colonne' value='". $resultSub['value'] ."'READONLY></div>";
+                            $numberOfLines++;
                 }
-                echo "<button class=add-column-multiple>Ajouter</button></div>"; 
+                echo "</div>";
+                 $sql = "SELECT value, type FROM sub_questions WHERE id_questions =". $resultQuestion['id_questions'] . " AND type = 'column-multiple'";
+                $resSub = mysqli_query($conn, $sql);
+                echo "<div class=column>";
+                while($resultSub = $resSub->fetch_assoc()){
+                    echo "
+                        <div>
+                        <input name=sub_questions[] type=hidden value='column-multiple'>
+                        <input name=sub_questions[] placeholder='Ligne' value='". $resultSub['value'] ."' READONLY></div>"; 
+                    for ($y = 0; $y < $numberOfLines; $y++){
+                        echo "<input type=radio>";           
+					}
+                }
+                echo "</div></div>"; 
             }   
             #Grille de case à cocher
             else if($resultQuestion['type'] == "grid-checkbox"){
-                echo "
+                 echo "
                 <div class=question-content>";
 
-                $sql = "SELECT value, type FROM sub_questions WHERE id_questions =". $resultQuestion['id_questions'];
+                $sql = "SELECT value, type FROM sub_questions WHERE id_questions =". $resultQuestion['id_questions'] . " AND type = 'line'";
                 $resSub = mysqli_query($conn, $sql);
                 echo "<div class=line>";
-                $closeDivLine = false;
                 while($resultSub = $resSub->fetch_assoc()){
-                    if($resultSub['type'] == "column-checkbox"){
-                        if ($closeDivLine == false){
-                            echo "</div><button class=add-line>Ajouter</button></div><div class=column>";
-                            $closeDivLine = true;              
-						}
-                        echo "
-                            <div>
-                            <input type=checkbox disabled><input name=sub_questions[] type=hidden value='column-checkbox'>
-                            <input name=sub_questions[] placeholder='Ligne' value='". $resultSub['value'] ."'><button class=rm-div>X</button></div>"; 
-                    }
-                    
-                    else{
-                         echo "
-                            <div><input name=sub_questions[] type=hidden value='line'>
-                            <input name=sub_questions[] placeholder='Colonne' value='". $resultSub['value'] ."'><button class=rm-div>X</button></div>";
-				    }
+                    echo "
+                         <div>
+                            <input name=sub_questions[] type=hidden value='line'>
+                            <input name=sub_questions[] placeholder='Colonne' value='". $resultSub['value'] ."'READONLY></div>";
                 }
-                echo "<button class=add-column-checkbox>Ajouter</button></div>"; 
+                echo "</div>";
+                 $sql = "SELECT value, type FROM sub_questions WHERE id_questions =". $resultQuestion['id_questions'] . " AND type = 'column-checkbox'";
+                $resSub = mysqli_query($conn, $sql);
+                echo "<div class=column>";
+                while($resultSub = $resSub->fetch_assoc()){
+                    echo "
+                        <div>
+                        <input name=sub_questions[] type=hidden value='column-multiple'>
+                        <input name=sub_questions[] placeholder='Ligne' value='". $resultSub['value'] ."'READONLY></div>";
+                        for ($y = 0; $y < $numberOfLines; $y++){
+                            echo "<input type=checkbox>";           
+					    }
+                    
+                }
+                echo "</div></div>"; 
             }   
             #Date
-            if($resultQuestion['type'] == "date"){                                    
+            else if($resultQuestion['type'] == "date"){                                    
                 echo "
                 <div class=question-content>
-                    <p>JJ MM YYYY</p>
+                    <p>JJ / MM / YYYY</p>
                     <input name=day><p>/</p><input name=month><p>/</p><input name=year>          
                 </div>";
             }  
             #Heure
-            if($resultQuestion['type'] == "hour"){                                    
+            else if($resultQuestion['type'] == "hour"){                                    
                 echo "
                 <div class=question-content>
                     <p>Heure</p>
                     <input name=\"hour\"><p>:</p><input name=minutes>       
                 </div>";
             } 
-            #Affichage des mustDo
+            #Affichage des mustDo et fermeture des div
             if($resultQuestion['mustDo'] == 1){
                 echo  "<input type=hidden name=sub_questions[] value='new question'>
                     <input name=mustDo[] type=checkbox value=". $i . " checked disabled>  <input placeholder=Obligatoire READONLY></div>";

@@ -65,7 +65,6 @@ include "../Scripts/connect_database.php" ;?>
                             <form action="/action_page.php" class="share-container">
                                 <h1>Partager</h1>
 
-                                <!-- TODO: TROUVER LE LIEN DE PARTAGE   -->
                                 <input type="text" value="http://93.26.58.131/Final_Project/Developpement/Pages/survey_shared.php?survey=<?php echo $_SESSION['survey']?>" name="lien" disabled>
 
                                 <div  id="divContentToPopup">
