@@ -11,14 +11,17 @@
             if($resultQuestion['type'] == "short"){                                    
                 echo "
                 <div class=question-content>
-                    <input name=\"short\" placeholder=\"Réponse courte \">          
+                    <input name=question". $resultQuestion['id_questions']." placeholder=\"Réponse courte \">          
                 </div>";
             }   
             #Paragraphe
             else if($resultQuestion['type'] == "long"){
                 echo "          
                 <div class=question-content>
-                    <textarea name=\"long\" placeholder=\"Réponse longue\" ></textarea>      
+                    <textarea name=question".$i." placeholder=\"Réponse longue\" ></textarea> 
+                    
+                    <!-- <textarea name=question".$i." placeholder=\"Réponse longue\" ></textarea>   -->
+
                 </div>"; 
             }
             #Choix Multiple
@@ -28,11 +31,13 @@
 
                 $sql = "SELECT value FROM sub_questions WHERE id_questions =". $resultQuestion['id_questions'];
                 $resSub = mysqli_query($conn, $sql);
+                $y = 0;
                 while($resultSub = $resSub->fetch_assoc()){
                     echo "
                         <div>
                         <input name=sub_questions[] type=hidden value='radio'>
-                        <input type=radio ><input name=sub_questions[] placeholder='Option' value='". $resultSub['value'] ."' READONLY></div>";	        
+                        <input type=radio ><input name=question".$i.".".$y." placeholder='Option' value='". $resultSub['value'] ."' READONLY></div>";	  
+                        $y++;
                 }
             }
             #Case à cocher
@@ -42,11 +47,13 @@
 
                 $sql = "SELECT value FROM sub_questions WHERE id_questions =". $resultQuestion['id_questions'];
                 $resSub = mysqli_query($conn, $sql);
+                $y=0;
                 while($resultSub = $resSub->fetch_assoc()){
                     echo "
                     <div>
                         <input name=sub_questions[] type=hidden value='checkbox'>
-                        <input type=checkbox ><input name=sub_questions[] placeholder='Option' value='". $resultSub['value'] ."' READONLY></div>";
+                        <input type=checkbox ><input name=question".$i.".".$y." placeholder='Option' value='". $resultSub['value'] ."' READONLY></div>";
+                        $y++;
                 }
             }
             #liste
@@ -54,13 +61,13 @@
                 echo "
                 <div class=question-content>
                     <div>
-                    <select>";
+                    <select name=question".$i.">";
 
                 $sql = "SELECT value FROM sub_questions WHERE id_questions =". $resultQuestion['id_questions'];
                 $resSub = mysqli_query($conn, $sql);
                 while($resultSub = $resSub->fetch_assoc()){
                     echo "       
-                    <option> ". $resultSub['value'] ."</option>
+                    <option>". $resultSub['value'] ."</option>
                     ";
                 }
                 echo "</select></div>";
@@ -176,22 +183,5 @@
 			}
             $i++;
         }
-    }
-    #si $_SESSION['survey'] = 0 : l'utilisateur est en création
-    else{
-        echo "
-        <div class=container>
-            <div class=headQuestion>
-                <input class=mainTitle name=Titre placeholder='Titre du formulaire'>
-                <input class=mainDesc name=Description placeholder='Description du formulaire'>
-            </div>
-            <div class=contentQuestion>
-                <div class=module>
-                    <input class='btn-add' type=button value=+>
-                    <input name=submit type=submit value='Modifier le formulaire'>
-                </div>
-                <div class=form></div>
-            </div>
-        </div>";
     }
 ?>  

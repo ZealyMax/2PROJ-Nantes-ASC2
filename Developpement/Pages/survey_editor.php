@@ -66,7 +66,6 @@ include "../Scripts/connect_database.php" ;?>
                                 <h1>Partager</h1>
 
                                 <input type="text" value="http://93.26.58.131/Final_Project/Developpement/Pages/survey_shared.php?survey=<?php echo $_SESSION['survey']?>" name="lien" disabled>
-
                                 <div  id="divContentToPopup">
                                     <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
                                         <a class="a2a_button_email"></a>

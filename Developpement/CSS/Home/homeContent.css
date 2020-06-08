@@ -48,11 +48,33 @@
 
 .child-Form #createForm {
 	background-image: url("../../../Design/icons/cross/icon_Cross@1x.png");
-	/*Régler le background : plus d'affichage de la croix*/
 }
 
-.rm-survey { /*faire le design*/
-	/*display: none;*/
+.child-Form p{
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	padding: 0 5px;
+}
+
+.more { /*faire le design*/
+	position:relative;
+	right:40px;
+	border:none;
+	background:none;
+	border-radius:25px;
+	width:35px;
+	height:35px;
+	margin: 10px 5px 0 0;
+	outline:none;
+}
+
+.more:hover{
+	background-color: #dadada;
+}
+
+.more img{
+	height:20px;
 }
 
 /*Fin du style du contenu de la page*/

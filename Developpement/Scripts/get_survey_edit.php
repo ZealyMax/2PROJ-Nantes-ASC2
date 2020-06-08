@@ -25,11 +25,10 @@
             #Entête Question
            
             /*echo "<script>document.getElementbyClassName('btn-add').click();</script>";*/
- 
-            echo "<div class=question-div draggable='true'>
-                    <div class=top-of-Question>
-                        <input name=question[] value='". $resultQuestion['question'] ."'>
-                        <select name=selectType[] class=selector>  
+            //echo "<h1>test</h1>"
+            echo "<div class='question-div' draggable='true'>
+                        <input class=question-title name=question[] value='". $resultQuestion['question'] ."'>
+                        <select class=select-choice name=selectType[] class=selector>  
                             <option value=\"short\""; if ($resultQuestion['type'] == "short") echo 'selected'; echo">Réponse courte</option>
                             <option value=\"long\""; if ($resultQuestion['type'] == "long") echo 'selected' ;echo">Paragraphe</option>
                             <option value=\"multiple\""; if ($resultQuestion['type'] == "multiple") echo 'selected' ;echo">Choix multiple</option>
@@ -41,8 +40,7 @@
                             <option value=\"date\""; if ($resultQuestion['type'] == "date") echo 'selected' ;echo">Date</option>
                             <option value=\"hour\""; if ($resultQuestion['type'] == "hour") echo 'selected' ;echo">Heure</option>
                         </select>
-                    </div>
-                    <button class=rm-div>X</button>";
+                   ";
             #Réponse Courte
             if($resultQuestion['type'] == "short" || $resultQuestion['type'] == "date"  || $resultQuestion['type'] == "hour" ){                                    
                 echo "
@@ -202,13 +200,13 @@
             #Affichage des mustDo
             if($resultQuestion['mustDo'] == 1){
                 echo  "<input type=hidden name=sub_questions[] value='new question'>
-                    <input name=mustDo[] type=checkbox value=". $i . " checked>  <input placeholder=Obligatoire READONLY></div>";
+                    <input name=mustDo[] type=checkbox value=". $i . " checked>  <p>Obligatoire </p><button class=rm-div>X</button></div>";
             }
             else{
                  echo  "<input type=hidden name=sub_questions[] value='new question'>
-                     <input name=mustDo[] type=checkbox value=". $i . ">  <input placeholder=Obligatoire READONLY></div>";
+                     <input name=mustDo[] type=checkbox value=". $i . "> <p>Obligatoire </p><button class=rm-div>X</button></div>";
 			}
-            $i++;
+            $i++;                                                                           #Zètes passés où ?
         }
     }
     else{

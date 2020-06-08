@@ -45,10 +45,28 @@ include "../Scripts/connect_database.php" ;?>
                     <div id='poubelle' >
                         <button id='b_poubelle'>Poubelle</button>
                     </div>
+                    <!--
+                    <button class=shareButton style="display:block;" onclick="shareForm()">Partager</button> <!-- TODO: enlever display:none   
+                        <div class="share-popup" id="myForm">
+                            <form action="/action_page.php" class="share-container">
+                                <h1>Partager</h1>
 
-                    <div id='partage' >
+                                <input type="text" value="http://93.26.58.131/Final_Project/Developpement/Pages/survey_shared.php?survey=<?php echo $_SESSION['survey']?>" name="lien" disabled>
+
+                                <div  id="divContentToPopup">
+                                    <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                                        <a class="a2a_button_email"></a>
+                                        <a class="a2a_button_facebook"></a>
+                                        <a class="a2a_button_twitter"></a>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn cancel" onclick="closeShareForm()">Close</button>
+                            </form>
+                        </div>
+
+                    <div id='partage' class='partage'>
                         <button id='b_partage'>Partager</button>
-                    </div>
+                    </div>-->
                     <!--Bouton de tri des formulaires-->
                     <div class=home-Sort-Button> <!--Bouton de tri des formulaires-->
                         <select id="cars">
@@ -72,11 +90,19 @@ include "../Scripts/connect_database.php" ;?>
                             $res = mysqli_query($conn, $sql);
                             while ( $result = $res->fetch_assoc()){
                                 echo "<div id=\"". $result['id_surveys'] ."\" class=\"parent-Form\" draggable='true'>"; /*div extern des formulaires à sélectionner*/ 
-                                echo "<button class=\"rm-survey\" onclick=RemoveSurvey(". $result['id_surveys'] .")>X</button>"; #bouton remove
                                 echo "<div class=\"child-Form\" type=\"button\" onclick=\"SessionSurvey(". $result['id_surveys'] .")\">"; /*div inside des formulaires à sélectionner*/
-                                echo "<div id=upperBtn>&nbsp;</div>";
-                                echo "<p id=downBtn>". $result['title'] . "</p>";
+                                echo "<div class=upperBtn></div>";
+                                echo "<p id=downBtn title='". $result['title'] . "'>". $result['title'] . "</p>";
                                 echo "</div>";
+                                echo "
+                                    <div>
+                                        <button class=\"more\" onclick=openMore()><img src=\"../../Design/icons/more/icon_more@4x.png\"></img></button>
+                                        <div>
+                                            <button onclick=\"wantToDelete('". $result['id_surveys'] ."')\"></button>
+                                        </div>
+                                    </div>";
+                                echo "";
+                                echo "<button style='display:none;' onclick=RemoveSurvey(". $result['id_surveys'] .")></button>";#bouton remove #TEMP
                                 echo "</div>";
 					        }
                         ?>
@@ -99,12 +125,7 @@ include "../Scripts/connect_database.php" ;?>
         crossorigin="anonymous"></script>
     <script src="../Scripts/dropMenuUser.js"></script>
     <script src='../Scripts/drag_and_drop.js'></script>
-    <script>
-        function lol(){
-            alert("Insérer fonction de tri (par date d\'ouverture ou alphabet)");
-
-        }
-    </script>
+    <script src='../Scripts/homeDesign.js'></script>
     <script>
 
     function SessionSurvey(id){
@@ -125,8 +146,8 @@ include "../Scripts/connect_database.php" ;?>
             data:{action: $(this).children('option:selected').val()},
             success:function(data) {
                 document.getElementById("Select-Form-Section").innerHTML = "\
-                <div class=parent-Form> <!--Bouton ajouter formulaire--> \
-                    <div class=child-Form type='button' onclick='SessionSurvey(0)>\
+                <div class=parent-Form>\
+                    <div class=child-Form type='button' onclick='SessionSurvey(0)'>\
                             <div id=createForm>&nbsp;</div>\
                             <p>Cr&eacute;er un formulaire</p>\
                             </div>\

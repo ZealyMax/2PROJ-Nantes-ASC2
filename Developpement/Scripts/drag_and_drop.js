@@ -2,7 +2,9 @@ var dragSrcEl = null;
 var home_page = false;
 var poubelle = document.getElementById("poubelle") ;
 var partage = document.getElementById("partage") ;
-
+if (poubelle != null) {
+    var home_page = true;
+}
 
 
 function handleDragStart(e) {
@@ -37,27 +39,39 @@ function handleDragLeave(e) {
   this.classList.remove('over');  // this / e.target is previous target element.
 };
 
+/*
+function shareForm() {
+    document.getElementById("myForm").style.display = "flex";
+}
+
+function closeShareForm() {
+    document.getElementById("myForm").style.display = "none";
+}*/
+
+
 function handleDrop(e) {
     // this/e.target is current target element.
 
     if (e.stopPropagation) {
         e.stopPropagation(); // Stops some browsers from redirecting.
     };
+    
 
 
-    if(this.outerHTML ==poubelle.outerHTML){
+    if(home_page == true && this.outerHTML ==poubelle.outerHTML){
+        alert("test");
         RemoveSurvey(dragSrcEl.id);
         //alert(dragSrcEl.id);
         // Supprimer la ligne grace a l'id
 	}
     
-    else if(this.outerHTML == partage.outerHTML){
+    /*else if(this.outerHTML == partage.outerHTML){
         alert("Partage le formulaire");
         var string = "<div class='share-popup' id=myForm'>\
             <form action = '/action_page.php' class='share-container' >\
                 <h1>Partager</h1>\
                 <!--TODO: TROUVER LE LIEN DE PARTAGE-- >\
-                    <input type='text' value='http://93.26.58.131/Final_Project/Developpement/Pages/survey_shared.php?survey=" + dragSrcEl.id +  " name='lien' disabled>\
+                     <input type='text' value='http://93.26.58.131/Final_Project/Developpement/Pages/survey_shared.php?survey=" + dragSrcEl.id +  " name='lien' disabled>\
                         <div id='divContentToPopup'>\
                             <div class='a2a_kit a2a_kit_size_32 a2a_default_style'>\
                                 <a class='a2a_button_email'></a>\
@@ -71,21 +85,26 @@ function handleDrop(e) {
         //alert(dragSrcEl.outerHTML);
         //alert(dragSrcEl.id);
         // Recupere le lien de partage du formulaire grace l'id
-	}
+	}*/
 
     // Don't do anything if dropping the same column we're dragging.
     else if (dragSrcEl != this) {
 
         // Set the source column's HTML to the HTML of the column we dropped on.
         //dragSrcEl.innerHTML = this.innerHTML;
-        //this.innerHTML = e.dataTransfer.getData('text/html');
+        //addDnDHandlers(this);
+        //this.outerHTML = e.dataTransfer.getData('text/html');
+        
         this.parentNode.removeChild(dragSrcEl);
         var dropHTML = e.dataTransfer.getData('text/html');
-
         this.insertAdjacentHTML('beforebegin',dropHTML);
+
         var dropElem = this.previousSibling;
 
-        alert("Modifier la place des formulaires");
+
+
+
+        //alert("Modifier la place des formulaires");
         //alert(dragSrcEl.id);
         //alert(this.id);
         // Modifier l'ordre grace aux IDs des deux formulaires'
@@ -134,7 +153,8 @@ function addDnDHandlers(elem) {
 
 var cols = document.querySelectorAll('[draggable]');
 [].forEach.call(cols, addDnDHandlers);
-addDnDHandlers(poubelle);
-addDnDHandlers(partage);
 
-
+if (home_page == true) {
+    addDnDHandlers(poubelle);
+    //addDnDHandlers(partage);
+}

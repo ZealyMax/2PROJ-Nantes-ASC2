@@ -34,17 +34,18 @@
                     $sql = "SELECT title, description FROM surveys WHERE id_surveys =". $_GET['survey'];
                     $resSurvey = mysqli_query($conn, $sql);
                     if ($resultSurvey = $resSurvey->fetch_assoc()) {
-                        echo " <form method=POST action='../Scripts/respond_to_survey.php'>
+                        echo " <form name=answerForm method=POST action='../Scripts/respond_to_survey.php'>
                                     <div class=container>
                                     <div class=headQuestion>
                                         <p class=mainTitle name=Titre>" . $resultSurvey['title']. "</p>
                                         <p class=mainDesc name=Description>". $resultSurvey['description'] ."</p>
-                                        <input type=submit name=submit value='Répondre'>
+                                        <input type=button value='Répondre' onclick='mustDoVerif()'>
                                     </div>
                                     <div class=contentQuestion>
                                     <div class=form>";
 
                         include "..\Scripts\get_survey_share.php"; 
+
                         echo "</form>"; 
                     }
                     else{
@@ -57,3 +58,25 @@
        
     </body>
 </html>
+<script>
+    function mustDoVerif(){
+        alert("test");
+        //alert(document.forms.answerForm.elements.length);
+        var x =0 ;
+        var nb_question = "question"+x;
+        for(x = 0; x < document.forms.answerForm.elements.length; x++){
+            alert(nb_question);
+
+            alert(document.forms.answerForm.elements[nb_question].value);
+            nb_question = "question"+x;
+           
+		}
+        alert(document.forms.answerForm.elements.question0.value);
+        //var selectFormElement = document.forms["answerForm"].elements[blablabl]; Vincent test cette syntaxe
+        if(true){
+        
+            //document.getElementsByClassName("answerForm").submit();
+            document.forms["answerForm"].submit();
+        }
+    }
+</script>

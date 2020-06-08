@@ -93,7 +93,20 @@
 	padding: 50px 25px 50px 25px;
 	border-radius: 8px;
 }
-
+#Question .form .question-div .question-title {
+	background-color: #F1F1F1;
+	width : 55%;
+	padding : 10px;
+	border: none;
+	box-shadow: 0 1px #707070;
+}
+#Question .form .question-div .select-choice {
+	width : 30% ;
+	padding : 8px;
+	border-radius : 5px;
+	border-color: #707070;
+	margin-left : 14%;
+}
 /* Barre de droite qui ne bouge pas. Faire en fonction du temps qui nous reste une animation pour le scroll*/
 .tabcontent form .container .contentQuestion .module {
 	position: fixed;

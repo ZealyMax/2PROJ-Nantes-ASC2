@@ -16,10 +16,10 @@ $(".btn-add").on('click', function () {
             <option value=\"grid-checkbox\">Grille de case à cocher</option>\
             <option value=\"date\">Date</option>\
             <option value=\"hour\">Heure</option>\
-        </select><button class=rm-div>X</button>\
+        </select>\
         <div class=question-content>\
             <input name=\"short\" placeholder=\"Réponse courte\" READONLY>    \
-        </div>  <input name=mustDo[] type=checkbox value= " + i + ">  <input placeholder=Obligatoire READONLY> \
+        </div>  <input name=mustDo[] type=checkbox value= " + i + ">  <p>Obligatoire</p><button class=rm-div>X</button> \
         <input type=hidden name=sub_questions[] value='new question'>\
     </div>";
 
@@ -93,7 +93,7 @@ $(document).on('click', '.rm-div', function () {
     $(this).parent().remove();
 });
 
-$(document).on('change', 'select', function () {
+$(document).on('change', '.selector', function () {
     if ($(this).children('option:selected').val() == "short") {
         $(this).parent(".question-div").children(".question-content").html("<input placeholder='Réponse courte' READONLY>");
     };
