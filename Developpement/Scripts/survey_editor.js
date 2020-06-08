@@ -90,7 +90,7 @@ $(document).on('click', '.add-column-checkbox', function () {
 });
 
 $(document).on('click', '.rm-div', function () {
-    $(this).parent().remove();
+    $(this).parent().parent().remove();
 });
 
 $(document).on('change', '.selector', function () {

@@ -199,14 +199,14 @@
             }  
             #Affichage des mustDo
             if($resultQuestion['mustDo'] == 1){
-                echo  "<input type=hidden name=sub_questions[] value='new question'>
-                    <input name=mustDo[] type=checkbox value=". $i . " checked>  <p>Obligatoire </p><button class=rm-div>X</button></div>";
+                echo  "<hr style=height:1px;border-width:0;color:gray;background-color:gray><div class=requiered-field><input type=hidden name=sub_questions[] value='new question'>
+                    <span>Obligatoire</span><input class=check-requiered name=mustDo[] type=checkbox value=". $i . " checked> <button class=rm-div>X</button></div></div>";
             }
             else{
-                 echo  "<input type=hidden name=sub_questions[] value='new question'>
-                     <input name=mustDo[] type=checkbox value=". $i . "> <p>Obligatoire </p><button class=rm-div>X</button></div>";
+                echo  "<hr style=height:0.5px;border-width:0;color:gray;background-color:gray><div class=requiered-field><input type=hidden name=sub_questions[] value='new question'>
+                    <span>Obligatoire</span><input class=check-requiered name=mustDo[] type=checkbox value=". $i . "> <button class=rm-div>X</button></div></div>";
 			}
-            $i++;                                                                           #Zètes passés où ?
+            $i++;                                                                          
         }
     }
     else{

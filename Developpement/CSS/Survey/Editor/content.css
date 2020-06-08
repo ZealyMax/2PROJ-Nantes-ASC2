@@ -107,6 +107,20 @@
 	border-color: #707070;
 	margin-left : 14%;
 }
+
+#Question .form .question-div .requiered-field{
+	display :flex;
+	justify-content:flex-end;
+	padding:0;
+}
+#Question .form .question-div .requiered-field span{
+
+}
+#Question .form .question-div .check-requiered {
+	padding:0;
+	width:20px;
+}
+
 /* Barre de droite qui ne bouge pas. Faire en fonction du temps qui nous reste une animation pour le scroll*/
 .tabcontent form .container .contentQuestion .module {
 	position: fixed;

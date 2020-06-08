@@ -39,6 +39,7 @@
                         <input type=radio ><input name=question".$i.".".$y." placeholder='Option' value='". $resultSub['value'] ."' READONLY></div>";	  
                         $y++;
                 }
+                echo "</div>";
             }
             #Case à cocher
             else if($resultQuestion['type'] == "checkbox"){
@@ -55,6 +56,7 @@
                         <input type=checkbox ><input name=question".$i.".".$y." placeholder='Option' value='". $resultSub['value'] ."' READONLY></div>";
                         $y++;
                 }
+                echo "</div>";
             }
             #liste
             else if($resultQuestion['type'] == "list"){
@@ -70,7 +72,7 @@
                     <option>". $resultSub['value'] ."</option>
                     ";
                 }
-                echo "</select></div>";
+                echo "</select></div></div>";
             }
             #échelle linéaire
             else if($resultQuestion['type'] == "linear-scale"){

@@ -62,21 +62,30 @@
     function mustDoVerif(){
         alert("test");
         //alert(document.forms.answerForm.elements.length);
-        var x =0 ;
+        /*var x =0 ;
         var nb_question = "question"+x;
         for(x = 0; x < document.forms.answerForm.elements.length; x++){
             alert(nb_question);
 
-            alert(document.forms.answerForm.elements[nb_question].value);
+            //alert(document.forms.answerForm.elements[nb_question].value);
             nb_question = "question"+x;
            
 		}
-        alert(document.forms.answerForm.elements.question0.value);
+        alert(document.forms.answerForm.elements.question0.value);*/
         //var selectFormElement = document.forms["answerForm"].elements[blablabl]; Vincent test cette syntaxe
-        if(true){
-        
-            //document.getElementsByClassName("answerForm").submit();
+        var mustDo = document.getElementsByName("mustDo[]");
+        var retry = false;
+        for(var x = 0; x < mustDo.length; x++){
+            alert(mustDo[x].parentNode.children[1].children[0].value);
+            if(mustDo[x].parentNode.children[1].children[0].value ==""){
+               retry =true;
+               alert('retry = true loloololol');
+               break;
+            }
+        }
+        if(retry == false){
             document.forms["answerForm"].submit();
         }
+
     }
 </script>
