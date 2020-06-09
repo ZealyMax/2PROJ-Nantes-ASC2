@@ -90,7 +90,7 @@
 	background-color: white;
 	box-shadow: 0 0 3px #B7ADA1;
 	margin-top: 25px;
-	padding: 50px 25px 50px 25px;
+	padding: 25px 25px 20px 25px;
 	border-radius: 8px;
 }
 #Question .form .question-div .question-title {
@@ -111,29 +111,120 @@
 #Question .form .question-div .requiered-field{
 	display :flex;
 	justify-content:flex-end;
-	padding:0;
+	align-items:center;
+	margin:5px;
 }
-#Question .form .question-div .requiered-field span{
-
+#Question .form .question-div .requiered-field p{
+	margin:0px;
+	padding:0px;
 }
-#Question .form .question-div .check-requiered {
-	padding:0;
+#Question .form .question-div .requiered-field .check-requiered {
+	margin:0px;
+	margin-left:5px;
 	width:20px;
 }
+#Question .form .question-div .rm-div {
+	border:0px;
+	background:none;
+}
+#Question .form .question-div .requiered-bar {
+	margin-top:50px;
+	height:0.5px;
+	border-width:0;
+	color:gray;
+	background-color:gray;
+}
+#Question .form .question-div .requiered-field .vertical-bar {
+	border-right:2px solid gray;
+}
 
+
+/*Types de questions*/
+#Question .form .question-div .short-answer{
+	margin-top:25px;
+	width:60%;
+	margin-bottom:0px;
+	font-family: Arial,sans-serif;
+	font-size:13px;
+}
+#Question .form .question-div .short-answer::placeholder {
+	color:#70757a;
+	font-family: Arial,sans-serif;
+}
+#Question .form .question-div .long-answer {
+	width: 80%;
+	height: 21px;
+	margin-top: 25px;
+	resize : none;
+	border: 0px;
+	font-family: Arial,sans-serif;
+	font-size:13px;
+	border-bottom: 1px solid #BFC2C7;
+}
+#Question .form .question-div .long-answer::placeholder {
+	color:#70757a;
+}
+#Question .form .question-div .multiple-choice{
+	display:flex;
+	align-items:center;
+}
+#Question .form .question-div .multiple-choice .check-button {
+	margin: 0px;
+	width: 20px;
+}
+#Question .form .question-div .multiple-choice .check-name{
+	margin:0px;
+}
 /* Barre de droite qui ne bouge pas. Faire en fonction du temps qui nous reste une animation pour le scroll*/
 .tabcontent form .container .contentQuestion .module {
 	position: fixed;
 	top: 250px;
-	right: 15%;
+	right: 25%;
 	background-color: white;
 	box-shadow: 0 0 3px #B7ADA1;
-	border-radius: 8px;
+	border-radius: 5px;
+}
+
+.tabcontent form .container .contentQuestion .module .insideModule{
+	margin:10px 0 10px 0;
+	display:flex;
+	flex-direction:column;
+	justify-content:space-between;
+}
+
+.tabcontent form .container .contentQuestion .module .insideModule input{
+	width:40px;
+	height:40px;
+	border:none;
+	border-radius:20px;
+	background-size:20px;
+	background-color:transparent;
+	background-repeat:no-repeat;
+	background-position:center;
+}
+
+.tabcontent form .container .contentQuestion .module .insideModule input:hover{
+	background-color:#f0f0f0;
+}
+
+.btn-add {
+	background-image: url("../../../../Design/icons/trasg/icon_trash@2x.png");
+}
+
+.btn-save{
+	background-image: url("../../../../Design/icons/save/icon_save@2x.png");
+}
+
+.btn-delete{
+	background-image: url("../../../../Design/icons/trash/icon_trash@2x.png");
 }
 
 #Reponse {
 	display: none;
 }
+
+
+
 /*#endregion divContent*/
 
 

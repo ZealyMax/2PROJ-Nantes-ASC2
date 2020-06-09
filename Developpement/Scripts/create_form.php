@@ -19,10 +19,10 @@
         $titre = $_POST['Titre'];
         if (isset($_POST['Description'])){
             $description = $_POST['Description'];
-            $sql = "INSERT INTO surveys (title, description, id_users) VALUES ('$titre', '$description', $_SESSION[id_users])";
+            $sql = "INSERT INTO surveys (title, description, id_users, date_ouverture) VALUES ('$titre', '$description', $_SESSION[id_users], NOW())"; 
 		}
         else{
-            $sql = "INSERT INTO surveys (title, id_users) VALUES ('$titre', $_SESSION[id_users])";  
+            $sql = "INSERT INTO surveys (title, id_users, date_ouverture) VALUES ('$titre', $_SESSION[id_users], NOW())"; 
 		}
         $res = mysqli_query($conn, $sql);
         $sql = "SELECT id_surveys FROM surveys WHERE id_users = $_SESSION[id_users] ORDER BY id_surveys DESC";  
@@ -97,3 +97,4 @@
         header('location:../Pages/home.php');   
     }
 ?>
+

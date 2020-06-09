@@ -3,6 +3,5 @@ function  openMore() {
 }
 
 function wantToDelete(truc) {
-	alert("hein ?");
-	alert(truc);
+	alert("Want to delete " + truc + " ?");
 }

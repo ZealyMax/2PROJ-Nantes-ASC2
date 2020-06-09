@@ -19,12 +19,12 @@
 }
 
 .child-Form { /*Bouton clickable*/
-	background-color: #E4EBEF;
 	display: flex;
 	text-align: center;
+	background-color: white;
 	flex-direction: column;
-	width: 170px;
-	height: 200px;
+	width: 200px;
+	height: 250px;
 	border: 1px solid lightgray;
 	border-radius: 5px;
 	box-shadow: #aaaaaa 0 0 5px;
@@ -36,10 +36,10 @@
 	cursor: pointer;
 }
 
-.child-Form div {
+.child-Form .upperBtn, .child-Form #createForm {
 	background-repeat: no-repeat;
 	background-position: center;
-	background-color: white;
+	background-color: #E4EBEF;
 	border-radius: 5px 5px 0px 0;
 	border-bottom: 1px solid lightgray;
 	width: 100%;
@@ -48,36 +48,66 @@
 
 .child-Form #createForm {
 	background-image: url("../../../Design/icons/cross/icon_Cross@1x.png");
+	height:75%;
+}
+
+.child-Form #underCreate{
+	background-color:white;
+	border-radius:0 0 5px 5px;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	height:25%;
+}
+
+.child-Form #underCreate p{
+	text-align:center;
 }
 
 .child-Form p{
 	white-space:nowrap;
 	overflow:hidden;
 	text-overflow:ellipsis;
-	padding: 0 5px;
+	padding: 0px 5px;
+	margin:5px 0 0 0;
 }
 
-.more { /*faire le design*/
+.child-Form .downBtn{
+	background-color: white;
+	display:flex;
+	flex-direction:column;
+	border-radius: 0 0 5px 5px;
+	height: 25%;
+}
+
+.child-Form .downBtn .moreInfoForm, .titleForm{
+	display:flex;
+	flex-direction:row;
+	align-items:center;
+	justify-content:space-between;
+	margin:0 15px;
+}
+
+.child-Form .downBtn .moreInfoForm{
+}
+
+.more {
 	position:relative;
-	right:40px;
 	border:none;
-	background:none;
+	background:url("../../../Design/icons/more/icon_more@4x.png");
+	background-size:5px;
+	background-repeat:no-repeat;
+	background-position:center;
 	border-radius:25px;
-	width:35px;
-	height:35px;
-	margin: 10px 5px 0 0;
+	width:30px;
+	height:30px;
 	outline:none;
+	margin :5px 0 0 0;
 }
 
 .more:hover{
 	background-color: #dadada;
 }
-
-.more img{
-	height:20px;
-}
-
-/*Fin du style du contenu de la page*/
 /*#endregion mainForms*/
 
 /*#region sort*/
@@ -111,4 +141,5 @@
 
 /*#endregion sort*/
 
+/*Fin du style du contenu de la page*/
 /*#endregion Global Content*/

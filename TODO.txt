@@ -2,10 +2,12 @@ Design :
 
 	- Survey Shared : bas de page, barre de progression (indique à l'utilisateur où il en est dans le formulaire)
 	- Bouton supprimer Form directement sur la Home page (+ date d'ouverture)
+	- Design 404
 	
 Développement :
 
-	- 
+	- Faire un hash du lien de partage
+	- Rajouter date de dernière modif du form
 	
 Marketing :
 

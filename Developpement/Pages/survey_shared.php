@@ -60,7 +60,39 @@
 </html>
 <script>
     function mustDoVerif(){
-        alert("test");
+
+        var mustDo = document.getElementsByName("mustDo[]");
+        var retry = false;          
+        for(var x = 0; x < mustDo.length; x++){
+            if (mustDo[x].parentNode.children[1].children[0].placeholder == "day" && mustDo[x].checked == true){
+                for (var i = 0; i < 5;i += 2){
+                    if(mustDo[x].parentNode.children[1].children[i].value == ""){
+                        retry =true;
+                        alert('retry = true loloololol');
+                        break;     
+					} 
+				}
+            }
+            if (mustDo[x].parentNode.children[1].children[0].placeholder == "hour" && mustDo[x].checked == true){
+                for (var i = 0; i < 3;i += 2){
+                    if(mustDo[x].parentNode.children[1].children[i].value == ""){
+                        retry =true;
+                        alert('retry = true loloololol');
+                        break;     
+					} 
+				}
+            }
+            else if(mustDo[x].parentNode.children[1].children[0].value == "" && mustDo[x].checked == true){
+                retry =true;
+                alert('retry = true loloololol');
+                break; 
+            }
+ 
+        }
+        if(retry == false){
+            document.forms["answerForm"].submit();
+        }
+
         //alert(document.forms.answerForm.elements.length);
         /*var x =0 ;
         var nb_question = "question"+x;
@@ -71,21 +103,51 @@
             nb_question = "question"+x;
            
 		}
-        alert(document.forms.answerForm.elements.question0.value);*/
+        alert(document.forms[answerForm].elements[nb_question].value);*/
         //var selectFormElement = document.forms["answerForm"].elements[blablabl]; Vincent test cette syntaxe
-        var mustDo = document.getElementsByName("mustDo[]");
-        var retry = false;
-        for(var x = 0; x < mustDo.length; x++){
-            alert(mustDo[x].parentNode.children[1].children[0].value);
-            if(mustDo[x].parentNode.children[1].children[0].value ==""){
-               retry =true;
-               alert('retry = true loloololol');
-               break;
-            }
-        }
-        if(retry == false){
-            document.forms["answerForm"].submit();
+
+       
+        /*var splitquestion = document.forms.answerForm.elements[2].name.split("_");
+        var id_question = splitquestion[1];
+        var test_nb = 0;
+
+        while(test_nb != mustDo.length){
+            alert(document.forms.answerForm.elements[test_nb].name);
+            test_nb++;
         }
 
+        while(test_nb != mustDo.length){
+            try{
+                if(document.forms.answerForm.elements["question-" + id_question].value == "" && mustDo[test_nb].checked == true){
+                    retry = true;
+                    alert('retry = true loloololol');
+                    break;
+                } 
+            } catch {
+                alert("no value");        
+			}
+            id_question++;          
+            test_nb++;
+		}*/
+
+       /* 
+       var nb_val = 0;
+        var test_id = 0;
+        while(test_id != mustDo.length){
+            alert(nb_val);
+            if(typeof document.forms.answerForm.elements["question" + nb_val].value === "undefined"){
+
+               if( document.forms.answerForm.elements["question" + nb_val].value == "" && mustDo[nb_val].checked == true){
+
+                   retry =true;
+                   alert('retry = true loloololol');
+                   break;
+
+                } 
+                nb_val++;
+
+            }
+            test_id++;
+		}*/
     }
 </script>

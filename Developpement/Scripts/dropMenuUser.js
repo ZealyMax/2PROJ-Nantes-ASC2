@@ -1,13 +1,31 @@
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
+/* Lorsque l'utilisateur clique sur le bouton,
+bascule entre le masquage et l'affichage du contenu du menu déroulant */
 function dropMenuUser() {
     document.getElementById("droppedMenu").classList.toggle("show");
 }
 
-// Close the dropdown if the user clicks outside of it
+// Ferme le menu déroulant si l'utilisateur clique en dehors de celui-ci
 window.onclick = function (event) {
     if (!event.target.matches('.dropButton')) {
         var dropdowns = document.getElementsByClassName("dropdown-Content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+
+function dropMenuForm(idSurvey) {
+    var dropdown = "droppedMenuForm" + idSurvey;
+    document.getElementById(dropdown).classList.toggle("show");
+}
+
+window.onclick = function (event) {
+    if (!event.target.matches('.more')) {
+        var dropdowns = document.getElementsByClassName("dropdownFormContent");
         var i;
         for (i = 0; i < dropdowns.length; i++) {
             var openDropdown = dropdowns[i];

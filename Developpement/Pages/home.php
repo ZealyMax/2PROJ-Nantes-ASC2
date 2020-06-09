@@ -45,8 +45,7 @@ include "../Scripts/connect_database.php" ;?>
                     <div id='poubelle' >
                         <button id='b_poubelle'>Poubelle</button>
                     </div>
-                    <!--
-                    <button class=shareButton style="display:block;" onclick="shareForm()">Partager</button> <!-- TODO: enlever display:none   
+                    <!--<button class=shareButton style="display:block;" onclick="shareForm()">Partager</button>        A SUPPRIMER
                         <div class="share-popup" id="myForm">
                             <form action="/action_page.php" class="share-container">
                                 <h1>Partager</h1>
@@ -63,15 +62,14 @@ include "../Scripts/connect_database.php" ;?>
                                 <button type="button" class="btn cancel" onclick="closeShareForm()">Close</button>
                             </form>
                         </div>
-
-                    <div id='partage' class='partage'>
-                        <button id='b_partage'>Partager</button>
-                    </div>-->
+                        <div id='partage' class='partage'>
+                            <button id='b_partage'>Partager</button>
+                        </div>-->
                     <!--Bouton de tri des formulaires-->
                     <div class=home-Sort-Button> <!--Bouton de tri des formulaires-->
                         <select id="cars">
                           <option value="titre">Titre</option>
-                          <option value="date">Date</option>
+                          <option value="date" selected>Date</option>
                           <option value="perso">Personnalisé</option>
                         </select>
                     </div>
@@ -79,31 +77,52 @@ include "../Scripts/connect_database.php" ;?>
                     <!--Affichage des formulaires + bouton de création d'un formulaire-->
                     <div class=Select-Form-Section id=Select-Form-Section>
 
-                        <div class=parent-Form> <!--Bouton ajouter formulaire-->
-                            <div class=child-Form type="button" onclick="SessionSurvey(0)">
+                        <div class=parent-Form> <!--Bouton ajouter formulaire    style=\"background-color:red;\"-->
+                            <div class="child-Form createForm" type="button" onclick="SessionSurvey(0)">
                                 <div id=createForm>&nbsp;</div>
-                                <p>Cr&eacute;er un formulaire</p>
+                                <div id=underCreate>
+                                    <p>Cr&eacute;er un formulaire</p>
+                                </div>
                             </div>
                         </div>
                         <?php
-                            $sql = "SELECT title,id_surveys FROM surveys WHERE id_users = '$_SESSION[id_users]' ORDER BY order_surveys DESC";
+                            $sql = "SELECT title,id_surveys,DATE_FORMAT(date_ouverture, '%e %b %Y %k:%i') as date_ouverture FROM surveys WHERE id_users = '$_SESSION[id_users]' ORDER BY date_ouverture DESC;";
                             $res = mysqli_query($conn, $sql);
+                            date_default_timezone_set('Europe/Paris');
                             while ( $result = $res->fetch_assoc()){
+                                if(substr(substr($result['date_ouverture'],0,11),-1) == " "){
+                                    $dateOuverture = substr($result['date_ouverture'], 0, 10);
+                                }
+                                else {
+                                    $dateOuverture = substr($result['date_ouverture'], 0, 11);
+                                }
+                                if($dateOuverture == date('j M Y')){
+                                    $dateOuverture = substr($result['date_ouverture'], -5);
+                                }
+
                                 echo "<div id=\"". $result['id_surveys'] ."\" class=\"parent-Form\" draggable='true'>"; /*div extern des formulaires à sélectionner*/ 
-                                echo "<div class=\"child-Form\" type=\"button\" onclick=\"SessionSurvey(". $result['id_surveys'] .")\">"; /*div inside des formulaires à sélectionner*/
-                                echo "<div class=upperBtn></div>";
-                                echo "<p id=downBtn title='". $result['title'] . "'>". $result['title'] . "</p>";
-                                echo "</div>";
-                                echo "
-                                    <div>
-                                        <button class=\"more\" onclick=openMore()><img src=\"../../Design/icons/more/icon_more@4x.png\"></img></button>
-                                        <div>
-                                            <button onclick=\"wantToDelete('". $result['id_surveys'] ."')\"></button>
+                                echo "  <div class=\"child-Form\"  onclick=\"SessionSurvey(". $result['id_surveys'] .")\">"; /*div inside des formulaires à sélectionner*/
+                                echo "      <div class=upperBtn></div>
+
+                                            <div class=downBtn>
+                                                <div class=titleForm>
+                                                    <p title='". $result['title'] . "'>". $result['title'] . "</p>         <!--Titre du formulaires-->
+                                                </div>
+
+                                                <div class=moreInfoForm>
+                                                    <p title='". $dateOuverture . "'>". $dateOuverture . "</p>
+                                                    <div class=dropdownForm>
+                                                        <button class=\"more\" onclick=dropMenuForm(". $result['id_surveys'] .")></button>
+                                                        <div id=droppedMenuForm". $result['id_surveys'] ." class=dropdownFormContent>
+                                                            <button onclick=\"wantToDelete('". $result['id_surveys'] ."')\"></button>
+                                                            <button style=\"display:block;\" onclick=RemoveSurvey(". $result['id_surveys'] .")>SUPPRIMER</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>";
-                                echo "";
-                                echo "<button style='display:none;' onclick=RemoveSurvey(". $result['id_surveys'] .")></button>";#bouton remove #TEMP
-                                echo "</div>";
 					        }
                         ?>
                     </div>
@@ -149,8 +168,9 @@ include "../Scripts/connect_database.php" ;?>
                 <div class=parent-Form>\
                     <div class=child-Form type='button' onclick='SessionSurvey(0)'>\
                             <div id=createForm>&nbsp;</div>\
+                            <div id=underCreate>\
                             <p>Cr&eacute;er un formulaire</p>\
-                            </div>\
+                            </div></div>\
                         </div>" + data;
             }
         })

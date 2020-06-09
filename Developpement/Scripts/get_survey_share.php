@@ -2,6 +2,7 @@
     if(isset($_GET['survey'])){
         $sql = "SELECT question, id_questions, type, mustDo FROM questions WHERE id_surveys =". $_GET['survey'];
         $resQuestion = mysqli_query($conn, $sql);
+
         $i = 0;
         while ( $resultQuestion = $resQuestion ->fetch_assoc()){
             #Entête Question
@@ -11,16 +12,18 @@
             if($resultQuestion['type'] == "short"){                                    
                 echo "
                 <div class=question-content>
-                    <input name=question". $resultQuestion['id_questions']." placeholder=\"Réponse courte \">          
+                    <!-- <input type=hidden name=question[] value=". $resultQuestion['id_questions'] ."> -->
+                    <input name=question_". $resultQuestion['id_questions'] ."_". $resultQuestion['type'] ." placeholder=\"Réponse courte \">          
                 </div>";
+                
             }   
             #Paragraphe
             else if($resultQuestion['type'] == "long"){
                 echo "          
                 <div class=question-content>
-                    <textarea name=question".$i." placeholder=\"Réponse longue\" ></textarea> 
+                    <textarea name=question-".$resultQuestion['id_questions']. "-". $resultQuestion['type'] ." placeholder=\"Réponse longue\" ></textarea> 
                     
-                    <!-- <textarea name=question".$i." placeholder=\"Réponse longue\" ></textarea>   -->
+                    <!-- <textarea name=question".$i." placeholder=\"Réponse longue\" ></textarea> -->
 
                 </div>"; 
             }
@@ -35,8 +38,7 @@
                 while($resultSub = $resSub->fetch_assoc()){
                     echo "
                         <div>
-                        <input name=sub_questions[] type=hidden value='radio'>
-                        <input type=radio ><input name=question".$i.".".$y." placeholder='Option' value='". $resultSub['value'] ."' READONLY></div>";	  
+                        <input type=radio ><input name=question-".$resultQuestion['id_questions']."_".$resultQuestion['type']." placeholder='Option' value='". $resultSub['value'] ."' READONLY></div>";	  
                         $y++;
                 }
                 echo "</div>";
@@ -52,18 +54,18 @@
                 while($resultSub = $resSub->fetch_assoc()){
                     echo "
                     <div>
-                        <input name=sub_questions[] type=hidden value='checkbox'>
-                        <input type=checkbox ><input name=question".$i.".".$y." placeholder='Option' value='". $resultSub['value'] ."' READONLY></div>";
+                        <input type=checkbox ><input name=question-".$resultQuestion['id_questions'].".".$y." placeholder='Option' value='". $resultSub['value'] ."' READONLY></div>";
                         $y++;
                 }
                 echo "</div>";
             }
+            
             #liste
             else if($resultQuestion['type'] == "list"){
                 echo "
                 <div class=question-content>
                     <div>
-                    <select name=question".$i.">";
+                    <select name=question".$resultQuestion['id_questions'].">";
 
                 $sql = "SELECT value FROM sub_questions WHERE id_questions =". $resultQuestion['id_questions'];
                 $resSub = mysqli_query($conn, $sql);
@@ -109,7 +111,6 @@
                 while($resultSub = $resSub->fetch_assoc()){
                     echo "
                          <div>
-                            <input name=sub_questions[] type=hidden value='line'>
                             <input name=sub_questions[] placeholder='Colonne' value='". $resultSub['value'] ."'READONLY></div>";
                             $numberOfLines++;
                 }
@@ -120,8 +121,7 @@
                 while($resultSub = $resSub->fetch_assoc()){
                     echo "
                         <div>
-                        <input name=sub_questions[] type=hidden value='column-multiple'>
-                        <input name=sub_questions[] placeholder='Ligne' value='". $resultSub['value'] ."' READONLY></div>"; 
+                        <input name=question-". $resultQuestion['id_questions'] ." placeholder='Ligne' value='". $resultSub['value'] ."' READONLY></div>"; 
                     for ($y = 0; $y < $numberOfLines; $y++){
                         echo "<input type=radio>";           
 					}
@@ -139,8 +139,7 @@
                 while($resultSub = $resSub->fetch_assoc()){
                     echo "
                          <div>
-                            <input name=sub_questions[] type=hidden value='line'>
-                            <input name=sub_questions[] placeholder='Colonne' value='". $resultSub['value'] ."'READONLY></div>";
+                            <input name=question-". $resultQuestion['id_questions'] ." placeholder='Colonne' value='". $resultSub['value'] ."'READONLY></div>";
                 }
                 echo "</div>";
                  $sql = "SELECT value, type FROM sub_questions WHERE id_questions =". $resultQuestion['id_questions'] . " AND type = 'column-checkbox'";
@@ -149,8 +148,7 @@
                 while($resultSub = $resSub->fetch_assoc()){
                     echo "
                         <div>
-                        <input name=sub_questions[] type=hidden value='column-multiple'>
-                        <input name=sub_questions[] placeholder='Ligne' value='". $resultSub['value'] ."'READONLY></div>";
+                        <input name=question-". $resultQuestion['id_questions'] ." placeholder='Ligne' value='". $resultSub['value'] ."'READONLY></div>";
                         for ($y = 0; $y < $numberOfLines; $y++){
                             echo "<input type=checkbox>";           
 					    }
@@ -162,16 +160,14 @@
             else if($resultQuestion['type'] == "date"){                                    
                 echo "
                 <div class=question-content>
-                    <p>JJ / MM / YYYY</p>
-                    <input name=day><p>/</p><input name=month><p>/</p><input name=year>          
+                    <input name=question-". $resultQuestion['id_questions'] ."day placeholder=day><p>/</p><input name=month placeholder=month><p>/</p><input name=year placeholder=year>          
                 </div>";
             }  
             #Heure
             else if($resultQuestion['type'] == "hour"){                                    
                 echo "
                 <div class=question-content>
-                    <p>Heure</p>
-                    <input name=\"hour\"><p>:</p><input name=minutes>       
+                    <input name=question-". $resultQuestion['id_questions'] ."-heure placeholder=hour><p>:</p><input name=question-". $resultQuestion['id_questions'] ."-minutes placeholder=minutes>       
                 </div>";
             } 
             #Affichage des mustDo et fermeture des div

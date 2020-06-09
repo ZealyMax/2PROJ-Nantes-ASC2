@@ -12,8 +12,10 @@
             </div>
             <div class=contentQuestion>
                 <div class=module>
-                    <input class='btn-add' type=button value=+>
-                    <input name=submit type=submit value='Modifier le formulaire'>
+                    <div class=insideModule>
+                        <input class='btn-add' type=button value='&nbsp;'>
+                        <input class='btn-save' name=submit type=submit value='&nbsp;'>
+                    </div>
                 </div>
                 <div class=form>";
 
@@ -42,17 +44,17 @@
                         </select>
                    ";
             #Réponse Courte
-            if($resultQuestion['type'] == "short" || $resultQuestion['type'] == "date"  || $resultQuestion['type'] == "hour" ){                                    
+            if($resultQuestion['type'] == "short" ){                                    
                 echo "
                  <div class=question-content>
-                    <input name=\"short\" placeholder=\"Réponse courte \" READONLY>          
+                    <input class=short-answer name=\"short\" placeholder=\"Réponse courte \" READONLY>          
                 </div>";
             }   
             #Paragraphe
             else if($resultQuestion['type'] == "long"){
                 echo "          
                 <div class=question-content>
-                    <textarea name=\"long\" placeholder=\"Réponse longue\" READONLY></textarea>      
+                    <textarea class=long-answer name=\"long\" placeholder=\"Réponse longue\" READONLY></textarea>      
                 </div>"; 
             }
             #Choix Multiple
@@ -64,9 +66,9 @@
                 $resSub = mysqli_query($conn, $sql);
                 while($resultSub = $resSub->fetch_assoc()){
                     echo "
-                        <div>
+                        <div class=multiple-choice>
                         <input name=sub_questions[] type=hidden value='radio'>
-                        <input type=radio disabled><input name=sub_questions[] placeholder='Option' value='". $resultSub['value'] ."'><button class=rm-div>X</button></div>";	        
+                        <input class=check-button type=radio disabled><input class=check-name name=sub_questions[] placeholder='Option' value='". $resultSub['value'] ."'><button class=rm-div>X</button></div>";	        
                 }
                 echo "<button class=add-choice>Ajouter</button></div>"; 
             }
@@ -197,14 +199,28 @@
                 }
                 echo "<div><button class=add-column-multiple>Ajouter</button></div></div>"; 
             }  
+            #Date
+            if($resultQuestion['type'] == "date" ){
+                echo "
+                 <div class=question-content>
+                    <input class=short-answer name=\"short\" placeholder=\"Date \" READONLY>          
+                </div>";
+			}
+            #Hour
+            if($resultQuestion['type'] == "hour" ){
+                echo "
+                 <div class=question-content>
+                    <input class=short-answer name=\"short\" placeholder=\"Hour \" READONLY>          
+                </div>";
+			}
             #Affichage des mustDo
             if($resultQuestion['mustDo'] == 1){
-                echo  "<hr style=height:1px;border-width:0;color:gray;background-color:gray><div class=requiered-field><input type=hidden name=sub_questions[] value='new question'>
-                    <span>Obligatoire</span><input class=check-requiered name=mustDo[] type=checkbox value=". $i . " checked> <button class=rm-div>X</button></div></div>";
+                echo  "<hr class=requiered-bar><div class=requiered-field><input type=hidden name=sub_questions[] value='new question'>
+                    <p>Obligatoire</p><input class=check-requiered name=mustDo[] type=checkbox value=". $i . " checked><div class=vertical-bar>&nbsp;</div><div>&nbsp;</div> <button class=rm-div>X</button></div></div>";
             }
             else{
-                echo  "<hr style=height:0.5px;border-width:0;color:gray;background-color:gray><div class=requiered-field><input type=hidden name=sub_questions[] value='new question'>
-                    <span>Obligatoire</span><input class=check-requiered name=mustDo[] type=checkbox value=". $i . "> <button class=rm-div>X</button></div></div>";
+                echo  "<hr class=requiered-bar><div class=requiered-field><input type=hidden name=sub_questions[] value='new question'>
+                    <p>Obligatoire</p><input class=check-requiered name=mustDo[] type=checkbox value=". $i . "><div class=vertical-bar>&nbsp;</div><div>&nbsp;</div> <button class=rm-div>X</button></div></div>";
 			}
             $i++;                                                                          
         }

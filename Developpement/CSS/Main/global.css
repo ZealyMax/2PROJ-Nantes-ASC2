@@ -91,16 +91,16 @@ body, html {
 	cursor:pointer;
 }
 
-.dropdown {
+.dropdown, .dropdownForm {
 	position: relative;
 	display: inline-block;
 }
 
-.dropdown-Content {
+.dropdown-Content, .dropdownFormContent {
 	display: none;
 	position: absolute;
 	right: 0;
-	border-radius:3px;
+	border-radius: 3px;
 	background-color: #f1f1f1;
 	min-width: 160px;
 	overflow: auto;
