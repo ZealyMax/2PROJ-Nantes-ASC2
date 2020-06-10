@@ -3,19 +3,6 @@
 include('../Scripts/redirect_to_connection.php');
 include "../Scripts/connect_database.php" ;?>
 <html lang="fr">
-    <!--<style>
-        .question-div{
-            border: 2px solid #666666;
-	        background-color:blue;
-            -moz-user-select: none;
-            -khtml-user-select: none;
-            -webkit-user-select: none;
-            user-select: none;
-            /* Required to make elements draggable in old WebKit */
-            -khtml-user-drag: element;
-            -webkit-user-drag: element;
-		}
-    </style> -->
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=100%, initial-scale=1.0">
@@ -60,22 +47,22 @@ include "../Scripts/connect_database.php" ;?>
                     <button class=overview>
                         <!--A compléter-->
                     </button>
-                    <button class=shareButton style="display:block;" onclick="shareForm()">Partager</button> <!-- TODO: enlever display:none   -->
-                        <div class="share-popup" id="myForm">
-                            <form action="/action_page.php" class="share-container">
-                                <h1>Partager</h1>
 
+                    <div class=sharePopup id=myForm>
+                        <button class=shareButton onclick="shareForm()">Partager</button>
+
+                            <form action="/action_page.php" id=divContentToPopup class=divContentToPopup>
+                                <h1>Partager</h1>
                                 <input type="text" value="http://93.26.58.131/Final_Project/Developpement/Pages/survey_shared.php?survey=<?php echo $_SESSION['survey']?>" name="lien" disabled>
-                                <div  id="divContentToPopup">
-                                    <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-                                        <a class="a2a_button_email"></a>
-                                        <a class="a2a_button_facebook"></a>
-                                        <a class="a2a_button_twitter"></a>
-                                    </div>
+                                <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                                    <a class="a2a_button_email"></a>
+                                    <a class="a2a_button_facebook"></a>
+                                    <a class="a2a_button_twitter"></a>
                                 </div>
-                                <button type="button" class="btn cancel" onclick="closeShareForm()">Close</button>
+                                <button type="button" class="btn-cancel" onclick="closeShareForm()">Close</button>
                             </form>
-                        </div>
+                    </div>
+
                     <button class=burgerMenu>
                         <!--A compléter-->
                     </button>
@@ -121,19 +108,12 @@ include "../Scripts/connect_database.php" ;?>
         document.getElementById(tabName).style.display = "block";
         evt.currentTarget.className += " active";
     }
-    /*document.getElementById("defaultOpen").click();*/
-      
-    function shareForm() {
-    document.getElementById("myForm").style.display = "flex";
-    }
-
-    function closeShareForm() {
-    document.getElementById("myForm").style.display = "none";
-    }</script>
+</script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
 <script src='../Scripts/focusableQuestions.js'></script>
+<script src="../Scripts/dropMenuUser.js"></script>
 <script src='../Scripts/survey_editor.js'></script>
 <script src='../Scripts/drag_and_drop.js'></script>
 <script async src="https://static.addtoany.com/menu/page.js"></script>

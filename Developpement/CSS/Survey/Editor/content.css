@@ -182,7 +182,7 @@
 	right: 25%;
 	background-color: white;
 	box-shadow: 0 0 3px #B7ADA1;
-	border-radius: 5px;
+	border-radius: 8px;
 }
 
 .tabcontent form .container .contentQuestion .module .insideModule{
@@ -201,6 +201,7 @@
 	background-color:transparent;
 	background-repeat:no-repeat;
 	background-position:center;
+	margin:3px;
 }
 
 .tabcontent form .container .contentQuestion .module .insideModule input:hover{
@@ -208,7 +209,7 @@
 }
 
 .btn-add {
-	background-image: url("../../../../Design/icons/trasg/icon_trash@2x.png");
+	background-image: url("../../../../Design/icons/add/icon_add@2x.png");
 }
 
 .btn-save{

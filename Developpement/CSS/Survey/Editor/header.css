@@ -33,7 +33,7 @@
 	margin: 0;
 	width: 100%;
 	position: fixed;
-	z-index: 100;
+	z-index: 9;
 	background-color: #F08700;
 }
 
@@ -45,6 +45,7 @@
 .contentSecondHeader button{
 	margin:15px 20px;
 }
+
 /*#endregion Main*/
 
 /*#region Content*/
@@ -64,15 +65,13 @@
 	padding:5px 20px 5px 20px;
 	border-radius:5px;
 }
-.shareButton:hover  {
+.shareButton:hover, :focus {
 	background-color: #2980B9;
 	color: white;
 	cursor:pointer;
 	outline:none;
 }
-.shareButton:focus{
-	outline:none;
-}
+
 .burgerMenu {
 
 }
@@ -81,23 +80,13 @@
 
 
 /*#region Bouton Partage*/
-
-/* Pop-up = hidden par defaut */
-.share-popup {
-	display: none;
-	position: fixed;
-	top: 110px;
-	right: 50px;
-	box-shadow: 0px 0px 3px #B7ADA1;
-	border-radius: 8px;
-}
-
 /* Ajoute un style minimum au container */
-.share-container {
+.divContentToPopup {
 	max-width: 300px;
 	padding: 10px;
 	background-color: white;
 	border-radius: 8px;
+	z-index:100;
 }
 
 /*#endregion Bouton Partage*/
