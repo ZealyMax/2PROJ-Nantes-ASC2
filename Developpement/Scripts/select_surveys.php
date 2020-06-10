@@ -7,20 +7,18 @@
             
                 break;
         case 'date':  
-            $sql = "SELECT title,id_surveys,DATE_FORMAT(date_ouverture, '%e %b %Y %k:%i') as date_ouverture FROM surveys WHERE id_users = '$_SESSION[id_users]' ORDER BY date_ouverture;";
-            $res = mysqli_query($conn, $sql);
+            $sql = "SELECT title,id_surveys,DATE_FORMAT(date_ouverture, '%d %b %Y %k:%i') as date_ouverture FROM surveys WHERE id_users = '$_SESSION[id_users]' ORDER BY date_ouverture DESC;";            break;
             break;
-
         case "perso" :
             $sql = "SELECT title,id_surveys,DATE_FORMAT(date_ouverture, '%e %b %Y %k:%i') as date_ouverture FROM surveys WHERE id_users = '$_SESSION[id_users]' ORDER BY order_surveys;";
-            $res = mysqli_query($conn, $sql);
             break;
     }
     $res = mysqli_query($conn, $sql);
     date_default_timezone_set('Europe/Paris');
     while ( $result = $res->fetch_assoc()){
-        if(substr(substr($result['date_ouverture'],0,11),-1) == " "){
-            $dateOuverture = substr($result['date_ouverture'], 0, 10);
+    
+        if(substr($result['date_ouverture'],0,1) == "0"){
+            $dateOuverture = substr($result['date_ouverture'], 1, 11);
         }
         else {
             $dateOuverture = substr($result['date_ouverture'], 0, 11);

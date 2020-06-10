@@ -59,7 +59,6 @@ function handleDrop(e) {
 
 
     if(home_page == true && this.outerHTML ==poubelle.outerHTML){
-        alert("test");
         RemoveSurvey(dragSrcEl.id);
         //alert(dragSrcEl.id);
         // Supprimer la ligne grace a l'id

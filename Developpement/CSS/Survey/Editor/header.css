@@ -33,7 +33,7 @@
 	margin: 0;
 	width: 100%;
 	position: fixed;
-	z-index: 9;
+	z-index: 100;
 	background-color: #F08700;
 }
 
@@ -49,6 +49,7 @@
 /*#endregion Main*/
 
 /*#region Content*/
+/*#region Bouton Partage*/
 .overview, .burgerMenu {
 	background-color:transparent;
 	border:none;
@@ -76,19 +77,51 @@
 
 }
 
-/*#endregion Content*/
-
-
-/*#region Bouton Partage*/
 /* Ajoute un style minimum au container */
 .divContentToPopup {
-	max-width: 300px;
-	padding: 10px;
+	top:0;
+	left:0;
+	height:100%;
+	width:100%;
+	position:fixed;
+	background-color: rgba(0,0,0, .4);
+	z-index: 101;
+}
+
+.Popup{
+	height:50%;
+	width:30%;
+	position:fixed;
+	top:8%;
+	left:50%;
+	transform:translateX(-50%);
+}
+
+.popupContent {
+	display:flex;
+	flex-direction:column;
 	background-color: white;
-	border-radius: 8px;
-	z-index:100;
+	border-radius:8px;
+	height:100%;
+	width:100%;
+}
+
+.popupContentInside{
+	margin:50px;
+}
+
+.popupHead {
+	display: flex;
+	justify-content:space-between;
+}
+
+.linkToCopy{
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
 }
 
 /*#endregion Bouton Partage*/
+/*#endregion Content*/
 
 /*#endregion Sous-Header*/

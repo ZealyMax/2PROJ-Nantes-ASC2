@@ -123,8 +123,10 @@
 	margin-left:5px;
 	width:20px;
 }
-#Question .form .question-div .rm-div {
+#Question .form .question-div .rm-division {
 	border:0px;
+	margin:0px;
+	padding:0px;
 	background:none;
 }
 #Question .form .question-div .requiered-bar {
@@ -140,6 +142,7 @@
 
 
 /*Types de questions*/
+/*Réponses courtes*/
 #Question .form .question-div .short-answer{
 	margin-top:25px;
 	width:60%;
@@ -151,6 +154,7 @@
 	color:#70757a;
 	font-family: Arial,sans-serif;
 }
+/*Réponses longues*/
 #Question .form .question-div .long-answer {
 	width: 80%;
 	height: 21px;
@@ -164,16 +168,56 @@
 #Question .form .question-div .long-answer::placeholder {
 	color:#70757a;
 }
+/*Choix multiples, cases à cocher*/
 #Question .form .question-div .multiple-choice{
 	display:flex;
 	align-items:center;
+	margin-top:20px;
+	margin-bottom:20px;
+	height:20px;
 }
 #Question .form .question-div .multiple-choice .check-button {
 	margin: 0px;
-	width: 20px;
+	margin-left: 5px;
+	margin-right:5px;
+	width: 5%;
 }
 #Question .form .question-div .multiple-choice .check-name{
 	margin:0px;
+	padding:0px;
+	border:0px;
+	width:90%;
+	padding-bottom : 2px;
+}
+#Question .form .question-div .multiple-choice .check-name:hover{
+	border-bottom:1px solid #70757a;
+}
+#Question .form .question-div .multiple-choice .check-name:focus{
+	border-bottom:2px solid #004970;
+	color:black;
+	background:none;
+}
+.rm-option{
+	margin-left: 10px;
+	background:none;
+	border:0px;
+}
+.rm-option:hover{
+	background-color:#f0f0f0;
+	cursor:pointer;
+}
+
+/*Ajouter une option*/
+#Question .form .question-div .question-content .add-choice,.add-check,.add-list {
+	margin-left: 10px;
+	background:none;
+	border: 1px solid #f0f0f0;
+	border-radius:5px;
+	padding:2px 5px 2px 5px;
+}
+#Question .form .question-div .question-content .add-choice:hover,.add-check:hover,.add-list:hover {
+	background-color:#f0f0f0;
+	cursor:pointer;
 }
 /* Barre de droite qui ne bouge pas. Faire en fonction du temps qui nous reste une animation pour le scroll*/
 .tabcontent form .container .contentQuestion .module {

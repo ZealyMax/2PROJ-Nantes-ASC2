@@ -14,7 +14,6 @@ function shareForm() {
 }
 
 function closeShareForm() {
-    alert("test");
     var dropdowns = document.getElementsByClassName("divContentToPopup");
     var i;
     for (i = 0; i < dropdowns.length; i++) {
@@ -49,7 +48,7 @@ window.onclick = function (event) {
         }
     }
 
-    if (event.target.matches('.btn-cancel')) {
+    if (event.target.matches('.btn-close')) {
         closeShareForm();
     }
     console.log(event.target);

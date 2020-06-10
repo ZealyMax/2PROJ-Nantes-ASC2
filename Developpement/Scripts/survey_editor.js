@@ -5,7 +5,7 @@ $(".btn-add").on('click', function () {
     var string = "\
     <div class=question-div draggable='true'>     \
         <input name = question[] placeholder =\"Question\"> \
-        <select name=selectType[] class=selector> \
+        <select select-choice name=selectType[]> \
             <option value=\"short\">Réponse courte</option>\
             <option value=\"long\">Paragraphe</option>\
             <option value=\"multiple\">Choix multiple</option>\
@@ -19,7 +19,7 @@ $(".btn-add").on('click', function () {
         </select>\
         <div class=question-content>\
             <input name=\"short\" placeholder=\"Réponse courte\" READONLY>    \
-        </div>  <input name=mustDo[] type=checkbox value= " + i + ">  <p>Obligatoire</p><button class=rm-div>X</button> \
+        </div>  <input name=mustDo[] type=checkbox value= " + i + ">  <p>Obligatoire</p><div><button class=rm-div>X</button></div> \
         <input type=hidden name=sub_questions[] value='new question'>\
     </div>";
 
@@ -32,8 +32,8 @@ $(".btn-add").on('click', function () {
 $(document).on('click', '.add-choice', function () {
     var string = "\
     <div>\
-        <input name=sub_questions[] type=hidden value='radio'>\
-        <input type=radio disabled><input name=sub_questions[] placeholder=Option><div><button class=rm-div>X</button></div>\
+        <div><input name=sub_questions[] type=hidden value='radio'>\
+        <input type=radio disabled><input name=sub_questions[] placeholder=Option><button class=rm-div>X</button></div>\
     </div><button class=add-choice>Ajouter</button>";
     $(this).parent().append(string);
     $(this).remove();
@@ -42,8 +42,8 @@ $(document).on('click', '.add-choice', function () {
 $(document).on('click', '.add-check', function () {
     var string = "\
     <div>\
-        <input name=sub_questions[] type=hidden value='checkbox'>\
-        <input type=checkbox disabled><input name=sub_questions[] placeholder=Option><div><button class=rm-div>X</button></div>\
+        <div><input name=sub_questions[] type=hidden value='checkbox'>\
+        <input type=checkbox disabled><input name=sub_questions[] placeholder=Option><button class=rm-div>X</button></div>\
     </div><button class=add-check>Ajouter</button>";
     $(this).parent().append(string);
     $(this).remove();
@@ -52,8 +52,8 @@ $(document).on('click', '.add-check', function () {
 $(document).on('click', '.add-list', function () {
     var string = "\
     <div>\
-        <input name=sub_questions[] type=hidden value='list'>\
-        <input name=sub_questions[] placeholder=Option><div><button class=rm-div>X</button></div>\
+        <div><input name=sub_questions[] type=hidden value='list'>\
+        <input name=sub_questions[] placeholder=Option><button class=rm-div>X</button></div>\
     </div><button class=add-list>Ajouter</button>";
     $(this).parent().append(string);
     $(this).remove();
@@ -62,8 +62,8 @@ $(document).on('click', '.add-list', function () {
 $(document).on('click', '.add-line', function () {
     var string = "\
     <div>\
-        <input name=sub_questions[] type=hidden value='line'>\
-        <input name=sub_questions[] placeholder=Ligne><div><button class=rm-div>X</button></div>\
+        <div><input name=sub_questions[] type=hidden value='line'>\
+        <input name=sub_questions[] placeholder=Ligne><button class=rm-div>X</button></div>\
     </div><button class=add-line>Ajouter</button>";
     $(this).parent().append(string);
     $(this).remove();
@@ -72,8 +72,8 @@ $(document).on('click', '.add-line', function () {
 $(document).on('click', '.add-column-multiple', function () {
     var string = "\
     <div>\
-        <input name=sub_questions[] type=hidden value='column-multiple'>\
-        <input type=radio disabled><input name=sub_questions[] placeholder=Colonne><div><button class=rm-div>X</button></div>\
+        <div><input name=sub_questions[] type=hidden value='column-multiple'>\
+        <input type=radio disabled><input name=sub_questions[] placeholder=Colonne><button class=rm-div>X</button></div>\
     </div><button class=add-column-multiple>Ajouter</button>";
     $(this).parent().append(string);
     $(this).remove();
@@ -82,8 +82,8 @@ $(document).on('click', '.add-column-multiple', function () {
 $(document).on('click', '.add-column-checkbox', function () {
     var string = "\
     <div>\
-        <input name=sub_questions[] type=hidden value='column-checkbox'>\
-        <input type=checkbox disabled><input name=sub_questions[] placeholder=Colonne><div><button class=rm-div>X</button></div>\
+        <div><input name=sub_questions[] type=hidden value='column-checkbox'>\
+        <input type=checkbox disabled><input name=sub_questions[] placeholder=Colonne><button class=rm-div>X</button></div>\
     </div><button class=add-column-checkbox>Ajouter</button>";
     $(this).parent().append(string);
     $(this).remove();
@@ -93,7 +93,7 @@ $(document).on('click', '.rm-div', function () {
     $(this).parent().parent().remove();
 });
 
-$(document).on('change', '.selector', function () {
+$(document).on('change', '.select-choice', function () {
     if ($(this).children('option:selected').val() == "short") {
         $(this).parent(".question-div").children(".question-content").html("<input placeholder='Réponse courte' READONLY>");
     };

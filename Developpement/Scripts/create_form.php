@@ -32,21 +32,22 @@
         $mustDoArray = [];
         if(isset($_POST['mustDo'])){
             for($i = 0; $i < count($_POST['mustDo']); $i++){  
-                $mustDo = $_POST['mustDo'][$i];
+                
                 if (isset($mustDoPrevious)){
-                    for($y = 0; $y < $mustDo - $mustDoPrevious-1; $y++){
+                    for($y = $mustDoPrevious+10; $y < $_POST['mustDo'][$i]; $y++){
                         array_push($mustDoArray, 0);  
 			        }
                 }
                 else{
-                    for($y = 0; $y < $mustDo; $y++){
+                    for($y = 0; $y < $_POST['mustDo'][$i]; $y++){
                         array_push($mustDoArray, 0);  
 			        }
 			    }
                 array_push($mustDoArray, 1);  
-                $mustDoPrevious = $mustDo;
+                $mustDoPrevious = $_POST['mustDo'][$i];
             }
         }
+        //print_r($mustDoArray);
         
 
         if(isset($_POST['question'])){
@@ -97,4 +98,4 @@
         header('location:../Pages/home.php');   
     }
 ?>
-
+<!--<a href=../Pages/home.php>Next</a>->

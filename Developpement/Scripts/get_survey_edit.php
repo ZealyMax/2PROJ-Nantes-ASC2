@@ -30,10 +30,10 @@
             //echo "<h1>test</h1>"
             echo "<div class='question-div' draggable='true'>
                         <input class=question-title name=question[] value='". $resultQuestion['question'] ."'>
-                        <select class=select-choice name=selectType[] class=selector>  
+                        <select class=select-choice name=selectType[]>  
                             <option value=\"short\""; if ($resultQuestion['type'] == "short") echo 'selected'; echo">Réponse courte</option>
                             <option value=\"long\""; if ($resultQuestion['type'] == "long") echo 'selected' ;echo">Paragraphe</option>
-                            <option value=\"multiple\""; if ($resultQuestion['type'] == "multiple") echo 'selected' ;echo">Choix multiple</option>
+                            <!--<option value=\"multiple\""; if ($resultQuestion['type'] == "multiple") echo 'selected' ;echo">Choix multiple</option>-->
                             <option value=\"checkbox\""; if ($resultQuestion['type'] == "checkbox") echo 'selected' ;echo">Case à cocher</option>
                             <option value=\"list\""; if ($resultQuestion['type'] == "list") echo 'selected' ;echo">Liste déroulante</option>
                             <option value=\"linear-scale\""; if ($resultQuestion['type'] == "linear-scale") echo 'selected' ;echo">Echelle linéaire</option>
@@ -46,7 +46,7 @@
             #Réponse Courte
             if($resultQuestion['type'] == "short" ){                                    
                 echo "
-                 <div class=question-content>
+                <div class=question-content>
                     <input class=short-answer name=\"short\" placeholder=\"Réponse courte \" READONLY>          
                 </div>";
             }   
@@ -68,9 +68,9 @@
                     echo "
                         <div class=multiple-choice>
                         <input name=sub_questions[] type=hidden value='radio'>
-                        <input class=check-button type=radio disabled><input class=check-name name=sub_questions[] placeholder='Option' value='". $resultSub['value'] ."'><button class=rm-div>X</button></div>";	        
+                        <input class=check-button type=radio disabled><input class=check-name name=sub_questions[] placeholder='Option' value='". $resultSub['value'] ."'><div><button class='rm-div rm-option'>X</button></div></div>";	        
                 }
-                echo "<button class=add-choice>Ajouter</button></div>"; 
+                echo "<button class=add-choice>Ajouter une option</button></div>"; 
             }
             #Case à cocher
             else if($resultQuestion['type'] == "checkbox"){
@@ -81,11 +81,11 @@
                 $resSub = mysqli_query($conn, $sql);
                 while($resultSub = $resSub->fetch_assoc()){
                     echo "
-                    <div>
+                    <div class=multiple-choice>
                         <input name=sub_questions[] type=hidden value='checkbox'>
-                        <input type=checkbox disabled><input name=sub_questions[] placeholder='Option' value='". $resultSub['value'] ."'><button class=rm-div>X</button></div>";
+                        <input class=check-button type=checkbox disabled><input class=check-name name=sub_questions[] placeholder='Option' value='". $resultSub['value'] ."'><div><button class='rm-div rm-option'>X</button></div></div>";
                 }
-                echo "<button class=add-check>Ajouter</button></div>"; 
+                echo "<button class=add-check>Ajouter une option</button></div>"; 
             }
             #liste
             else if($resultQuestion['type'] == "list"){
@@ -98,9 +98,9 @@
                     echo "
                     <div>
                         <input name=sub_questions[] type=hidden value='list'>
-                        <input name=sub_questions[] placeholder='Option' value='". $resultSub['value'] ."'><button class=rm-div>X</button></div>";
+                        <input name=sub_questions[] placeholder='Option' value='". $resultSub['value'] ."'><div><button class=rm-div>X</button></div></div>";
                 }
-                echo "<button class=add-list>Ajouter</button></div>"; 
+                echo "<button class=add-list>Ajouter une option</button></div>"; 
             }
             #échelle linéaire
             else if($resultQuestion['type'] == "linear-scale"){
@@ -157,7 +157,7 @@
                      echo "
                          <div>
                             <input name=sub_questions[] type=hidden value='line'>
-                            <input name=sub_questions[] placeholder='Ligne' value='". $resultSub['value'] ."'><button class=rm-div>X</button></div>";
+                            <input name=sub_questions[] placeholder='Ligne' value='". $resultSub['value'] ."'><div><button class=rm-div>X</button></div></div>";
                 }
                 echo "</div><button class=add-line>Ajouter</button></div>
                       <div class=column>";
@@ -168,7 +168,7 @@
                     echo "
                         <div>
                         <input type=radio disabled><input name=sub_questions[] type=hidden value='column-multiple'>
-                        <input name=sub_questions[] placeholder='Colonne' value='". $resultSub['value'] ."'><button class=rm-div>X</button></div>";
+                        <input name=sub_questions[] placeholder='Colonne' value='". $resultSub['value'] ."'><div><button class=rm-div>X</button></div></div>";
                 }
                 echo "<div><button class=add-column-multiple>Ajouter</button></div></div>"; 
             }   
@@ -184,7 +184,7 @@
                      echo "
                          <div>
                             <input name=sub_questions[] type=hidden value='line'>
-                            <input name=sub_questions[] placeholder='Ligne' value='". $resultSub['value'] ."'><button class=rm-div>X</button></div>";
+                            <input name=sub_questions[] placeholder='Ligne' value='". $resultSub['value'] ."'><div><button class=rm-div>X</button></div></div>";
                 }
                 echo "</div><button class=add-line>Ajouter</button></div>
                       <div class=column>";
@@ -195,7 +195,7 @@
                     echo "
                         <div>
                         <input type=checkbox disabled><input name=sub_questions[] type=hidden value='column-checkbox'>
-                        <input name=sub_questions[] placeholder='Colonne' value='". $resultSub['value'] ."'><button class=rm-div>X</button></div>";
+                        <input name=sub_questions[] placeholder='Colonne' value='". $resultSub['value'] ."'><div><button class=rm-div>X</button></div></div>";
                 }
                 echo "<div><button class=add-column-multiple>Ajouter</button></div></div>"; 
             }  
@@ -216,11 +216,11 @@
             #Affichage des mustDo
             if($resultQuestion['mustDo'] == 1){
                 echo  "<hr class=requiered-bar><div class=requiered-field><input type=hidden name=sub_questions[] value='new question'>
-                    <p>Obligatoire</p><input class=check-requiered name=mustDo[] type=checkbox value=". $i . " checked><div class=vertical-bar>&nbsp;</div><div>&nbsp;</div> <button class=rm-div>X</button></div></div>";
+                    <p>Obligatoire</p><input class=check-requiered name=mustDo[] type=checkbox value=". $i . " checked><div class=vertical-bar>&nbsp;</div><div>&nbsp;</div> <button class='rm-div rm-division'>X</button></div></div>";
             }
             else{
                 echo  "<hr class=requiered-bar><div class=requiered-field><input type=hidden name=sub_questions[] value='new question'>
-                    <p>Obligatoire</p><input class=check-requiered name=mustDo[] type=checkbox value=". $i . "><div class=vertical-bar>&nbsp;</div><div>&nbsp;</div> <button class=rm-div>X</button></div></div>";
+                    <p>Obligatoire</p><input class=check-requiered name=mustDo[] type=checkbox value=". $i . "><div class=vertical-bar>&nbsp;</div><div>&nbsp;</div> <button class='rm-div rm-division'>X</button></div></div>";
 			}
             $i++;                                                                          
         }

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <?php  
 include('../Scripts/redirect_to_connection.php');
-include "../Scripts/connect_database.php" ;?>
+include "../Scripts/connect_database.php" ;
+?>
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
@@ -13,6 +14,26 @@ include "../Scripts/connect_database.php" ;?>
     </head>
     <body>
         <div class=Main>
+            <div action="/action_page.php" id=divContentToPopup class=divContentToPopup>
+                <div class=Popup>
+                    <div class=popupContent>
+                        <div class=popupContentInside>
+                            <div class=popupHead>
+                                <h1>Envoyer le formulaire</h1>
+                                <button type="button" class="btn-close" onclick="closeShareForm()">Close</button>
+                            </div>
+                            <p class=linkToCopy title="http://93.26.58.131/Final_Project/Developpement/Pages/survey_shared.php?survey=<?php echo $_SESSION['survey']?>">
+                                http://93.26.58.131/Final_Project/Developpement/Pages/survey_shared.php?survey=<?php echo $_SESSION['survey']?>
+                            <p>
+                            <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                                <a class="a2a_button_email"></a>
+                                <a class="a2a_button_facebook"></a>
+                                <a class="a2a_button_twitter"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class=Header>
                 <div class=contentHead>
                     <a href=home.php class=Logo><!--Partie gauche du Header, logo + texte-->
@@ -49,18 +70,9 @@ include "../Scripts/connect_database.php" ;?>
                     </button>
 
                     <div class=sharePopup id=myForm>
-                        <button class=shareButton onclick="shareForm()">Partager</button>
+                        <button onclick="shareForm()" class=shareButton>Partager</button>
 
-                            <form action="/action_page.php" id=divContentToPopup class=divContentToPopup>
-                                <h1>Partager</h1>
-                                <input type="text" value="http://93.26.58.131/Final_Project/Developpement/Pages/survey_shared.php?survey=<?php echo $_SESSION['survey']?>" name="lien" disabled>
-                                <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-                                    <a class="a2a_button_email"></a>
-                                    <a class="a2a_button_facebook"></a>
-                                    <a class="a2a_button_twitter"></a>
-                                </div>
-                                <button type="button" class="btn-cancel" onclick="closeShareForm()">Close</button>
-                            </form>
+                        
                     </div>
 
                     <button class=burgerMenu>
