@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  ven. 12 juin 2020 à 00:08
+-- Généré le :  ven. 12 juin 2020 à 00:41
 -- Version du serveur :  10.4.11-MariaDB
 -- Version de PHP :  7.4.1
 
@@ -33,34 +33,20 @@ CREATE TABLE `answers` (
   `id_surveys` int(25) NOT NULL,
   `id_questions` int(25) NOT NULL,
   `id_sub_questions` int(25) NOT NULL,
-  `answer` varchar(100) NOT NULL,
-  `number_answer_sheet` int(25) NOT NULL
+  `id_answer_sheets` int(25) NOT NULL,
+  `answer` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Déchargement des données de la table `answers`
+-- Structure de la table `answer_sheets`
 --
 
-INSERT INTO `answers` (`id_answers`, `id_surveys`, `id_questions`, `id_sub_questions`, `answer`, `number_answer_sheet`) VALUES
-(23, 115, 602, 0, ' fds', 1),
-(24, 115, 603, 0, ' fds', 1),
-(25, 115, 605, 0, ' LD1', 1),
-(26, 115, 606, 0, ' 5', 1),
-(27, 115, 609, 0, ' 2020-06-01', 1),
-(28, 115, 610, 0, ' 22:22', 1),
-(29, 115, 602, 0, ' fds', 2),
-(30, 115, 603, 0, ' fds', 2),
-(31, 115, 604, 3151, 'CaC1', 2),
-(32, 115, 604, 3152, 'CaC2', 2),
-(33, 115, 605, 0, ' LD1', 2),
-(34, 115, 606, 0, ' 5', 2),
-(35, 115, 607, 3157, 'GaCM C1_GaCM L1', 2),
-(36, 115, 607, 3158, 'GaCM C2_GaCM L2', 2),
-(37, 115, 608, 3161, 'GaCM C2_GaCaC L1', 2),
-(38, 115, 608, 3162, 'GaCM C2_GaCaC L2', 2),
-(39, 115, 609, 0, ' 2020-06-01', 2),
-(40, 115, 610, 0, ' 22:22', 2),
-(41, 115, 611, 3165, 'CM1', 2);
+CREATE TABLE `answer_sheets` (
+  `id_answer_sheets` int(25) NOT NULL,
+  `id_surveys` int(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -253,14 +239,23 @@ INSERT INTO `users` (`id_users`, `login`, `password`) VALUES
 --
 ALTER TABLE `answers`
   ADD PRIMARY KEY (`id_answers`),
-  ADD UNIQUE KEY `id_answers` (`id_answers`);
+  ADD KEY `id_answers_answer_sheets` (`id_answer_sheets`),
+  ADD KEY `id_answers_surveys` (`id_surveys`),
+  ADD KEY `id_answers_questions` (`id_questions`),
+  ADD KEY `id_answers_sub_questions` (`id_sub_questions`);
+
+--
+-- Index pour la table `answer_sheets`
+--
+ALTER TABLE `answer_sheets`
+  ADD PRIMARY KEY (`id_answer_sheets`),
+  ADD KEY `id_answer_sheets_surveys` (`id_surveys`);
 
 --
 -- Index pour la table `questions`
 --
 ALTER TABLE `questions`
   ADD PRIMARY KEY (`id_questions`),
-  ADD UNIQUE KEY `id_questions` (`id_questions`),
   ADD KEY `fk_id_question_id_survey` (`id_surveys`);
 
 --
@@ -268,7 +263,6 @@ ALTER TABLE `questions`
 --
 ALTER TABLE `sub_questions`
   ADD PRIMARY KEY (`id_sub_questions`),
-  ADD UNIQUE KEY `id_sub_questions` (`id_sub_questions`),
   ADD KEY `id_sub_quesitions_id_questions` (`id_questions`);
 
 --
@@ -276,7 +270,6 @@ ALTER TABLE `sub_questions`
 --
 ALTER TABLE `surveys`
   ADD PRIMARY KEY (`id_surveys`),
-  ADD UNIQUE KEY `id_formulaires` (`id_surveys`),
   ADD KEY `fk_id_users_surveys` (`id_users`);
 
 --
@@ -294,7 +287,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id_answers` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_answers` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
+-- AUTO_INCREMENT pour la table `answer_sheets`
+--
+ALTER TABLE `answer_sheets`
+  MODIFY `id_answer_sheets` int(25) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `questions`
@@ -323,6 +322,21 @@ ALTER TABLE `users`
 --
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `answers`
+--
+ALTER TABLE `answers`
+  ADD CONSTRAINT `id_answers_answer_sheets` FOREIGN KEY (`id_answer_sheets`) REFERENCES `answer_sheets` (`id_answer_sheets`),
+  ADD CONSTRAINT `id_answers_questions` FOREIGN KEY (`id_questions`) REFERENCES `questions` (`id_questions`),
+  ADD CONSTRAINT `id_answers_sub_questions` FOREIGN KEY (`id_sub_questions`) REFERENCES `sub_questions` (`id_sub_questions`),
+  ADD CONSTRAINT `id_answers_surveys` FOREIGN KEY (`id_surveys`) REFERENCES `surveys` (`id_surveys`);
+
+--
+-- Contraintes pour la table `answer_sheets`
+--
+ALTER TABLE `answer_sheets`
+  ADD CONSTRAINT `id_answer_sheets_surveys` FOREIGN KEY (`id_surveys`) REFERENCES `surveys` (`id_surveys`);
 
 --
 -- Contraintes pour la table `questions`
