@@ -25,7 +25,13 @@ $(".btn-add").on('click', function () {
 
     $(".form").append(string);
     i += 1;
+});
 
+
+$(".btn-del").on('click', function () {
+    /*RemoveSurvey(this.id);*/
+    alert("A formulaire has been executed");
+    window.location.href = "../Pages/home.php";
 });
 
 

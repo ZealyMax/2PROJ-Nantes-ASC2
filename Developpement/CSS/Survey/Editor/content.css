@@ -150,10 +150,7 @@
 	font-family: Arial,sans-serif;
 	font-size:13px;
 }
-#Question .form .question-div .short-answer::placeholder {
-	color:#70757a;
-	font-family: Arial,sans-serif;
-}
+
 /*Réponses longues*/
 #Question .form .question-div .long-answer {
 	width: 80%;
@@ -165,10 +162,17 @@
 	font-size:13px;
 	border-bottom: 1px solid #BFC2C7;
 }
-#Question .form .question-div .long-answer::placeholder {
+
+/*Réponses courtes et longues #placeholder et focus */
+#Question .form .question-div .short-answer::placeholder,.long-answer::placeholder {
 	color:#70757a;
+	font-family: Arial,sans-serif;
 }
-/*Choix multiples, cases à cocher*/
+#Question .form .question-div .short-answer:focus,.long-answer:focus {
+	background:none;
+}
+
+/*Choix multiples, cases à cocher, listes déroulantes, grilles*/
 #Question .form .question-div .multiple-choice{
 	display:flex;
 	align-items:center;
@@ -189,8 +193,24 @@
 	width:90%;
 	padding-bottom : 2px;
 }
+#Question .form .question-div .multiple-choice .check-namelist {
+	margin:0px;
+	padding:0px;
+	border:0px;
+	width:95%;
+	padding-bottom : 2px;
+}
+
+#Question .form .question-div .multiple-choice .check-namelist:hover{
+	border-bottom:1px solid #70757a;
+}
 #Question .form .question-div .multiple-choice .check-name:hover{
 	border-bottom:1px solid #70757a;
+}
+#Question .form .question-div .multiple-choice .check-namelist:focus{
+	border-bottom:2px solid #004970;
+	color:black;
+	background:none;
 }
 #Question .form .question-div .multiple-choice .check-name:focus{
 	border-bottom:2px solid #004970;
@@ -207,19 +227,34 @@
 	cursor:pointer;
 }
 
+/*Listes déroulantes*/
+#Question .form .question-div .multiple-choice .margin-list{
+	margin-left:10px;
+}
+
+/*Echelle linéaire*/
+#Question .form .question-div .select-linear{
+	background-color:white;
+	padding:3px;
+	border-radius:5px;
+	color:black;
+}
+
+
+
 /*Ajouter une option*/
-#Question .form .question-div .question-content .add-choice,.add-check,.add-list {
+#Question .form .question-div .question-content .add-choice,.add-check,.add-list,.add-line,.add-column-multiple {
 	margin-left: 10px;
 	background:none;
 	border: 1px solid #f0f0f0;
 	border-radius:5px;
 	padding:2px 5px 2px 5px;
 }
-#Question .form .question-div .question-content .add-choice:hover,.add-check:hover,.add-list:hover {
+#Question .form .question-div .question-content .add-choice:hover,.add-check:hover,.add-list:hover,.add-line:hover,.add-column-multiple:hover {
 	background-color:#f0f0f0;
 	cursor:pointer;
 }
-/* Barre de droite qui ne bouge pas. Faire en fonction du temps qui nous reste une animation pour le scroll*/
+/* Module d'edition. Faire en fonction du temps qui nous reste une animation pour le scroll*/
 .tabcontent form .container .contentQuestion .module {
 	position: fixed;
 	top: 250px;
@@ -260,8 +295,9 @@
 	background-image: url("../../../../Design/icons/save/icon_save@2x.png");
 }
 
-.btn-delete{
-	background-image: url("../../../../Design/icons/trash/icon_trash@2x.png");
+.btn-del {
+	background-image: url("../../../../Design/icons/trash/icon_trash@2x.png");/*RAJOUTER AUX DOSSIERS IMAGE TRASH*/
+	background-image:none;
 }
 
 #Reponse {

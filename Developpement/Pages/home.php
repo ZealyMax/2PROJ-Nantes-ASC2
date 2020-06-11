@@ -60,7 +60,7 @@ include "../Scripts/connect_database.php" ;?>
                             <div class="child-Form createForm" type="button" onclick="SessionSurvey(0)">
                                 <div id=createForm>&nbsp;</div>
                                 <div id=underCreate>
-                                    <p>Cr&eacute;er un formulaire</p>
+                                    <p id=createTextForm>Cr&eacute;er un formulaire</p>
                                 </div>
                             </div>
                         </div>
@@ -126,9 +126,6 @@ include "../Scripts/connect_database.php" ;?>
     <script src='../Scripts/drag_and_drop.js'></script>
     <script src='../Scripts/homeDesign.js'></script>
     <script>
-window.onclick = function (event) {
-        console.log(event.target);
-        }
     function SessionSurvey(id){
         window.onclick = function (event) {
             if (event.target.matches('.more') || event.target.matches('.dropdownFormContent')) {
@@ -141,9 +138,25 @@ window.onclick = function (event) {
                         window.location.href = "survey_editor.php";
                     }
                 })
-            }else if(event.target.matches('#createForm') || event.target.matches('#underCreate')){
-	            SessionSurvey(0);
+            }else if(event.target.matches('#createForm') || event.target.matches('#underCreate') || event.target.matches('#createTextForm')){
+	            $.ajax({
+                    type: 'POST',
+                    url: '../Scripts/session_survey.php',
+                    data:{action: 0},
+                    success:function(data) {
+                        window.location.href = "survey_editor.php";
+                    }
+                })
+            }else{
+                var dropdowns = document.getElementsByClassName("dropdownFormContent");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
             }
+        }
+			}
         }
 
     }

@@ -8,6 +8,7 @@ include "../Scripts/connect_database.php" ;
         <meta charset="UTF-8">
         <meta name="viewport" content="width=100%, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../CSS/Main/global.css">
+        <link rel="stylesheet" type="text/css" href="../CSS/Survey/Analyser/analyserContent.css">
         <link rel="stylesheet" type="text/css" href="../CSS/Survey/Editor/header.css">
         <link rel="stylesheet" type="text/css" href="../CSS/Survey/Editor/content.css">
         <title>créer un formulaire</title>

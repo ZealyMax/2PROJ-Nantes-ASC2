@@ -3,6 +3,7 @@ Design :
 	- Survey Shared : bas de page, barre de progression (indique à l'utilisateur où il en est dans le formulaire)
 	- Bouton supprimer Form directement sur la Home page (+ date d'ouverture)
 	- Design 404
+	- Supprimer footer dans global.css et home.php
 	
 Développement :
 

@@ -33,7 +33,7 @@
 	margin: 0;
 	width: 100%;
 	position: fixed;
-	z-index: 100;
+	z-index: 99;
 	background-color: #F08700;
 }
 
@@ -113,12 +113,29 @@
 .popupHead {
 	display: flex;
 	justify-content:space-between;
+	background-color: rebeccapurple;
+}
+
+.popupHead h1{
+	font-size:24px;
 }
 
 .linkToCopy{
 	overflow:hidden;
 	white-space:nowrap;
 	text-overflow:ellipsis;
+}
+
+.btn-close{
+	border:none;
+	border-radius:15px;
+	width:30px;
+	height:30px;
+	background-color:transparent;
+}
+
+.btn-close:hover {
+	background-color:#f0f0f0;
 }
 
 /*#endregion Bouton Partage*/

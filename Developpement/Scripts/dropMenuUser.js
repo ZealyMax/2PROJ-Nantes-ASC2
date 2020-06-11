@@ -51,5 +51,4 @@ window.onclick = function (event) {
     if (event.target.matches('.btn-close')) {
         closeShareForm();
     }
-    console.log(event.target);
 }

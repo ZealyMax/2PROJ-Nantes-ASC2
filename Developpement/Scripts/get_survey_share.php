@@ -2,18 +2,27 @@
     if(isset($_GET['survey'])){
         $sql = "SELECT question, id_questions, type, mustDo FROM questions WHERE id_surveys =". $_GET['survey'];
         $resQuestion = mysqli_query($conn, $sql);
-
         $i = 0;
         while ( $resultQuestion = $resQuestion ->fetch_assoc()){
+
+/*
+*****
+*********
+            Penser à supprimer tous les commentaires inutiles (HTML & PHP compris)
+*********
+*****
+*/
+
             #Entête Question
             echo "<div class=question-div>  
-                    <input value='". $resultQuestion['question'] ."' READONLY>";
+                    <input class=question-title value='". $resultQuestion['question'] ."' READONLY>";
+
             #Réponse Courte
             if($resultQuestion['type'] == "short"){                                    
                 echo "
                 <div class=question-content>
                     <!-- <input type=hidden name=question[] value=". $resultQuestion['id_questions'] ."> -->
-                    <input name=question_". $resultQuestion['id_questions'] ."_". $resultQuestion['type'] ." placeholder=\"Réponse courte \">          
+                    <input class='Underline reponseCourte' name=question_". $resultQuestion['id_questions'] ."_". $resultQuestion['type'] ." placeholder=\"Réponse courte \">
                 </div>";
                 
             }   
@@ -64,7 +73,7 @@
                 echo "
                 <div class=question-content>
                     <div>
-                    <select name=question_".$resultQuestion['id_questions'].">";
+                    <select name=question_".$resultQuestion['id_questions']."_". $resultQuestion['type'].">";
 
                 $sql = "SELECT id_sub_questions, type, value FROM sub_questions WHERE id_questions =". $resultQuestion['id_questions'];
                 $resSub = mysqli_query($conn, $sql);
@@ -171,12 +180,13 @@
             #Affichage des mustDo et fermeture des div
             if($resultQuestion['mustDo'] == 1){
                 echo  "
-                    <input name=mustDo[] type=checkbox value=". $i . " checked disabled>  <input placeholder=Obligatoire READONLY></div>";
+                    <input name=mustDo[] type=checkbox value=". $i . " checked disabled>  <input placeholder=Obligatoire READONLY>";
             }
             else{
                  echo  "
-                     <input name=mustDo[] type=checkbox value=". $i . " disabled>  <input placeholder=Obligatoire READONLY></div>";
+                     <input name=mustDo[] type=checkbox value=". $i . " disabled>  <input placeholder=Obligatoire READONLY>";
 			}
+            echo "</div>";
             $i++;
         }
     }

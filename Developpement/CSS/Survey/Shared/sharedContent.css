@@ -1,0 +1,89 @@
+/*#region body*/
+body, html {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	min-width: 300px;
+	min-height: 550px;
+	background-color: #EEFBFF;
+}
+
+* {
+	box-sizing: border-box;
+}
+/*#endregion body*/
+
+/*#region Global Content*/
+
+.Content {
+	display: flex;
+	justify-content: space-around;
+	top: 0;
+	margin: 25px 0;
+	width: 100%;
+	position: relative;
+}
+
+.mainContent {
+	display: flex;
+	flex-direction: column;
+	width: 40%;
+}
+
+/*#region content Header Form*/
+.container .headQuestion {
+	border-radius:8px;
+	box-shadow: 0 0 3px #B7ADA1;
+	background-color: white;
+	padding: 10px 25px;
+}
+.container input {
+	outline:none;
+}
+
+.mainTitle {
+	font-size: 35px;
+}
+
+.mainDesc {
+	font-size: 18px;
+	background-color:rebeccapurple;
+}
+/*#endregion content HeaderForm*/
+
+/*#region divContent*/
+/*Contenu des divs*/
+
+/*Pour la barre qui souligne l'input*/
+.Underline {
+	border:none;
+	border-bottom: 1px solid #dadada;
+}
+
+.question-div {
+	background-color: white;
+	box-shadow: 0 0 3px #B7ADA1;
+	margin-top: 25px;
+	padding: 25px 25px 20px 25px;
+	border-radius: 8px;
+}
+
+/*Nom de la question*/
+.question-title {
+	background-color: transparent;
+	width: 100%;
+	padding: 10px 10px 10px 0;
+	margin-bottom: 20px;
+	border:none;
+	outline:none;
+}
+
+/*#region Type des questions*/
+
+.reponseCourte{
+	width:50%;
+}
+
+/*#endregion Type des questions*/
+/*#endregion content HeaderForm*/
+
+/*#endregion Global Content*/
