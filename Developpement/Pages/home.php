@@ -31,8 +31,8 @@ include "../Scripts/connect_database.php" ;?>
                             <button onclick="dropMenuUser()" class="dropButton"></button>
                         
                             <div id="droppedMenu" class="dropdown-Content">
-                                <a href="home.php">Home</a>
-                                <a href="login.php">Déconnexion</a>
+                                <a href="home.php">Mes formulaires</a>
+                                <a href="../Scripts/disconnect.php">Déconnexion</a>
                             </div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@ include "../Scripts/connect_database.php" ;?>
                             </div>
                         </div>
                         <?php
-                            $sql = "SELECT title,id_surveys,DATE_FORMAT(date_ouverture, '%d %b %Y %k:%i') as date_ouverture FROM surveys WHERE id_users = '$_SESSION[id_users]' ORDER BY date_ouverture DESC;";
+                            $sql = "SELECT title,id_surveys,DATE_FORMAT(date_ouverture, '%d %b %Y %H:%i') as date_ouverture FROM surveys WHERE id_users = '$_SESSION[id_users]' ORDER BY date_ouverture DESC;";
                             $res = mysqli_query($conn, $sql);
                             date_default_timezone_set('Europe/Paris');
                             while ( $result = $res->fetch_assoc()){
@@ -107,13 +107,6 @@ include "../Scripts/connect_database.php" ;?>
                         ?>
                     </div>
                 </div>
-            </div>
-
-            <div class=Footer> <!--Footer à compléter-->
-                <div class=Footer_1>
-                    Some text
-                </div>
-                <div class=Footer_2>Some text</div>
             </div>
         </div>
         

@@ -66,8 +66,7 @@
 	padding:5px 20px 5px 20px;
 	border-radius:5px;
 }
-.shareButton:hover, :focus {
-	background-color: #2980B9;
+.shareButton:hover, .shareButton:focus {
 	color: white;
 	cursor:pointer;
 	outline:none;
@@ -113,31 +112,58 @@
 .popupHead {
 	display: flex;
 	justify-content:space-between;
-	background-color: rebeccapurple;
+	align-items:center;
 }
 
 .popupHead h1{
 	font-size:24px;
+	font-weight:300;
 }
 
-.linkToCopy{
+.contentOfPopup{
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+}
+
+#linkToCopy{
 	overflow:hidden;
 	white-space:nowrap;
 	text-overflow:ellipsis;
-}
-
-.btn-close{
+	width:90%;
 	border:none;
-	border-radius:15px;
-	width:30px;
-	height:30px;
-	background-color:transparent;
+	border-bottom:1px solid rgba(0,0,0, .2);
+	color:gray;
 }
 
-.btn-close:hover {
+#linkToCopy:hover, #linkToCopy:focus {
+	border-bottom:1px solid #F08700;
+}
+
+.btn-close, #btnCopyToClipboard {
+	border: none;
+	border-radius: 15px;
+	width: 30px;
+	height: 30px;
+	background-color: transparent;
+}
+
+.btn-close:hover, #btnCopyToClipboard:hover {
 	background-color:#f0f0f0;
 }
 
+
+.btnPP .close {
+
+}
+
+
+#btnCopyToClipboard {
+	background-image:url("../../../../Design/icons/link/icon_Link@2x.png");
+	background-repeat:no-repeat;
+	background-size:20px;
+	background-position:center;
+}
 /*#endregion Bouton Partage*/
 /*#endregion Content*/
 

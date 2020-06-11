@@ -1,12 +1,11 @@
-function copyToClipboard(idSurvey) {
-    /* Get the text field */
-    var idSurvey = document.getElementById("myInput");
+function copyToClipboard() {
+    /* Récupère le contenu de l'input */
+    var idSurvey = document.getElementById("linkToCopy");
 
-    /* Select the text field */
+    /* On met le focus sur l'input et on sélectionne le contenu */
     idSurvey.select();
-    idSurvey.setSelectionRange(0, 99999); /*For mobile devices*/
 
-    /* Copy the text inside the text field */
+    /* On copie le texte */
     document.execCommand("copy");
 
     /* Alert the copied text */

@@ -107,6 +107,10 @@
 	border-color: #707070;
 	margin-left : 14%;
 }
+#Question .form .question-div .select-choice:focus {
+	background:none;
+	color:black;
+}
 
 #Question .form .question-div .requiered-field{
 	display :flex;
@@ -164,12 +168,21 @@
 }
 
 /*Réponses courtes et longues #placeholder et focus */
-#Question .form .question-div .short-answer::placeholder,.long-answer::placeholder {
+#Question .form .question-div .short-answer:placeholder {
 	color:#70757a;
 	font-family: Arial,sans-serif;
 }
-#Question .form .question-div .short-answer:focus,.long-answer:focus {
+#Question .form .question-div .short-answer:focus{
 	background:none;
+	border-bottom: 1px solid #BFC2C7;
+}
+#Question .form .question-div .question-content .long-answer:placeholder {
+	color:#70757a;
+	font-family: Arial,sans-serif;
+}
+#Question .form .question-div .question-content .long-answer:focus {
+	background:none;
+	border-bottom: 1px solid #BFC2C7;
 }
 
 /*Choix multiples, cases à cocher, listes déroulantes, grilles*/
@@ -233,14 +246,41 @@
 }
 
 /*Echelle linéaire*/
-#Question .form .question-div .select-linear{
+#Question .form .question-div .select-sameline .select-linear{
 	background-color:white;
-	padding:3px;
+	padding:5px;
 	border-radius:5px;
 	color:black;
+	margin-left:10px;
+}
+#Question .form .question-div .select-sameline{
+	display:flex;
+	align-items:center;
+	margin-top:15px;
+	margin-bottom: 10px;
+	margin-left:10px;
+}
+/*#Question .form .question-div .select-sameline p{
+	padding:0;
+	margin:0;
+	font-size:14px;
+}*/
+#Question .form .question-div .select-sameline .check-line{
+	margin:0px;
+	padding:0px;
+	border:0px;
+	width:40%;
+	padding-bottom : 2px;
+}
+#Question .form .question-div .select-sameline .check-line:hover{
+	border-bottom:1px solid #70757a;
 }
 
-
+#Question .form .question-div .select-sameline .check-line:focus{
+	border-bottom:2px solid #004970;
+	color:black;
+	background:none;
+}
 
 /*Ajouter une option*/
 #Question .form .question-div .question-content .add-choice,.add-check,.add-list,.add-line,.add-column-multiple {
@@ -301,7 +341,6 @@
 }
 
 #Reponse {
-	display: none;
 }
 
 

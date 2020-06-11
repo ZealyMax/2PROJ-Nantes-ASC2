@@ -1,7 +1,7 @@
 /*#region body*/
 body, html {
 	margin: 0;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: "Segoe UI";
 	min-width: 300px;
 	min-height: 550px;
 	background-color: #EEFBFF;
@@ -164,7 +164,6 @@ body, html {
 	position: fixed;
 	background-color: #007BBD;
 	z-index: 100;
-	visibility: hidden; /*à supprimer*/
 }
 
 .Footer_2 {
@@ -175,7 +174,6 @@ body, html {
 	position: fixed;
 	background-color: #12313F;
 	z-index: 100;
-	visibility: hidden; /*à supprimer*/
 }
 
 

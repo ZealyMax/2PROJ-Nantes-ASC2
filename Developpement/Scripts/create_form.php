@@ -80,15 +80,26 @@
                     $id_questions = $resultQuestion['id_questions'];
                     
                     while($_POST['sub_questions'][$indexSubQuestions] != 'new question'){
+                        if($type == "linear-scale"){
+                            $indexSubQuestionsValue = $indexSubQuestions + 2;
+                            $typeSubQuestion = $_POST['sub_questions'][$indexSubQuestions];
+                            $scaleSubQuestion = $_POST['sub_questions'][$indexSubQuestions +1];
+                            $valueSubQuestion =  $_POST['sub_questions'][$indexSubQuestionsValue]; 
+                            $sql = "INSERT INTO sub_questions (id_questions, type, value, scale_name) VALUES ('$id_questions', '$typeSubQuestion', '$valueSubQuestion', '$scaleSubQuestion')";
+                            $res = mysqli_query($conn, $sql);
+                            $indexSubQuestions += 3;
 
-                        $indexSubQuestionsValue = $indexSubQuestions +1;
-                        $typeSubQuestion = $_POST['sub_questions'][$indexSubQuestions];
-                        $valueSubQuestion =  $_POST['sub_questions'][$indexSubQuestionsValue]; 
+                        }
+                        else{
+                            $indexSubQuestionsValue = $indexSubQuestions +1;
+                            $typeSubQuestion = $_POST['sub_questions'][$indexSubQuestions];
+                            $valueSubQuestion =  $_POST['sub_questions'][$indexSubQuestionsValue]; 
 
 
-                        $sql = "INSERT INTO sub_questions (id_questions, type, value) VALUES ('$id_questions', '$typeSubQuestion', '$valueSubQuestion')";
-                        $res = mysqli_query($conn, $sql);
-                        $indexSubQuestions += 2;
+                            $sql = "INSERT INTO sub_questions (id_questions, type, value) VALUES ('$id_questions', '$typeSubQuestion', '$valueSubQuestion')";
+                            $res = mysqli_query($conn, $sql);
+                            $indexSubQuestions += 2;
+                        }
                     }
 			    }
                 $indexSubQuestions += 1;

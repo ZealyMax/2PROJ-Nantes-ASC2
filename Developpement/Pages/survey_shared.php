@@ -48,48 +48,14 @@
         var mustDo = document.getElementsByName("mustDo[]");
         var retry = false;          
         for(var x = 0; x < mustDo.length; x++){
-            if (mustDo[x].parentNode.children[1].children[0].placeholder == "day" && mustDo[x].checked == true){
-                if(mustDo[x].parentNode.children[1].children[0].value == "jj/mm/yyyy"){
-                    retry =true;
-                    alert('retry = true loloololol');
-                    break;     
-				} 
-
-            }
-            if (mustDo[x].parentNode.children[1].children[0].placeholder == "hour" && mustDo[x].checked == true){
-                for (var i = 0; i < 3;i += 2){
-                    if(mustDo[x].parentNode.children[1].children[i].value == ""){
-                        retry =true;
-                        alert('retry = true lolololol');
-                        break;     
-					} 
-				}
-            }
-            else if(mustDo[x].parentNode.children[1].children[0].value == "" && mustDo[x].checked == true){
+            if(mustDo[x].parentNode.children[1].children[0].value == "" && mustDo[x].checked == true){
                 retry =true;
                 alert('retry = true loloololol');
                 break; 
             }
- 
         }
         if(retry == false){
             document.forms["answerForm"].submit();
         }
     }
-    function controlHour(name){
-        if (name.value > 23){
-            name.value = 23;
-        }
-        else if(name.value < 0){
-            name.value = 0;
-        }
-	}
-    function controlMinute(name){
-        if (name.value > 59){
-            name.value = 59;
-        }
-        else if(name.value < 0){
-            name.value = 0;
-        }
-	}
 </script>

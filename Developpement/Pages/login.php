@@ -21,25 +21,37 @@ include "../Scripts/connect_database.php";
                     <p class="txt">Online Survey</p>
                 </div>
 
+                <!-- ICIICICICICIIC  -->
+                <div class="Back_to_overview">
+                    <a href="../Pages/overview.php">Retour à la présentation de l'outil</a>
+                </div>
+
                 <div id="Content">
                     <form action="../Scripts/connect.php" method="post">
 
                         <div class="Credentials">
-                            <input class="inputFields login" name="login" type="text" placeholder="Username or email">
-                            <input class="inputFields password" name="password" type="password" placeholder="Password">
+                            <?php
+                                $value = "";
+                                if (isset($_COOKIE["name"])){
+                                    $value = htmlspecialchars($_COOKIE["name"]);
+                                } 
+
+                                echo "<input class='inputFields login' name='login' type='text' placeholder='Nom d&#039utilisateur ou e-mail' value='".$value."'>";
+                                ?>
+                            <input class="inputFields password" name="password" type="password" placeholder="Mot de passe">
                         </div>
 
                         <div class="Other">
-                            <label class="container">Remember me
-                                <input type="checkbox">
+                            <label class="container">Se souvenir de moi
+                                <input name="remember_me" type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
 
-                            <input class="btn" name="submit" type="submit" value="LOGIN">
+                            <input class="btn" name="submit" type="submit" value="S'identifier">
 
                             <div class="links">
-                                <a id="signIn">Sign up</a>
-                                <a id="fPassword">Forgot your password ?</a>
+                                <a id="signIn">S'enregistrer</a>
+                                <a id="fPassword">Mot de passe oublier ?</a>
                             </div>
                         </div>
                     </form>

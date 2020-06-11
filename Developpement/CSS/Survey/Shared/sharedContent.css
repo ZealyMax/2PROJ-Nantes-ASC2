@@ -77,10 +77,25 @@ body, html {
 	outline:none;
 }
 
+.divTitle{
+	display:flex;
+	align-items:center;
+	justify-content:flex-start;
+}
+
 /*#region Type des questions*/
 
+/*A SUPPRIMER PLUS TARD*/
+.Temp{
+	display:none;
+}
+
 .reponseCourte{
-	width:50%;
+	width:40%;
+}
+
+.reponseLongue {
+	width: 100%;
 }
 
 /*#endregion Type des questions*/
