@@ -107,25 +107,25 @@ $(document).on('change', '.select-choice', function () {
         $(this).parent(".question-div").children(".question-content").html("<textarea class=long-answer placeholder='Réponse longue' READONLY></textarea>");
     };
     if ($(this).children('option:selected').val() == "multiple") {
-        $(this).parent(".question-div").children(".question-content").html("<input name=sub_questions[] type=hidden value='radio'>\
-                                                                            <input class=check-button type=radio disabled><input class=check-name name=sub_questions[] placeholder=Option><br><button class=add-choice>Ajouter</button>");
+        $(this).parent(".question-div").children(".question-content").html("<div class=multiple-choice><input name=sub_questions[] type=hidden value='radio'>\
+                                                                            <input class=check-button type=radio disabled><input class=check-name name=sub_questions[] placeholder=Option></div><button class=add-choice>Ajouter une option</button>");
     };
     if ($(this).children('option:selected').val() == "checkbox") {
-        $(this).parent(".question-div").children(".question-content").html("<input name=sub_questions[] type=hidden value='checkbox'>\
-                                                                            <input class=check-button type=checkbox disabled><input class=check-name name=sub_questions[] placeholder=Option><br><button class=add-check>Ajouter</button>");
+        $(this).parent(".question-div").children(".question-content").html("<div class=multiple-choice><input name=sub_questions[] type=hidden value='checkbox'>\
+                                                                            <input class=check-button type=checkbox disabled><input class=check-name name=sub_questions[] placeholder=Option></div><button class=add-check>Ajouter une option</button>");
     };
     if ($(this).children('option:selected').val() == "list") {
-        $(this).parent(".question-div").children(".question-content").html("<input name=sub_questions[] type=hidden value='list'>\
-                                                                            <input class='check-namelist margin-list' name=sub_questions[] placeholder=Option><br><button class=add-list>Ajouter</button>");
+        $(this).parent(".question-div").children(".question-content").html("<div class=multiple-choice><input name=sub_questions[] type=hidden value='list'>\
+                                                                            <input class='check-namelist margin-list' name=sub_questions[] placeholder=Option></div><button class=add-list>Ajouter une option</button>");
     };
     if ($(this).children('option:selected').val() == "linear-scale") {
-        $(this).parent(".question-div").children(".question-content").html("<input name=sub_questions[] type=hidden value='min-scale'>\
+        $(this).parent(".question-div").children(".question-content").html("<div class=select-sameline><input name=sub_questions[] type=hidden value='min-scale'>\
                                                                             <input class=check-line name=sub_questions[] placeholder=Bas>\
                                                                             <select class=select-linear name=sub_questions[] class='min-scale select-linear'>\
                                                                                 <option>0</option>\
                                                                                 <option>1</option>\
-                                                                            </select>\
-                                                                            <input type=hidden name=sub_questions[] value=max-scale>\
+                                                                            </select></div>\
+                                                                            <div class=select-sameline><input type=hidden name=sub_questions[] value=max-scale>\
                                                                             <input class=check-line name=sub_questions[] placeholder=Haut>\
                                                                             <select class=select-linear name=sub_questions[] class='max-scale select-linear'>\
                                                                                 <option>2</option>\
@@ -137,26 +137,26 @@ $(document).on('change', '.select-choice', function () {
                                                                                 <option>8</option>\
                                                                                 <option>9</option>\
                                                                                 <option>10</option>\
-                                                                            </select>");
+                                                                            </select></div>");
     };
     if ($(this).children('option:selected').val() == "grid-multiple") {
         $(this).parent(".question-div").children(".question-content").html("<div class=line>\
-                                                                                <input name=sub_questions[]  type=hidden value='line'>\
-                                                                                <input class='check-namelist margin-list' name=sub_questions[] placeholder=Ligne><button class=add-line>Ajouter</button>\
+                                                                                <div class=multiple-choice><input name=sub_questions[]  type=hidden value='line'>\
+                                                                                <input class='check-namelist margin-list' name=sub_questions[] placeholder=Ligne></div><button class=add-line>Ajouter une option</button>\
                                                                             </div>\
                                                                             <div class=column>\
-                                                                                <input name=sub_questions[] type=hidden value='column-multiple'>\
-                                                                                <input class=check-button type=radio disabled><input class=check-name name=sub_questions[] placeholder=Colonne><button class=add-column-multiple>Ajouter</button>\
+                                                                                <div class=multiple-choice><input name=sub_questions[] type=hidden value='column-multiple'>\
+                                                                                <input class=check-button type=radio disabled><input class=check-name name=sub_questions[] placeholder=Colonne></div><button class=add-column-multiple>Ajouter une option</button>\
                                                                             </div>");
     };
     if ($(this).children('option:selected').val() == "grid-checkbox") {
         $(this).parent(".question-div").children(".question-content").html("<div class=line>\
-                                                                                <input name=sub_questions[]  type=hidden value='line'>\
-                                                                                <input class='check-namelist margin-list' name=sub_questions[] placeholder=Ligne><button class=add-line>Ajouter</button>\
+                                                                                <div class=multiple-choice><input name=sub_questions[]  type=hidden value='line'>\
+                                                                                <input class='check-namelist margin-list' name=sub_questions[] placeholder=Ligne></div><button class=add-line>Ajouter une option</button>\
                                                                             </div>\
                                                                             <div class=column>\
-                                                                                <input name=sub_questions[] type=hidden value='column-checkbox'>\
-                                                                                <input class=check-button type=checkbox disabled><input class=check-name name=sub_questions[] placeholder=Colonne><button class=add-column-checkbox>Ajouter</button>\
+                                                                                <div class=multiple-choice><input name=sub_questions[] type=hidden value='column-checkbox'>\
+                                                                                <input class=check-button type=checkbox disabled><input class=check-name name=sub_questions[] placeholder=Colonne></div><button class=add-column-checkbox>Ajouter une option</button>\
                                                                             </div>");
     };
     if ($(this).children('option:selected').val() == "date") {

@@ -283,14 +283,14 @@
 }
 
 /*Ajouter une option*/
-#Question .form .question-div .question-content .add-choice,.add-check,.add-list,.add-line,.add-column-multiple {
+#Question .form .question-div .question-content .add-choice,.add-check,.add-list,.add-line,.add-column-multiple,.add-column-checkbox {
 	margin-left: 10px;
 	background:none;
 	border: 1px solid #f0f0f0;
 	border-radius:5px;
 	padding:2px 5px 2px 5px;
 }
-#Question .form .question-div .question-content .add-choice:hover,.add-check:hover,.add-list:hover,.add-line:hover,.add-column-multiple:hover {
+#Question .form .question-div .question-content .add-choice:hover,.add-check:hover,.add-list:hover,.add-line:hover,.add-column-multiple:hover,.add-column-checkbox:hover {
 	background-color:#f0f0f0;
 	cursor:pointer;
 }

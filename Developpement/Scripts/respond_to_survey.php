@@ -1,52 +1,65 @@
 <?php 
     include("connect_database.php");
-	
-    $sql = "SELECT number_answer_sheet FROM answers ORDER BY number_answer_sheet DESC";
-    $res = mysqli_query($conn, $sql);
-    $resultNumber = $res->fetch_assoc();   
-    $number_answer = $resultNumber['number_answer_sheet'] + 1;
-    echo $number_answer."<br>";
-
-
-
+    $keyArray = [];
     foreach ($_POST as $key => $value) {
-        $keyArray = [];
-        array_push($keyArray, $key);
+        echo $key ."<br>";
+        echo $_POST[$key]. "<br><hr>";
     }
-
-    for($y =0; $y > sizeof($keyArray) ;$y++){
-        echo $keyArray[$y];
-	}
     $keySplitIdSurvey = explode("_", $key);
     echo $keySplitIdSurvey[1]."<br>";
-    $sql = "SELECT id_questions FROM questions WHERE id_surveys = '". $keySplitIdSurvey[1]."'";
+
+    $sql = "INSERT INTO answer_sheets(id_surveys) VALUES ('$keySplitIdSurvey[1]')";
+    $res = mysqli_query($conn, $sql);
+                    echo mysqli_error($conn); 
+
+    $sql = "SELECT id_answer_sheets FROM answer_sheets ORDER BY id_answer_sheets DESC";
+    $res = mysqli_query($conn, $sql);
+                    echo mysqli_error($conn); 
+
+    $resultNumber = $res->fetch_assoc();   
+    $number_answer = $resultNumber['id_answer_sheets'];
+    echo $number_answer."<br>";
+
+    $sql = "SELECT id_questions, type FROM questions WHERE id_surveys = ". $keySplitIdSurvey[1];
 	$resQuestion = mysqli_query($conn, $sql);
-    $i = 0;
+    echo mysqli_error($conn); 
+
     while ($resultQuestion = $resQuestion->fetch_assoc()){
-        // and foreach ($_POST as $key => $value)
-        echo '<p>'.$keyArray[$i].'</p>';
-        echo $_POST[$keyArray[$i]] ."<br>";
-        echo $resultQuestion['id_questions'];
-        $keySplit = explode("_", $keyArray[$i]);
-        $answer = $_POST[$key];
-            
-        if($resultQuestion['id_questions'] == $keySplit[2]){//si l'id de la question de la  réponse est égale à l'id de la question du survey alors on insert
-            echo "égale";
-            if(isset($keySplit[4])){//si il y a un id_sub_question 
-                echo "if";
-                $sql ="INSERT INTO answers (id_surveys, id_questions , id_sub_questions, answer,number_answer_sheet) VALUES ('$keySplit[1] ','$keySplit[2]','$keySplit[4]','$answer','$number_answer')";
-                $resInsertAnswer = mysqli_query($conn, $sql);
+        if($resultQuestion['type'] == "checkbox" || $resultQuestion['type'] == "grid-checkbox" || $resultQuestion['type'] == "grid-multiple"){
+            $sql = "SELECT id_sub_questions FROM sub_questions where id_questions =". $resultQuestion['id_questions'];
+            $resSub = mysqli_query($conn, $sql);
+            echo mysqli_error($conn);
+            while($resultSub = $resSub->fetch_assoc()){
+                echo "0 checkbox <br>";
+                $sql = "INSERT INTO answers (id_surveys, id_questions, id_answer_sheets, id_sub_questions) VALUES ('$keySplitIdSurvey[1]', ".$resultQuestion['id_questions'].", '$number_answer', ".$resultSub['id_sub_questions'].")";
+                $resInsertVide = mysqli_query($conn, $sql);
+                echo mysqli_error($conn); 
             }
 
-            else{ // si y a pas de id_sub_question
-                echo "else";
-                $sql ="INSERT INTO answers (id_surveys, id_questions, answer,number_answer_sheet) VALUES ('$keySplit[1]','$keySplit[2]',' $answer','$number_answer')";
-                $resInsertAnswer = mysqli_query($conn, $sql);
-		    }
-            $i++;
+        } else{
+            echo "0  reste <br>";
             
-	    } 
-        $sql ="INSERT INTO answers (id_surveys, id_questions , id_sub_questions, answer,number_answer_sheet) VALUES ('$keySplitIdSurvey[1] ',".$resultQuestion['id_questions'].",'null','$number_answer')";
-        $resInsertAnswer = mysqli_query($conn, $sql);
+            $sql = "INSERT INTO answers (id_surveys, id_questions, id_answer_sheets) VALUES ('$keySplitIdSurvey[1]', ".$resultQuestion['id_questions'].", '$number_answer')";
+            $resInsertVide = mysqli_query($conn, $sql);
+            echo mysqli_error($conn);  
+		}
+    }
+  
+    foreach ($_POST as $key => $value) {
+        $keySplit = explode("_", $key);
+        if ($keySplit[3] != "list" && $_POST[$key] != "S&eacute;lectionnez" && str_replace(' ', '', $_POST[$key]) != "" && $_POST[$key] != ""){
+            if($keySplit[3] == "checkbox" || $keySplit[3] == "grid-checkbox" || $keySplit[3] == "grid-multiple"){
+                echo "update checkbox <br>";
+                $sql = "UPDATE answers SET answer = '". $_POST[$key] ."', empty = 0 WHERE id_questions = ". $keySplit[2]." AND id_answer_sheets =". $number_answer." AND id_sub_questions =". $keySplit[4];    
+                $resInsertVide = mysqli_query($conn, $sql);
+                echo mysqli_error($conn);
+		    }
+            else{
+                echo "update reste <br>";
+                $sql = "UPDATE answers SET answer = '". $_POST[$key] ."', empty = 0 WHERE id_questions = ". $keySplit[2]." AND id_answer_sheets =". $number_answer;    
+                $resInsertVide = mysqli_query($conn, $sql);
+                echo mysqli_error($conn);
+			}
+        }
     }
 ?>

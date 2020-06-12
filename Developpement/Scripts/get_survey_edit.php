@@ -134,7 +134,7 @@
 				<div class=question-content>";
 																		$sql = "SELECT value, type, scale_name FROM sub_questions WHERE id_questions =". $resultQuestion['id_questions'];
 																		$resSub = mysqli_query($conn, $sql);
-echo $resultQuestion['id_questions'] . " test " . $resSub;
+																		echo $resultQuestion['id_questions'] . " test ";// . $resSub; 
 																		while($resultSub = $resSub->fetch_assoc())
 																		{
 																			if($resultSub['type'] == "min-scale")
@@ -241,7 +241,7 @@ echo $resultQuestion['id_questions'] . " test " . $resSub;
 				<div class=question-content>";
 																		$sql = "SELECT value, type FROM sub_questions WHERE id_questions = ". $resultQuestion['id_questions'] . "    AND type = 'line'";
 																		$resSub = mysqli_query($conn, $sql);
-																			echo "
+																		echo "
 					<div class=line>";
 																		while($resultSub = $resSub->fetch_assoc())
 																		{
@@ -256,7 +256,7 @@ echo $resultQuestion['id_questions'] . " test " . $resSub;
 																		}
 																		echo "
 						<button class=add-line>Ajouter une option</button>
-					</div>
+					</div>					
 					<div class=column>";
 																		$sql = "SELECT value, type FROM sub_questions WHERE id_questions = ". $resultQuestion['id_questions'] . "    AND type = 'column-checkbox'";
 																		$resSub = mysqli_query($conn, $sql);
@@ -264,21 +264,21 @@ echo $resultQuestion['id_questions'] . " test " . $resSub;
 																		{
 																			echo "
 						<div class=multiple-choice>
-							<input class=check-button type=checkbox disabled><input name=sub_questions[] type=hidden value='column-checkbox'>
+							<input class=check-button type=checkbox disabled>
+							<input name=sub_questions[] type=hidden value='column-checkbox'>
 							<input class=check-name name=sub_questions[] placeholder='Colonne' value='". $resultSub['value'] ."'>
 							<div>
 								<button class='rm-div rm-option'>X</button>
 							</div>
 						</div>";
 																		}
-																			echo "
+																		echo "
 						<div>
-							<button class=add-column-multiple>Ajouter une option</button>
+							<button class=add-column-checkbox>Ajouter une option</button>
 						</div>
 					</div>
 				</div>"; 
-																	}  
-
+																	}
 																	#Date
 																	else if($resultQuestion['type'] == "date" )
 																	{
@@ -348,8 +348,11 @@ echo $resultQuestion['id_questions'] . " test " . $resSub;
 	</div>
 	<div class=contentQuestion>
 		<div class=module>
-			<input class='btn-add' type=button value=+>
-			<input name=submit type=submit value='Créer le formulaire'>
+			<div class=insideModule>
+				<input class='btn-add' type=button value='&nbsp;'>
+				<input class='btn-save' name=submit type=submit value='&nbsp;'>
+				<input class='btn-del' id=". $_SESSION['survey'] . " type=button value='&nbsp;'>
+			</div>
 		</div>
 		<div class=form>
 		</div>

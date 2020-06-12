@@ -24,12 +24,12 @@ body:after{
 
 .bg-image {
 	/* Image du background login */
-	background-image: url("../../../Design/Images/Image_login.jpeg");
+	background-image: url("../../../Design/Images/Image_login@0_5x.jpg");
 	/* Effet de flou */
 	filter: blur(28px);
 	-webkit-filter: blur(28px);
 	/* Full height */
-	min-height: 100vh;
+	height: 100vh;
 	/* Centrer l'image et l'adapter à la taille */
 	background-position: center;
 	background-repeat: no-repeat;
@@ -55,8 +55,8 @@ body:after{
 	z-index: 2;
 }
 
-.Logo #rectangle {
-											/*Rectangle temporaire : remplacer par logo*/
+/*.Logo #rectangle {
+											Rectangle temporaire : remplacer par logo
 	transform: translate(-50%, -50%);
 	border: 1px solid rgb(112,112,112);
 	border-radius: 15px;
@@ -69,18 +69,34 @@ body:after{
 }
 
 .Logo .txt {
-	/*Font style*/
+	Font style
 	text-align: center;
 	font-size: 35px;
 	font-family: 'Segoe UI';
 	color: white;
 	font-weight: normal;
 
-	/*Font position*/
+	Font position
 	transform: translate(-50%, -50%);
 	top: 25%;
 	left: 50%;
 	position: absolute;
+}*/
+.Logo-div {
+	height: 40%;
+	display: flex;
+	justify-content: center;
+}
+.white-rect{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+.Logo{
+	width:60%;
+	background-color: rgba(255,255,255, .2);
+	padding:10px;
+	border-radius:10px;
 }
 
 form {

@@ -76,7 +76,7 @@ include "../Scripts/connect_database.php" ;
                         </div>
 
                         <div id="Reponse" class="tabcontent">
-                            <!--<?php include "../Scripts/get_answers.php" ?>-->
+                            <?php include "../Scripts/get_answers.php" ?>
                             <p>Usher - Yeah !</p>
                         </div>
                     </div>

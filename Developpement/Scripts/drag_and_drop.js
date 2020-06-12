@@ -126,15 +126,16 @@ function handleDragEnd(e) {
 
 
 function RemoveSurvey(id_surveys){
-        $.ajax({
-            type: 'POST',
-            url: '../Scripts/remove_survey.php',
-            data:{action: id_surveys},
-            success:function(data) {
-                document.getElementById(id_surveys).remove();
-            }
-        })
-    }
+    $.ajax({
+        type: 'POST',
+        url: '../Scripts/remove_survey.php',
+        data:{action: id_surveys},
+        success:function(data) {
+            document.getElementById(id_surveys).remove();
+        }
+    })
+    
+}
 
 
 

@@ -49,16 +49,16 @@
             #Choix Multiple
             else if($resultQuestion['type'] == "multiple"){
                 echo "                
-                <div class='question-content chxMultiple'>";
+                <div class='question-content flexColumn'>";
                 $sql = "SELECT type, value FROM sub_questions WHERE id_questions =". $resultQuestion['id_questions'];
                 $resSub = mysqli_query($conn, $sql);
                 $select="checked";
                 while($resultSub = $resSub->fetch_assoc()){
                     echo "
-                    <div>
+                    <label class=btnContainer for=chxMultipleOpt".$resultSub['value'].">". $resultSub['value'] ."
                         <input class=radioChxMultiple id=chxMultipleOpt".$resultSub['value']." name=question_". $_GET['survey'] ."_".$resultQuestion['id_questions']."_". $resultSub['type']." type=radio value=".$resultSub['value']." $select>
-                        <label for=chxMultipleOpt".$resultSub['value'].">". $resultSub['value'] ."</label>
-                    </div>
+                        <span class='checkmark cMult'></span>
+                    </label>
                     ";	  
                     $select="";
                 }
@@ -67,16 +67,17 @@
             #Case à cocher
             else if($resultQuestion['type'] == "checkbox"){
                 echo "
-                <div class=question-content>";
+                <div class='question-content flexColumn'>";
 
                 $sql = "SELECT id_sub_questions, type, value FROM sub_questions WHERE id_questions =". $resultQuestion['id_questions'];
                 $resSub = mysqli_query($conn, $sql);
                 $y=0;
                 while($resultSub = $resSub->fetch_assoc()){
                     echo "
-                    <div>
-                        <input name=question_". $_GET['survey'] ."_".$resultQuestion['id_questions']."_". $resultSub['type']."_" .$resultSub['id_sub_questions']." type=checkbox value=".$resultSub['value']."><input  placeholder='Option' value='". $resultSub['value'] ."' READONLY>
-                    </div>";
+                    <label class='btnContainer cacBtnContainer' for=caseACocher". $resultSub['value'] .">". $resultSub['value'] ."
+                        <input class=Checkbox id=caseACocher". $resultSub['value'] ." name=question_". $_GET['survey'] ."_".$resultQuestion['id_questions']."_". $resultSub['type']."_" .$resultSub['id_sub_questions']." type=checkbox value='".$resultSub['value']."'>
+                        <span class='checkmark cacBtn'></span>
+                    </label>";
                         $y++;
                 }
                 echo "</div>";
@@ -85,18 +86,18 @@
             #liste
             else if($resultQuestion['type'] == "list"){
                 echo "
-                <div class=question-content>
-                    <div>
-                    <select name=question_". $_GET['survey'] ."_".$resultQuestion['id_questions']."_". $resultQuestion['type'].">";
+                <div class='question-content listeDeroulante'>
+                    <select name=question_". $_GET['survey'] ."_".$resultQuestion['id_questions']."_". $resultQuestion['type'].">
+                    <option style='height:25px;background-color:red;'>S&eacute;lectionnez</option>";
 
                 $sql = "SELECT id_sub_questions, type, value FROM sub_questions WHERE id_questions =". $resultQuestion['id_questions'];
                 $resSub = mysqli_query($conn, $sql);
                 while($resultSub = $resSub->fetch_assoc()){
                     echo "       
-                    <option name=question_". $_GET['survey'] ."_".$resultQuestion['id_questions']."_". $resultSub['type']."_" .$resultSub['id_sub_questions'].">". $resultSub['value'] ."</option>
+                    <option>". $resultSub['value'] ."</option>
                     ";
                 }
-                echo "</select></div></div>";
+                echo "</select><div class='select_arrow'></div></div>";
             }
             #échelle linéaire
             else if($resultQuestion['type'] == "linear-scale"){
@@ -157,7 +158,7 @@
                         <div>
                         <input value='". $resultSub['value'] ."' READONLY></div>"; 
                     for ($y = 0; $y < $numberOfColumns; $y++){
-                        echo "<input name=question_". $_GET['survey'] ."_".$resultQuestion['id_questions']."_". $resultSub['type']."_" .$resultSub['id_sub_questions']." type=radio value='".  $columnMultipleValue[$y] ."_". $resultSub['value']."' $select>";           
+                        echo "<input name=question_". $_GET['survey'] ."_".$resultQuestion['id_questions']."_grid-multiple_" .$resultSub['id_sub_questions']." type=radio value='".  $columnMultipleValue[$y] ."_". $resultSub['value']."' $select>";           
                         $select="";
 					
                     }
@@ -192,7 +193,7 @@
                         <div>
                         <input value='". $resultSub['value'] ."'READONLY></div>";
                         for ($y = 0; $y <  $numberOfColumns; $y++){
-                            echo "<input name=question_". $_GET['survey'] ."_".$resultQuestion['id_questions']."_". $resultSub['type']."_" .$resultSub['id_sub_questions']."_".$y." type=checkbox value='". $columnCheckboxValue[$y] ."_". $resultSub['value']."'>";           
+                            echo "<input name=question_". $_GET['survey'] ."_".$resultQuestion['id_questions']."_grid-checkbox_" .$resultSub['id_sub_questions']." type=checkbox value='". $columnCheckboxValue[$y] ."_". $resultSub['value']."'>";           
 					    }
                 }
                 echo "</div></div>"; 

@@ -46,10 +46,10 @@
 <script>
     function mustDoVerif(){
 
-        var mustDo = document.getElementsByName("mustDo[]");
+        var mustDo = document.getElementsByClassName("mustDoStar");
         var retry = false;          
         for(var x = 0; x < mustDo.length; x++){
-            if(mustDo[x].parentNode.children[1].children[0].value == "" && mustDo[x].checked == true){
+            if(mustDo[x].parentNode.parentNode.children[1].children[0].value == ""){
                 retry =true;
                 alert('retry = true loloololol');
                 break; 

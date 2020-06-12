@@ -6,8 +6,6 @@
     <head>
             <link rel="stylesheet" type="text/css" href="../CSS/Main/global.css">
             <link rel="stylesheet" type="text/css" href="../CSS/Home/homeHeader.css">
-
-
     </head>
     <body>
         <div class=Main>
@@ -18,45 +16,48 @@
                         <p class=txt><b>Online Survey</b></p>
                     </a>
                 
-                    <div class=search-Container><!--Partie centrale : zone de recherche de formulaire-->
-                        <div>
-                            <button class=search-Icon>&nbsp;</button>                                               <!--Ici mettre option pour rechercher avec ce qu'il y a dans l'input-->
-                            <input class=Search name="search" type="text" placeholder="Rechercher">
-                        </div>
-                    </div>
-                    <div class=User> <!--Partie droite : zone compte (Home, Déconexion...)-->
-                        <div class=dropdown>
-                            <button onclick="dropMenuUser()" class="dropButton"></button>
-                        
-                            <div id="droppedMenu" class="dropdown-Content">
-                                <a href="login.php">Se connecter</a>
-                            </div>
-                        </div>
+                    <div  class="login">
+                        <a href="login.php">Se connecter</a>
                     </div>
                 </div>
             </div>
             <div class=Content>
                  <div class=mainContent>
-
-                 aa
-
+                 <h1>Présentation de l'outil : Online Survey !</h1>
+                    <div class=presHomeContent>
+                        <h2>
+                            Un page d'acceuil esthétique et simple d'utilisation :
+                        </h2>
+                        <img src=""/>
+                    </div>
+                    <div class=presEditorContent>
+                        <h2>
+                            Un éditeur de formulaire simple et intuitif :
+                        </h2>
+                        <img src=""/>
+                    </div>
+                    <div class=presAnalyzerContent>
+                        <h2>
+                            Un service d'analyse avancé :
+                        </h2>
+                        <img src=""/>
+                    </div>
+                    <div class=presShareContent>
+                        <h2>
+                            Des formulaires d'une qualité inégalée :
+                        </h2>
+                        <img src=""/>
+                    </div>
                  </div>
             </div>
-
-
-
-
             <div class=Footer> <!--Footer à compléter-->
                 <div class=Footer_1>
                     <div class="politique_de_confidentialite">
                         <a href="../Ressources/Politique_de_confidentialite.pdf">Politique de confidentialité</a>
                     </div>
                 </div>
-                <div class=Footer_2>Some text</div>
+                <!--<div class=Footer_2>Some text</div>-->
             </div>
         </div>
     </body>
-    
-    <script src="../Scripts/dropMenuUser.js"></script>
-
 </html>

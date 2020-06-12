@@ -15,17 +15,19 @@ include "../Scripts/connect_database.php";
             <div class="bg-image"></div>
 
             <div class="bg-login">
-
-                <div class="Logo">
-                    <div id="rectangle"></div>
-                    <p class="txt">Online Survey</p>
-                </div>
-
+                
                 <!-- ICIICICICICIIC  -->
                 <div class="Back_to_overview">
                     <a href="../Pages/overview.php">Retour à la présentation de l'outil</a>
                 </div>
 
+                <div class="Logo-div">
+                    <div class="white-rect">
+                        <img class="Logo" src="../../../Design/icons/logoTypo/LogoTypo@1x.png">
+                    </div>
+                </div>
+                            
+                
                 <div id="Content">
                     <form action="../Scripts/connect.php" method="post">
 
@@ -43,7 +45,13 @@ include "../Scripts/connect_database.php";
 
                         <div class="Other">
                             <label class="container">Se souvenir de moi
-                                <input name="remember_me" type="checkbox">
+                            <?php
+                                $value = "";
+                                if (isset($_COOKIE["remember_me"])){
+                                    $value = htmlspecialchars($_COOKIE["remember_me"]);
+                                } 
+                                echo "<input name='remember_me' type='checkbox' ".$value.">";
+                                ?>
                                 <span class="checkmark"></span>
                             </label>
 
@@ -51,7 +59,7 @@ include "../Scripts/connect_database.php";
 
                             <div class="links">
                                 <a id="signIn">S'enregistrer</a>
-                                <a id="fPassword">Mot de passe oublier ?</a>
+                                <a id="fPassword">Mot de passe oubli&eacute; ?</a>
                             </div>
                         </div>
                     </form>
