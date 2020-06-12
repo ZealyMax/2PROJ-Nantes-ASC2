@@ -18,7 +18,7 @@
             <div class=question-div>  
                 <div class=divTitle>";
             if($resultQuestion['mustDo'] == 1){
-                echo  "<p>*</p>
+                echo  "<p class=mustDoStar>*</p>
                     <!--<input class='Temp' name=mustDo[] type=checkbox value=". $i . " checked disabled>  <input class='Temp' placeholder=Obligatoire READONLY>-->";
             }
             else{
@@ -49,13 +49,17 @@
             #Choix Multiple
             else if($resultQuestion['type'] == "multiple"){
                 echo "                
-                <div class=question-content>";
-
+                <div class='question-content chxMultiple'>";
                 $sql = "SELECT type, value FROM sub_questions WHERE id_questions =". $resultQuestion['id_questions'];
                 $resSub = mysqli_query($conn, $sql);
                 $select="checked";
                 while($resultSub = $resSub->fetch_assoc()){
-                    echo "<input name=question_". $_GET['survey'] ."_".$resultQuestion['id_questions']."_". $resultSub['type']." type=radio value=".$resultSub['value']." $select><label>". $resultSub['value'] ."</label>";	  
+                    echo "
+                    <div>
+                        <input class=radioChxMultiple id=chxMultipleOpt".$resultSub['value']." name=question_". $_GET['survey'] ."_".$resultQuestion['id_questions']."_". $resultSub['type']." type=radio value=".$resultSub['value']." $select>
+                        <label for=chxMultipleOpt".$resultSub['value'].">". $resultSub['value'] ."</label>
+                    </div>
+                    ";	  
                     $select="";
                 }
                 echo "</div>";

@@ -63,7 +63,7 @@ body, html {
 	background-color: white;
 	box-shadow: 0 0 3px #B7ADA1;
 	margin-top: 25px;
-	padding: 25px 25px 20px 25px;
+	padding: 10px 25px 40px 25px;
 	border-radius: 8px;
 }
 
@@ -71,7 +71,7 @@ body, html {
 .question-title {
 	background-color: transparent;
 	width: 100%;
-	padding: 10px 10px 10px 0;
+	padding: 10px 10px 20px 0;
 	margin-bottom: 20px;
 	border:none;
 	outline:none;
@@ -90,12 +90,29 @@ body, html {
 	display:none;
 }
 
-.reponseCourte{
-	width:40%;
+.mustDoStar{
+	color:crimson;
 }
 
+/*design Réponse courte*/
+.reponseCourte {
+	width: 40%;
+}
+
+/*design Réponse longue*/
 .reponseLongue {
 	width: 100%;
+}
+
+/*design Choix multiple*/
+.chxMultiple {
+	display: flex;
+	flex-direction: column;
+}
+
+.radioChxMultiple {
+	height: 20px;
+	/*https://www.w3schools.com/howto/howto_css_custom_checkbox.asp*/
 }
 
 /*#endregion Type des questions*/

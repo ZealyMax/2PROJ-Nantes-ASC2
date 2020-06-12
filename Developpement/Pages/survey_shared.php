@@ -24,12 +24,13 @@
                                                 <div class=headQuestion>
                                                     <p class=mainTitle name=Titre>" . $resultSurvey['title']. "</p>
                                                     <p class=mainDesc name=Description>". $resultSurvey['description'] ."</p>
-                                                    <input type=button value='Répondre' onclick='mustDoVerif()'>
+                                                    <p style='color:crimson;'>*Obligatoire</p>
                                                 </div>
                                                 <div class=contentQuestion>
                                                     <div class=form>";
-                                                        include "..\Scripts\get_survey_share.php"; 
-                                                    echo "</form>"; 
+                                                        include "..\Scripts\get_survey_share.php";
+                                                    echo "<input class=sendAnswerButton type=button value='Répondre' onclick='mustDoVerif()'>
+                                                    </form>"; 
                             }else{
                                 echo "<h2>Error 404</h2>";        
 	                        }

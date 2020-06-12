@@ -8,7 +8,7 @@ Design :
 Développement :
 
 	- Faire un hash du lien de partage
-	- Rajouter date de dernière modif du form
+	v Rajouter date de dernière modif du form
 	
 Marketing :
 

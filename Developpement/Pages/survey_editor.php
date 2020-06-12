@@ -53,8 +53,6 @@ include "../Scripts/connect_database.php" ;
 
                     <div class=sharePopup id=myForm>
                         <button onclick="shareForm()" class=shareButton>Partager</button>
-
-                        
                     </div>
 
                     <button class=burgerMenu>
@@ -78,7 +76,7 @@ include "../Scripts/connect_database.php" ;
                         </div>
 
                         <div id="Reponse" class="tabcontent">
-                            <?php include "../Scripts/get_answers.php" ?>
+                            <!--<?php include "../Scripts/get_answers.php" ?>-->
                             <p>Usher - Yeah !</p>
                         </div>
                     </div>
