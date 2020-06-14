@@ -27,9 +27,9 @@
                                                     <p style='color:crimson;'>*Obligatoire</p>
                                                 </div>
                                                 <div class=contentQuestion>
-                                                    <div class=form>";
+                                                    <div class='form'>";
                                                         include "..\Scripts\get_survey_share.php";
-                                                    echo "<input class=sendAnswerButton type=button value='Répondre' onclick='mustDoVerif()'>
+                                                    echo "<input class=sendAnswerButton type=button value='Envoyer' onclick='mustDoVerif()'>
                                                     </form>"; 
                             }else{
                                 echo "<h2>Error 404</h2>";        
@@ -49,7 +49,7 @@
         var mustDo = document.getElementsByClassName("mustDoStar");
         var retry = false;          
         for(var x = 0; x < mustDo.length; x++){
-            if(mustDo[x].parentNode.parentNode.children[1].children[0].value == ""){
+            if(mustDo[x].parentNode.parentNode.children[1].children[0].value == "" && mustDo[x].parentNode.parentNode.children[1].children[0].value == "Sélectionnez"){
                 retry =true;
                 alert('retry = true loloololol');
                 break; 

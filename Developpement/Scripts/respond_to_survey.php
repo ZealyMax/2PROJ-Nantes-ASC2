@@ -10,16 +10,16 @@
 
     $sql = "INSERT INTO answer_sheets(id_surveys) VALUES ('$keySplitIdSurvey[1]')";
     $res = mysqli_query($conn, $sql);
-                    echo mysqli_error($conn); 
+    echo mysqli_error($conn); 
 
     $sql = "SELECT id_answer_sheets FROM answer_sheets ORDER BY id_answer_sheets DESC";
     $res = mysqli_query($conn, $sql);
-                    echo mysqli_error($conn); 
+    echo mysqli_error($conn); 
 
     $resultNumber = $res->fetch_assoc();   
     $number_answer = $resultNumber['id_answer_sheets'];
     echo $number_answer."<br>";
-
+    /*
     $sql = "SELECT id_questions, type FROM questions WHERE id_surveys = ". $keySplitIdSurvey[1];
 	$resQuestion = mysqli_query($conn, $sql);
     echo mysqli_error($conn); 
@@ -43,20 +43,22 @@
             $resInsertVide = mysqli_query($conn, $sql);
             echo mysqli_error($conn);  
 		}
-    }
+    }*/
   
     foreach ($_POST as $key => $value) {
         $keySplit = explode("_", $key);
-        if ($keySplit[3] != "list" && $_POST[$key] != "S&eacute;lectionnez" && str_replace(' ', '', $_POST[$key]) != "" && $_POST[$key] != ""){
+        if (str_replace(' ', '', $_POST[$key]) != "" && $_POST[$key] != "" && $_POST[$key] != "Sélectionnez"){
             if($keySplit[3] == "checkbox" || $keySplit[3] == "grid-checkbox" || $keySplit[3] == "grid-multiple"){
                 echo "update checkbox <br>";
-                $sql = "UPDATE answers SET answer = '". $_POST[$key] ."', empty = 0 WHERE id_questions = ". $keySplit[2]." AND id_answer_sheets =". $number_answer." AND id_sub_questions =". $keySplit[4];    
+                //$sql = "UPDATE answers SET answer = '". $_POST[$key] ."', empty = 0 WHERE id_questions = ". $keySplit[2]." AND id_answer_sheets =". $number_answer." AND id_sub_questions =". $keySplit[4];    
+                $sql = "INSERT INTO answers (id_surveys, id_questions, id_answer_sheets, id_sub_questions, answer) VALUES ('$keySplitIdSurvey[1]', '$keySplit[2]', '$number_answer', '$keySplit[4]' , '". $_POST[$key] . "')";
                 $resInsertVide = mysqli_query($conn, $sql);
                 echo mysqli_error($conn);
 		    }
             else{
                 echo "update reste <br>";
-                $sql = "UPDATE answers SET answer = '". $_POST[$key] ."', empty = 0 WHERE id_questions = ". $keySplit[2]." AND id_answer_sheets =". $number_answer;    
+                //$sql = "UPDATE answers SET answer = '". $_POST[$key] ."', empty = 0 WHERE id_questions = ". $keySplit[2]." AND id_answer_sheets =". $number_answer;   
+                $sql = "INSERT INTO answers (id_surveys, id_questions, id_answer_sheets, answer) VALUES ('$keySplitIdSurvey[1]', '$keySplit[2]', '$number_answer', '". $_POST[$key] . "')";
                 $resInsertVide = mysqli_query($conn, $sql);
                 echo mysqli_error($conn);
 			}

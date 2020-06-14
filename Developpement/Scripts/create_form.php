@@ -1,3 +1,8 @@
+ <!-- JQUERY -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+        <!--HTML2CANVAS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 <?php
     include "connect_database.php";
     session_start();
@@ -5,11 +10,11 @@
         $sql = "DELETE FROM surveys WHERE id_surveys=" . $_SESSION['survey'];
         $resDeleteSurvey = mysqli_query($conn, $sql);
 	}
-    if (isset($_POST['Titre'])) {
+    if (isset($_POST['submit'])) {
         $titre = $_POST['Titre'];
-        if (isset($_POST['Description'])){
-            $description = $_POST['Description'];
-            $sql = "INSERT INTO surveys (title, description, id_users, date_ouverture) VALUES ('$titre', '$description', $_SESSION[id_users], NOW())"; 
+        $description = $_POST['Description'];
+        if ($titre == ""){           
+            $sql = "INSERT INTO surveys (title, description, id_users, date_ouverture) VALUES ('Formulaire sans titre', '$description', $_SESSION[id_users], NOW())"; 
 		}
         else{
             $sql = "INSERT INTO surveys (title, id_users, date_ouverture) VALUES ('$titre', $_SESSION[id_users], NOW())"; 
@@ -95,8 +100,41 @@
                 $indexSubQuestions += 1;
 		    }
         }
-        unset($_SESSION['survey']);
-        header('location:../Pages/home.php');   
+        $_SESSION['survey'] = $id_surveys;
+        $_GET['survey']=$_SESSION['survey'];
+        include("../Pages/survey_shared.php");
+        echo "
+        <script>
+        function getScreen()
+        {
+            html2canvas(document.getElementsByClassName('survey_shared')[0], 
+            {
+                width:800,
+                height:800,
+                dpi:192,
+                onrendered: function(canvas) 
+                {
+                    /*console.log(canvas.toDataURL('../Ressources/BG_Form/png'));*/
+                    //var image = canvas.toDataURL('../Ressources/BG_Form/png');
+                    
+                    $.ajax(
+                    {
+                        type: 'POST',
+                        url: 'upload_image.php',
+                        data:{action: canvas.toDataURL('../Ressources/BG_Form/png').replace('../Ressources/BG_Form/png', '../Ressources/BG_Form/octet-stream'),
+                            survey: ". $_SESSION['survey'].",
+                        },
+                        success:function(data){},
+                        
+                    });
+				}
+                
+            });
+        } 
+        getScreen();
+        
+        </script>";
+        header('location:../Pages/survey_editor.php');   
     }
 ?>
-<!--<a href=../Pages/home.php>Next</a>->
+<!--<a href=../Pages/home.php>Next</a>-->

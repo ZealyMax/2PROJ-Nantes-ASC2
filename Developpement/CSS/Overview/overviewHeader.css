@@ -1,0 +1,66 @@
+
+/*#region headerMain*/
+/*Mise en forme globale du Header*/
+.Header {
+    top: 0;
+    margin: 0;
+    width: 100%;
+    position: fixed;
+    background-color: #004970;
+    z-index: 100;
+    height: 65px;
+    display:flex;
+}
+
+.contentHead {
+    /*margin: 7px 25px;*/
+    color: white;
+    display: flex;
+    align-items: center;
+    width: 40%;
+}
+
+    .contentHead a, a:link, a:active, a:visited {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+/*Login*/
+.login {
+    width:60%;
+    display : flex;
+    align-items:center;
+    justify-content:flex-end;
+}
+.login a{
+    margin-right:40px;
+    background-color:#42A9E0;
+    border-radius:5px;
+    padding:5px;
+    color:black;
+}
+.login a:hover{
+    color:white;
+    transition:0.2s;
+}
+/*Mise en forme du logo*/
+.Logo {
+    cursor: pointer;
+}
+.hrefLogo{
+    display:flex;
+    align-items:center;
+}    
+.hrefLogo img{
+    width:12%;
+    margin-left:50px;
+}
+.hrefLogo p{
+    margin-left:20px;
+}
+
+
+
+/*Fin du style du header*/
+/*#endregion Global Header*/

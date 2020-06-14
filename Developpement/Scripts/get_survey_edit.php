@@ -134,7 +134,7 @@
 				<div class=question-content>";
 																		$sql = "SELECT value, type, scale_name FROM sub_questions WHERE id_questions =". $resultQuestion['id_questions'];
 																		$resSub = mysqli_query($conn, $sql);
-																		echo $resultQuestion['id_questions'] . " test ";// . $resSub; 
+																		//echo $resultQuestion['id_questions'] . " test ";// . $resSub; 
 																		while($resultSub = $resSub->fetch_assoc())
 																		{
 																			if($resultSub['type'] == "min-scale")

@@ -1,0 +1,58 @@
+/*#region body*/
+body, html {
+    margin: 0;
+    font-family: "Segoe UI";
+    min-width: 300px;
+    min-height: 550px;
+    background-color: #EEFBFF;
+}
+
+input, input:focus, input:active {
+    outline: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+/*#endregion body*/
+
+/*#region Global Header*/
+/*Style du header*/
+
+
+
+
+/*#region Global Content*/
+
+.Content {
+    position: relative;
+    top: 65px;
+}
+.onlineLogo{
+    display:flex;
+    justify-content:center;
+    margin-top:20px;
+}
+.contentGlobal{
+    display :flex;
+    justify-content:space-around;
+}
+/*#endregion Global Content*/
+
+
+/*#region Global Footer*/
+/*Style du footer*/
+
+.Footer_1 {
+    bottom: 0;
+    margin: 0;
+    padding: 5px 0;
+    width: 100%;
+    position: fixed;
+    background-color: #007BBD;
+    z-index: 100;
+}
+
+
+/*Fin du style du footer*/
+/*#endregion Global Footer*/

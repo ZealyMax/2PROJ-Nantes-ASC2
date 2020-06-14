@@ -25,8 +25,19 @@ include "../Scripts/connect_database.php" ;
 
                     <div class=formTitle>
                         <div>
-                            <h1 id=formHeaderName>Titre du formulaire</h1>
-                            <h2>-</h2>
+                            <h1 id=formHeaderName>
+                                <?php
+                                    $sql = "SELECT title FROM surveys where id_surveys=". $_SESSION['survey'];
+                                    $resTitle = mysqli_query($conn,$sql);
+                                    if($resultTitle = $resTitle -> fetch_assoc()){
+                                        echo $resultTitle['title'];
+									}
+                                    else{
+                                        echo 'Titre du formulaire';
+                                    }
+                                ?>
+                            </h1>
+                            <!--<h2>-</h2>
                             <h2 id=formHeaderStatus>Enregistré</h2>
                             <!--Faire en sorte d'avoir le titre du formulaire ici-->
                         </div>
@@ -77,7 +88,6 @@ include "../Scripts/connect_database.php" ;
 
                         <div id="Reponse" class="tabcontent">
                             <?php include "../Scripts/get_answers.php" ?>
-                            <p>Usher - Yeah !</p>
                         </div>
                     </div>
                 </div>
@@ -108,7 +118,7 @@ include "../Scripts/connect_database.php" ;
     </body>
 </html>
 <script>
-document.getElementById("Reponse").style.display = "none";
+//document.getElementById("Reponse").style.display = "none";
     function changeTab(evt, tabName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
@@ -125,6 +135,7 @@ document.getElementById("Reponse").style.display = "none";
         evt.currentTarget.className += " active";
     }
 </script>
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>

@@ -336,8 +336,7 @@
 }
 
 .btn-del {
-	background-image: url("../../../../Design/icons/trash/icon_trash@2x.png");/*RAJOUTER AUX DOSSIERS IMAGE TRASH*/
-	background-image:none;
+	background-image: url("../../../../Design/icons/trash/icon_trash@2x.png");
 }
 
 #Reponse {

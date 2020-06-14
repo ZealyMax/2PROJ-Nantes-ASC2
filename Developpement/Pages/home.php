@@ -8,7 +8,18 @@ include "../Scripts/connect_database.php" ;?>
         <link rel="stylesheet" type="text/css" href="../CSS/Main/global.css">
         <link rel="stylesheet" type="text/css" href="../CSS/Home/homeHeader.css">
         <link rel="stylesheet" type="text/css" href="../CSS/Home/homeContent.css">
-        <title>Home</title>
+        <title>Online Survey - Home</title>
+        
+        <!-- JQUERY -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+        <!--HTML2CANVAS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+        <!--BOOSTRAP
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+-->
     </head>
     <body>
         <div class=Main>
@@ -65,7 +76,7 @@ include "../Scripts/connect_database.php" ;?>
                             </div>
                         </div>
                         <?php
-                            $sql = "SELECT title,id_surveys,DATE_FORMAT(date_ouverture, '%d %b %Y %H:%i') as date_ouverture FROM surveys WHERE id_users = '$_SESSION[id_users]' ORDER BY date_ouverture DESC;";
+                            $sql = "SELECT title,id_surveys,DATE_FORMAT(date_ouverture, '%d %b %Y %H:%i') as date_ouverture, image FROM surveys WHERE id_users = '$_SESSION[id_users]' ORDER BY date_ouverture DESC;";
                             $res = mysqli_query($conn, $sql);
                             date_default_timezone_set('Europe/Paris');
                             while ( $result = $res->fetch_assoc()){
@@ -80,8 +91,8 @@ include "../Scripts/connect_database.php" ;?>
                                 }
 
                                 echo "<div id=\"". $result['id_surveys'] ."\" class=\"parent-Form\" draggable='true'>"; /*div extern des formulaires à sélectionner*/ 
-                                echo "  <div class=\"child-Form\"  onclick=\"SessionSurvey(". $result['id_surveys'] .")\">"; /*div inside des formulaires à sélectionner*/
-                                echo "      <div class=upperBtn></div>
+                                echo "  <div class=child-Form onclick=SessionSurvey(". $result['id_surveys'] .")>"; /*div inside des formulaires à sélectionner*/
+                                echo "      <div class=upperBtn><img src='". $result['image'] ."'/></div>
 
                                             <div class=downBtn>
                                                 <div class=titleForm>
@@ -105,7 +116,6 @@ include "../Scripts/connect_database.php" ;?>
                                     </div>";
 					        }
                         ?>
-                        <canvas id="myChart" width="400" height="400"></canvas>
                     </div>
                 </div>
             </div>
@@ -114,10 +124,7 @@ include "../Scripts/connect_database.php" ;?>
 
         
     </body>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous"></script>
+    
     <script src="../Scripts/dropMenuUser.js"></script>
     <script src='../Scripts/drag_and_drop.js'></script>
     <script src='../Scripts/homeDesign.js'></script>
@@ -175,43 +182,29 @@ include "../Scripts/connect_database.php" ;?>
         })
             
     });
-
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
     </script>
+    <!--<script>
+        function getScreen()
+        {
+            var caption = $('')
+            html2canvas(document.getElementsByClassName("Select-Form-Section"), {
+                dpi:192,
+                onrendered: function(canvas) {
+                    /*console.log(canvas.toDataURL("../Ressources/BG_Form";*/
+                    var image = canvas.toDataURL("../Ressources/BG_Form/png/blob.png");
+				}
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: '../Scripts/upload_image.php',
+                data:{action: image
+            
+                },
+                success:function(data) {
+            
+                }
+            });
+		} 
+    </script>-->
 </html>

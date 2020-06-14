@@ -34,6 +34,9 @@ input, input:focus, input:active {
 	width: 40%;
 }
 
+.form{
+}
+
 /*#region content Header Form*/
 .container .headQuestion {
 	border-radius:8px;
@@ -110,7 +113,7 @@ input, input:focus, input:active {
 	width: 100%;
 }
 
-/*#region design Choix multiple / Echelle lineaire / Grille a choix multiples*/
+/*#region design checkbox/select*/
 .flexColumn {
 	display: flex;
 	flex-direction: column;
@@ -148,6 +151,45 @@ input, input:focus, input:active {
 	width: 25px;
 	border-radius: 50%;
 	border:2px solid #aaaaaa;
+}
+
+/*pour echelle lineaire*/
+.echelleLineaire {
+	display: flex;
+	margin: 0 0 20px 0;
+	justify-content:center;
+}
+
+.eLineaireContent {
+	display: flex;
+	width: 80%;
+	justify-content: space-between;
+}
+
+.echelleELContainer{
+	justify-content:flex-end;
+	align-items:flex-end;
+}
+
+.echelleEL {
+	/*bottom: 0;*/
+	padding:0;
+	margin:0 0 5px 0;
+}
+
+.eLineaire {
+	align-items: center;
+	margin-bottom: 0;
+	padding-left: 0;
+	height: 100%;
+}
+
+.eLin{
+	position:relative;
+	left:50%;
+	transform:translate(-50%, 0);
+	top:auto;
+	bottom:0;
 }
 .btnContainer:hover input ~ .checkmark {
 	background-color: #ccc;
@@ -201,10 +243,7 @@ input, input:focus, input:active {
 	transform: rotate(45deg);
 	background-color: transparent;
 }
-.btnContainer .cacBtn:after div{
-		
-}
-/*#endregion design Choix multiple*/
+/*#endregion design  checkbox/select*/
 
 /*Cases a cocher*/
 .Checkbox {
@@ -247,7 +286,8 @@ input, input:focus, input:active {
 
 .select_arrow {
     position: absolute;
-    top: 24px;
+    top: 50%;
+	transform:translateY(-50%);
     right: 25px;
     pointer-events: none;
     border-style: solid;
@@ -264,10 +304,33 @@ input, input:focus, input:active {
 }
 /*#endregion Liste deroulante*/
 
-/*Echelle lineaire*/
+/*#region Grilles*/
+.Grille{
+	display:grid;
+	justify-content:space-between;
+}
 
-
+.Grille div{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+/*#endregion Grilles*/
 /*#endregion Type des questions*/
+
+.sendButton {
+	
+}
+.sendAnswerButton {
+	border: none;
+	border-radius: 8px;
+	margin-top: 15px;
+	background-color: #004970;
+	padding: 12px 40px;
+	color: white;
+	font-weight: 700;
+	font-size: 15px;
+}
 /*#endregion content HeaderForm*/
 
 /*#endregion Global Content*/

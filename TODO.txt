@@ -1,14 +1,17 @@
 Design :
 
-	- Survey Shared : bas de page, barre de progression (indique à l'utilisateur où il en est dans le formulaire)
-	- Bouton supprimer Form directement sur la Home page (+ date d'ouverture)
+	- Survey Shared : bas de page, barre de progression (indique à l'utilisateur où il en est dans le formulaire) (en JS j'imagine)
+	- FINIR le design du dropdown des child-form : bouton "more" --> supprimer qui devient un popup "voulez vous vraiment supprimer ?" / 
 	- Design 404
 	- Supprimer footer dans global.css et home.php
+	- 
 	
 Développement :
 
 	- Faire un hash du lien de partage
 	v Rajouter date de dernière modif du form
+	- Fontion duppliquer la question
+	- Convertir Page Survey Shared en image carrée pour l'utiliser en background de chaque bouton de la Home page
 	
 Marketing :
 
