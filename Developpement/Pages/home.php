@@ -15,11 +15,6 @@ include "../Scripts/connect_database.php" ;?>
 
         <!--HTML2CANVAS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
-
-        <!--BOOSTRAP
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
--->
     </head>
     <body>
         <div class=Main>
@@ -29,14 +24,16 @@ include "../Scripts/connect_database.php" ;?>
                         <img src="../../Design/icons/logo/Logo@2x.png">
                         <p class=txt><b>Online Survey</b></p>
                     </a>
-                
+                    
+
+                    
                     <div class=search-Container><!--Partie centrale : zone de recherche de formulaire-->
                         <div>
-                            <button class=search-Icon>&nbsp;</button>                                               <!--Ici mettre option pour rechercher avec ce qu'il y a dans l'input-->
+                            <button class=search-Icon>&nbsp;</button>
                             <input class=Search name="search" type="text" placeholder="Rechercher">
                         </div>
                     </div>
-            
+                    
                     <div class=User> <!--Partie droite : zone compte (Home, Déconexion...)-->
                         <div class=dropdown>
                             <button onclick="dropMenuUser()" class="dropButton"></button>
@@ -48,26 +45,28 @@ include "../Scripts/connect_database.php" ;?>
                         </div>
                     </div>
                 </div>
-            </div>   
+            </div>
         
             <div class=Content>
                 <div class=mainContent>
-                    
-                    <div id='poubelle' >
-                        <button id='b_poubelle'>Poubelle</button>
-                    </div>
-                    <div class=home-Sort-Button> <!--Bouton de tri des formulaires-->
-                        <select id="cars">
-                          <option value="titre">Titre</option>
-                          <option value="date" selected>Date</option>
-                          <option value="perso">Personnalisé</option>
-                        </select>
+                    <div class='headForButtons'>
+                        <div id='poubelle'>
+                            <button id='b_poubelle'>&nbsp;</button>
+                        </div>
+                        <div class=listeDeroulante> <!--Bouton de tri des formulaires-->
+                            <select id="cars">
+                              <option value="titre">Titre</option>
+                              <option value="date" selected>Date</option>
+                              <option value="perso">Personnalisé</option>
+                            </select>
+                            <div class='select_arrow'></div>
+                        </div>
                     </div>
 
                     <!--Affichage des formulaires + bouton de création d'un formulaire-->
                     <div class=Select-Form-Section id=Select-Form-Section>
 
-                        <div class=parent-Form> <!--Bouton ajouter formulaire    style=\"background-color:red;\"-->
+                        <div class=parent-Form> <!--Bouton ajouter formulaire-->
                             <div class="child-Form createForm" type="button" onclick="SessionSurvey(0)">
                                 <div id=createForm>&nbsp;</div>
                                 <div id=underCreate>
@@ -183,28 +182,4 @@ include "../Scripts/connect_database.php" ;?>
             
     });
     </script>
-    <!--<script>
-        function getScreen()
-        {
-            var caption = $('')
-            html2canvas(document.getElementsByClassName("Select-Form-Section"), {
-                dpi:192,
-                onrendered: function(canvas) {
-                    /*console.log(canvas.toDataURL("../Ressources/BG_Form";*/
-                    var image = canvas.toDataURL("../Ressources/BG_Form/png/blob.png");
-				}
-            });
-
-            $.ajax({
-                type: 'POST',
-                url: '../Scripts/upload_image.php',
-                data:{action: image
-            
-                },
-                success:function(data) {
-            
-                }
-            });
-		} 
-    </script>-->
 </html>

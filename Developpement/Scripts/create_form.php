@@ -17,7 +17,7 @@
             $sql = "INSERT INTO surveys (title, description, id_users, date_ouverture) VALUES ('Formulaire sans titre', '$description', $_SESSION[id_users], NOW())"; 
 		}
         else{
-            $sql = "INSERT INTO surveys (title, id_users, date_ouverture) VALUES ('$titre', $_SESSION[id_users], NOW())"; 
+            $sql = "INSERT INTO surveys (title, description, id_users, date_ouverture) VALUES ('$titre','$description', $_SESSION[id_users], NOW())"; 
 		}
         $res = mysqli_query($conn, $sql);
         $sql = "SELECT id_surveys FROM surveys WHERE id_users = $_SESSION[id_users] ORDER BY id_surveys DESC";  
@@ -100,17 +100,18 @@
                 $indexSubQuestions += 1;
 		    }
         }
+        unset($_SESSION['survey']);
         $_SESSION['survey'] = $id_surveys;
         $_GET['survey']=$_SESSION['survey'];
+        $_GET['capture'] = true;
         include("../Pages/survey_shared.php");
         echo "
+        
         <script>
         function getScreen()
         {
             html2canvas(document.getElementsByClassName('survey_shared')[0], 
             {
-                width:800,
-                height:800,
                 dpi:192,
                 onrendered: function(canvas) 
                 {
@@ -121,10 +122,13 @@
                     {
                         type: 'POST',
                         url: 'upload_image.php',
-                        data:{action: canvas.toDataURL('../Ressources/BG_Form/png').replace('../Ressources/BG_Form/png', '../Ressources/BG_Form/octet-stream'),
+                        data:{action: canvas.toDataURL('../Ressources/BG_Form/png'),
                             survey: ". $_SESSION['survey'].",
                         },
-                        success:function(data){},
+                        success:function(data){
+                            document.getElementsByClassName('survey_shared')[0].style.display = 'none';
+                            window.location.href = '../Pages/survey_editor.php';    
+                        },
                         
                     });
 				}
@@ -133,8 +137,6 @@
         } 
         getScreen();
         
-        </script>";
-        header('location:../Pages/survey_editor.php');   
+        </script>"; 
     }
 ?>
-<!--<a href=../Pages/home.php>Next</a>-->

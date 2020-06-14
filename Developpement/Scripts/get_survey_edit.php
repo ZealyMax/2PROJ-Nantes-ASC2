@@ -210,7 +210,7 @@
 						</div>";
 																		}
 																		echo "
-						<button class=add-line>Ajouter une option</button>
+						<button class=add-line>Ajouter une ligne</button>
 					</div>					
 					<div class=column>";
 																		$sql = "SELECT value, type FROM sub_questions WHERE id_questions = ". $resultQuestion['id_questions'] . "    AND type = 'column-multiple'";
@@ -229,7 +229,7 @@
 																		}
 																		echo "
 						<div>
-							<button class=add-column-multiple>Ajouter une option</button>
+							<button class=add-column-multiple>Ajouter une colonne</button>
 						</div>
 					</div>
 				</div>"; 
@@ -255,7 +255,7 @@
 						</div>";
 																		}
 																		echo "
-						<button class=add-line>Ajouter une option</button>
+						<button class=add-line>Ajouter une ligne</button>
 					</div>					
 					<div class=column>";
 																		$sql = "SELECT value, type FROM sub_questions WHERE id_questions = ". $resultQuestion['id_questions'] . "    AND type = 'column-checkbox'";
@@ -274,7 +274,7 @@
 																		}
 																		echo "
 						<div>
-							<button class=add-column-checkbox>Ajouter une option</button>
+							<button class=add-column-checkbox>Ajouter une colonne</button>
 						</div>
 					</div>
 				</div>"; 

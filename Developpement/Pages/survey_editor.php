@@ -8,7 +8,6 @@ include "../Scripts/connect_database.php" ;
         <meta charset="UTF-8">
         <meta name="viewport" content="width=100%, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../CSS/Main/global.css">
-        <link rel="stylesheet" type="text/css" href="../CSS/Survey/Analyser/analyserContent.css">
         <link rel="stylesheet" type="text/css" href="../CSS/Survey/Editor/header.css">
         <link rel="stylesheet" type="text/css" href="../CSS/Survey/Editor/content.css">
         <title>créer un formulaire</title>
@@ -37,9 +36,6 @@ include "../Scripts/connect_database.php" ;
                                     }
                                 ?>
                             </h1>
-                            <!--<h2>-</h2>
-                            <h2 id=formHeaderStatus>Enregistré</h2>
-                            <!--Faire en sorte d'avoir le titre du formulaire ici-->
                         </div>
                     </div>
 
@@ -58,17 +54,10 @@ include "../Scripts/connect_database.php" ;
 
             <div class=secondHeader>
                 <div class=contentSecondHeader>
-                    <button class=overview>
-                        <!--A compléter-->
-                    </button>
 
                     <div class=sharePopup id=myForm>
                         <button onclick="shareForm()" class=shareButton>Partager</button>
                     </div>
-
-                    <button class=burgerMenu>
-                        <!--A compléter-->
-                    </button>
                 </div>
             </div>
 
@@ -118,7 +107,7 @@ include "../Scripts/connect_database.php" ;
     </body>
 </html>
 <script>
-//document.getElementById("Reponse").style.display = "none";
+document.getElementById("Reponse").style.display = "none";
     function changeTab(evt, tabName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");

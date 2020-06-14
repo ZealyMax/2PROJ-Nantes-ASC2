@@ -109,7 +109,6 @@ input, input:focus, input:active{
 	min-width: 160px;
 	overflow: auto;
 	box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.2);
-	z-index: 104;
 }
 
 .dropdown-Content a {

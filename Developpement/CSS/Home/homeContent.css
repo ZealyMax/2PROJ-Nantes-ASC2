@@ -3,6 +3,22 @@
 /*#region mainForms*/
 /*Style du contenu de la page*/
 
+#b_poubelle{
+	border:none;
+	width:35px;
+	height:35px;
+	border-radius:50%;
+	background-color:transparent;
+	background-image:url("../../../Design/icons/trash/icon_trash@1x.png");
+	background-size:20px;
+	background-repeat:no-repeat;
+	background-position:center;
+}
+
+#b_poubelle:hover{
+	background-color:#DADFE2;
+}
+
 .Select-Form-Section { /*Conteneur principal*/
 	display: flex;
 	flex-wrap: wrap;
@@ -28,7 +44,7 @@
 	border: 1px solid lightgray;
 	border-radius: 5px;
 	box-shadow: #aaaaaa 0 0 5px;
-	z-index:99;
+	z-index:50;
 }
 
 .child-Form:hover {
@@ -40,7 +56,7 @@
 .child-Form .upperBtn, .child-Form #createForm {
 	background-repeat: no-repeat;
 	background-position: center;
-	background-color: #E4EBEF;
+	background-color: white;
 	border-radius: 5px 5px 0px 0;
 	border-bottom: 1px solid lightgray;
 	width: 100%;
@@ -54,6 +70,7 @@
 	border-radius:5px;
 	user-select:none;
 	pointer-events:none;
+	z-index:-2;
 }
 
 .child-Form #createForm {
@@ -104,6 +121,7 @@
 }
 
 .more {
+	display:none;
 	position:relative;
 	border:none;
 	background:url("../../../Design/icons/more/icon_more@4x.png");
@@ -115,12 +133,16 @@
 	height:30px;
 	outline:none;
 	margin :5px 0 0 0;
-	z-index:102;
+	z-index:99;
 	cursor:pointer;
 }
 
+.dropdownForm{
+	z-index:59;
+}
+
 .dropdownForm div{
-	z-index:103;
+	z-index:60;
 }
 .more:hover{
 	background-color: #dadada;
@@ -130,33 +152,65 @@
 /*#endregion mainForms*/
 
 /*#region sort*/
-.home-Sort-Button {
-	display: flex;
-	justify-content: flex-end;
-	margin-top: 20px;
+
+/*#region Liste deroulante*/
+/*Liste deroulante*/
+.headForButtons{
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
 }
 
-.home-Sort-Button div {
-	display: flex;
-	align-items: center;
-	margin-right: 5%;
-	cursor: pointer;
+.listeDeroulante {
+	position: relative;
+	display: inline-block;
+	margin-bottom: 15px;
+	width: 15%;
 }
 
-.Sort-Btn {
-	background-image: url("../../../Design/icons/sort/icon_Sort@2x.png");
-	background-position: 50% 50%;
-	background-size: 15px 15px;
-	background-repeat: no-repeat;
-	user-select: none;
-	width: 25px;
-	height: 25px;
+.listeDeroulante select {
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+    padding: 15px 15px;
+    outline: none;
+    border: 1px solid #aaaaaa;
+    border-radius: 8px;
+    background: white;
+    color: #7b7b7b;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
-.home-Sort-Button div:hover {
-	background-color: lightgray;
-	border-radius: 5px;
+.listeDeroulante select:hover, .listeDeroulante select:focus {
+	color: #000000;
+    background: #eee;
 }
+
+.listeDeroulante select:disabled {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+.select_arrow {
+    position: absolute;
+    top: 50%;
+	transform:translateY(-50%);
+    right: 25px;
+    pointer-events: none;
+    border-style: solid;
+    border-width: 8px 7px 0px 7px;
+    border-color: #7b7b7b transparent transparent transparent;
+}
+
+.listeDeroulante select:hover ~ .select_arrow, .listeDeroulante select:focus ~ .select_arrow {
+	border-top-color: #000000;
+}
+
+.listeDeroulante select:disabled ~ .select_arrow {
+    border-top-color: #cccccc;
+}
+/*#endregion Liste deroulante*/
 
 /*#endregion sort*/
 

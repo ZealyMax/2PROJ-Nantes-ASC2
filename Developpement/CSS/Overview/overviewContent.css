@@ -24,35 +24,130 @@ input, input:focus, input:active {
 
 /*#region Global Content*/
 
-.Content {
-    position: relative;
-    top: 65px;
-}
-.onlineLogo{
+.Main {
+    height: 100vh;
+    background-image:url("../../../Design/images/backOverview2.jpeg");
+    background-size:cover;
+    background-repeat:no-repeat;
     display:flex;
     justify-content:center;
-    margin-top:20px;
+    align-items:center;
 }
-.contentGlobal{
-    display :flex;
-    justify-content:space-around;
+.contentMain {
+    width: 40%;
+}
+.backContent{
+    width:100%;
+    height:100%;
+    background-color:rgba(255, 255, 255, 0.7);
+    border-radius:10px;
+}
+.onlineLogo {
+    display: flex;
+    justify-content: center;
+    padding-top: 55px;
+}
+.sousLogo {
+    display: flex;
+    justify-content: center;
+    color: #2F4F4F;
+}
+.sousLogo h1{
+    padding:10px;
+    padding-bottom:50px;
+    margin:0;
+}
+.buttonLog{
+    display:flex;
+    justify-content:center;
+    padding-bottom:55px;
+}
+.buttonLog a{
+    color:white;
+    text-decoration:none;
+    background-color:#007BBD;
+    border-radius:5px;
+    padding:15px;
+}
+.Logo{
+    width:70%;
+}
+.arrowDiv{
+    display:flex;
+    justify-content:center;
+    position:absolute;
+    bottom:20px;
+}
+
+.select_arrow {
+    pointer-events: none;
+    border-style: solid;
+    border-width: 16px 14px 0px 14px;
+    border-color: black transparent transparent transparent;
+}
+
+.contentGlobal {
+}
+
+.separation{
+    width:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.presContent1{
+    display:flex;
+    background-color:white;
+}
+.contentPress{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.presContent2 {
+    display: flex;
+    background-color: #F4F4F4;
+}
+
+.presContent3 {
+    display: flex;
+    background-color: white;
+}
+
+.presContent4 {
+    display: flex;
+    background-color: #F4F4F4;
+}
+
+.imgContent{
+    padding:50px;
+    width:100%;
 }
 /*#endregion Global Content*/
-
-
 /*#region Global Footer*/
 /*Style du footer*/
-
 .Footer_1 {
     bottom: 0;
     margin: 0;
-    padding: 5px 0;
-    width: 100%;
-    position: fixed;
+    padding: 50px;
     background-color: #007BBD;
-    z-index: 100;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
-
+.Footer_1 a{
+    text-decoration:none;
+    outline:none;
+    color:white;
+    margin-left:50px;
+}
+.Footer_1 a:hover{
+    border-bottom:1px solid white;
+}
+.Footer_1 img{
+    width:15%;
+}
 
 /*Fin du style du footer*/
 /*#endregion Global Footer*/

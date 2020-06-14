@@ -3,14 +3,14 @@
     include "connect_database.php";
     switch ($_POST['action']) {
         case "titre" :
-            $sql = "SELECT title,id_surveys,DATE_FORMAT(date_ouverture, '%e %b %Y %H:%i') as date_ouverture FROM surveys WHERE id_users = '$_SESSION[id_users]' ORDER BY title;";
+            $sql = "SELECT title,id_surveys,DATE_FORMAT(date_ouverture, '%e %b %Y %H:%i') as date_ouverture, image FROM surveys WHERE id_users = '$_SESSION[id_users]' ORDER BY title;";
             
                 break;
         case 'date':  
-            $sql = "SELECT title,id_surveys,DATE_FORMAT(date_ouverture, '%d %b %Y %H:%i') as date_ouverture FROM surveys WHERE id_users = '$_SESSION[id_users]' ORDER BY date_ouverture DESC;";            break;
+            $sql = "SELECT title,id_surveys,DATE_FORMAT(date_ouverture, '%d %b %Y %H:%i') as date_ouverture, image FROM surveys WHERE id_users = '$_SESSION[id_users]' ORDER BY date_ouverture DESC;";            break;
             break;
         case "perso" :
-            $sql = "SELECT title,id_surveys,DATE_FORMAT(date_ouverture, '%e %b %Y %H:%i') as date_ouverture FROM surveys WHERE id_users = '$_SESSION[id_users]' ORDER BY order_surveys;";
+            $sql = "SELECT title,id_surveys,DATE_FORMAT(date_ouverture, '%e %b %Y %H:%i') as date_ouverture, image FROM surveys WHERE id_users = '$_SESSION[id_users]' ORDER BY order_surveys;";
             break;
     }
     $res = mysqli_query($conn, $sql);
@@ -28,7 +28,7 @@
         }
         echo "<div id=\"". $result['id_surveys'] ."\" class=\"parent-Form\" draggable='true'>"; /*div extern des formulaires à sélectionner*/ 
         echo "  <div class=\"child-Form\" type=\"button\" onclick=\"SessionSurvey(". $result['id_surveys'] .")\">"; /*div inside des formulaires à sélectionner*/
-        echo "      <div class=upperBtn></div>
+        echo "      <div class=upperBtn><img src='". $result['image'] ."'/></div>
 
                     <div class=downBtn>
                         <div class=titleForm>

@@ -10,7 +10,7 @@
 			$res = mysqli_query($conn, $sql);
 			$sql = "SELECT id_users FROM users WHERE login = '$login' AND password = '$password' ORDER BY id_users DESC ";
 			$res = mysqli_query($conn, $sql);
-			$result = $res->fetch_assoc();				/*Absolument changer ça, ça doit retourner une erreur et pas connecter le gars !*/
+			$result = $res->fetch_assoc();				
 			session_start();
 			$_SESSION['id_users'] = $result['id_users'];
 			header("location:../Pages/home.php");

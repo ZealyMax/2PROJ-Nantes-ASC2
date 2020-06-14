@@ -86,68 +86,68 @@
 /*#region divContent*/
 /*Contenu des divs*/
 
-#Question .form .question-div {
+ .form .question-div {
 	background-color: white;
 	box-shadow: 0 0 3px #B7ADA1;
 	margin-top: 25px;
 	padding: 25px 25px 20px 25px;
 	border-radius: 8px;
 }
-#Question .form .question-div .question-title {
+ .form .question-div .question-title {
 	background-color: #F1F1F1;
 	width : 55%;
 	padding : 10px;
 	border: none;
 	box-shadow: 0 1px #707070;
 }
-#Question .form .question-div .select-choice {
+ .form .question-div .select-choice {
 	width : 30% ;
 	padding : 8px;
 	border-radius : 5px;
 	border-color: #707070;
 	margin-left : 14%;
 }
-#Question .form .question-div .select-choice:focus {
+ .form .question-div .select-choice:focus {
 	background:none;
 	color:black;
 }
 
-#Question .form .question-div .requiered-field{
+ .form .question-div .requiered-field{
 	display :flex;
 	justify-content:flex-end;
 	align-items:center;
 	margin:5px;
 }
-#Question .form .question-div .requiered-field p{
+ .form .question-div .requiered-field p{
 	margin:0px;
 	padding:0px;
 }
-#Question .form .question-div .requiered-field .check-requiered {
+ .form .question-div .requiered-field .check-requiered {
 	margin:0px;
 	margin-left:5px;
 	width:20px;
 }
-#Question .form .question-div .rm-division {
+ .form .question-div .rm-division {
 	border:0px;
 	margin:0px;
 	padding:0px;
 	background:none;
 }
-#Question .form .question-div .requiered-bar {
+ .form .question-div .requiered-bar {
 	margin-top:50px;
 	height:0.5px;
 	border-width:0;
 	color:gray;
 	background-color:gray;
 }
-#Question .form .question-div .requiered-field .vertical-bar {
+ .form .question-div .requiered-field .vertical-bar {
 	border-right:2px solid gray;
 }
 
 
 /*Types de questions*/
 /*Réponses courtes*/
-#Question .form .question-div .short-answer{
+ .form .question-div .short-answer{
 	margin-top:25px;
 	width:60%;
 	margin-bottom:0px;
@@ -156,7 +156,7 @@
 }
 
 /*Réponses longues*/
-#Question .form .question-div .long-answer {
+ .form .question-div .long-answer {
 	width: 80%;
 	height: 21px;
 	margin-top: 25px;
@@ -168,45 +168,45 @@
 }
 
 /*Réponses courtes et longues #placeholder et focus */
-#Question .form .question-div .short-answer:placeholder {
+ .form .question-div .short-answer:placeholder {
 	color:#70757a;
 	font-family: Arial,sans-serif;
 }
-#Question .form .question-div .short-answer:focus{
+ .form .question-div .short-answer:focus{
 	background:none;
 	border-bottom: 1px solid #BFC2C7;
 }
-#Question .form .question-div .question-content .long-answer:placeholder {
+ .form .question-div .question-content .long-answer:placeholder {
 	color:#70757a;
 	font-family: Arial,sans-serif;
 }
-#Question .form .question-div .question-content .long-answer:focus {
+ .form .question-div .question-content .long-answer:focus {
 	background:none;
 	border-bottom: 1px solid #BFC2C7;
 }
 
 /*Choix multiples, cases à cocher, listes déroulantes, grilles*/
-#Question .form .question-div .multiple-choice{
+ .form .question-div .multiple-choice{
 	display:flex;
 	align-items:center;
 	margin-top:20px;
 	margin-bottom:20px;
 	height:20px;
 }
-#Question .form .question-div .multiple-choice .check-button {
+ .form .question-div .multiple-choice .check-button {
 	margin: 0px;
 	margin-left: 5px;
 	margin-right:5px;
 	width: 5%;
 }
-#Question .form .question-div .multiple-choice .check-name{
+ .form .question-div .multiple-choice .check-name{
 	margin:0px;
 	padding:0px;
 	border:0px;
 	width:90%;
 	padding-bottom : 2px;
 }
-#Question .form .question-div .multiple-choice .check-namelist {
+ .form .question-div .multiple-choice .check-namelist {
 	margin:0px;
 	padding:0px;
 	border:0px;
@@ -214,18 +214,18 @@
 	padding-bottom : 2px;
 }
 
-#Question .form .question-div .multiple-choice .check-namelist:hover{
+ .form .question-div .multiple-choice .check-namelist:hover{
 	border-bottom:1px solid #70757a;
 }
-#Question .form .question-div .multiple-choice .check-name:hover{
+ .form .question-div .multiple-choice .check-name:hover{
 	border-bottom:1px solid #70757a;
 }
-#Question .form .question-div .multiple-choice .check-namelist:focus{
+ .form .question-div .multiple-choice .check-namelist:focus{
 	border-bottom:2px solid #004970;
 	color:black;
 	background:none;
 }
-#Question .form .question-div .multiple-choice .check-name:focus{
+ .form .question-div .multiple-choice .check-name:focus{
 	border-bottom:2px solid #004970;
 	color:black;
 	background:none;
@@ -241,56 +241,51 @@
 }
 
 /*Listes déroulantes*/
-#Question .form .question-div .multiple-choice .margin-list{
+ .form .question-div .multiple-choice .margin-list{
 	margin-left:10px;
 }
 
 /*Echelle linéaire*/
-#Question .form .question-div .select-sameline .select-linear{
+ .form .question-div .select-sameline .select-linear{
 	background-color:white;
 	padding:5px;
 	border-radius:5px;
 	color:black;
 	margin-left:10px;
 }
-#Question .form .question-div .select-sameline{
+ .form .question-div .select-sameline{
 	display:flex;
 	align-items:center;
 	margin-top:15px;
 	margin-bottom: 10px;
 	margin-left:10px;
 }
-/*#Question .form .question-div .select-sameline p{
-	padding:0;
-	margin:0;
-	font-size:14px;
-}*/
-#Question .form .question-div .select-sameline .check-line{
+ .form .question-div .select-sameline .check-line{
 	margin:0px;
 	padding:0px;
 	border:0px;
 	width:40%;
 	padding-bottom : 2px;
 }
-#Question .form .question-div .select-sameline .check-line:hover{
+ .form .question-div .select-sameline .check-line:hover{
 	border-bottom:1px solid #70757a;
 }
 
-#Question .form .question-div .select-sameline .check-line:focus{
+ .form .question-div .select-sameline .check-line:focus{
 	border-bottom:2px solid #004970;
 	color:black;
 	background:none;
 }
 
 /*Ajouter une option*/
-#Question .form .question-div .question-content .add-choice,.add-check,.add-list,.add-line,.add-column-multiple,.add-column-checkbox {
+ .form .question-div .question-content .add-choice,.add-check,.add-list,.add-line,.add-column-multiple,.add-column-checkbox {
 	margin-left: 10px;
 	background:none;
 	border: 1px solid #f0f0f0;
 	border-radius:5px;
 	padding:2px 5px 2px 5px;
 }
-#Question .form .question-div .question-content .add-choice:hover,.add-check:hover,.add-list:hover,.add-line:hover,.add-column-multiple:hover,.add-column-checkbox:hover {
+ .form .question-div .question-content .add-choice:hover,.add-check:hover,.add-list:hover,.add-line:hover,.add-column-multiple:hover,.add-column-checkbox:hover {
 	background-color:#f0f0f0;
 	cursor:pointer;
 }

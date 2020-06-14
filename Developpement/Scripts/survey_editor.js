@@ -29,7 +29,7 @@ $(".btn-add").on('click', function () {
 
 
 $(".btn-del").on('click', function () {
-    /*RemoveSurvey(this.id);*/
+    RemoveSurvey(this.id);
     alert("A formulaire has been executed");
     window.location.href = "../Pages/home.php";
 });
@@ -40,7 +40,7 @@ $(document).on('click', '.add-choice', function () {
     <div>\
         <div class=multiple-choice><input name=sub_questions[] type=hidden value='radio'>\
         <input class=check-button type=radio disabled><input class=check-name name=sub_questions[] placeholder=Option><div><button class='rm-div rm-option'>X</button></div></div>\
-    </div><button class=add-choice>Ajouter</button>";
+    </div><button class=add-choice>Ajouter une option</button>";
     $(this).parent().append(string);
     $(this).remove();
 });
@@ -50,7 +50,7 @@ $(document).on('click', '.add-check', function () {
     <div>\
         <div class=multiple-choice><input name=sub_questions[] type=hidden value='checkbox'>\
         <input class=check-button type=checkbox disabled><input class=check-name name=sub_questions[] placeholder=Option><div><button class='rm-div rm-option'>X</button></div></div>\
-    </div><button class=add-check>Ajouter</button>";
+    </div><button class=add-check>Ajouter une option</button>";
     $(this).parent().append(string);
     $(this).remove();
 });
@@ -60,7 +60,7 @@ $(document).on('click', '.add-list', function () {
     <div>\
         <div class=multiple-choice><input name=sub_questions[] type=hidden value='list'>\
         <input class='check-namelist margin-list' name=sub_questions[] placeholder=Option><div><button class='rm-div rm-option'>X</button></div></div>\
-    </div><button class=add-list>Ajouter</button>";
+    </div><button class=add-list>Ajouter une option</button>";
     $(this).parent().append(string);
     $(this).remove();
 });
@@ -70,7 +70,7 @@ $(document).on('click', '.add-line', function () {
     <div>\
         <div class=multiple-choice><input name=sub_questions[] type=hidden value='line'>\
         <input class='check-namelist margin-list' name=sub_questions[] placeholder=Ligne><div><button class='rm-div rm-option'>X</button></div></div>\
-    </div><button class=add-line>Ajouter</button>";
+    </div><button class=add-line>Ajouter une ligne</button>";
     $(this).parent().append(string);
     $(this).remove();
 });
@@ -80,7 +80,7 @@ $(document).on('click', '.add-column-multiple', function () {
     <div>\
         <div class=multiple-choice><input name=sub_questions[] type=hidden value='column-multiple'>\
         <input  class=check-button type=radio disabled><input class=check-name name=sub_questions[] placeholder=Colonne><div><button class='rm-div rm-option'>X</button></div></div>\
-    </div><button class=add-column-multiple>Ajouter</button>";
+    </div><button class=add-column-multiple>Ajouter une colonne</button>";
     $(this).parent().append(string);
     $(this).remove();
 });
@@ -90,7 +90,7 @@ $(document).on('click', '.add-column-checkbox', function () {
     <div>\
         <div class=multiple-choice><input name=sub_questions[] type=hidden value='column-checkbox'>\
         <input  class=check-button type=checkbox disabled><input class=check-name name=sub_questions[] placeholder=Colonne><div><button class='rm-div rm-option'>X</button></div></div>\
-    </div><button class=add-column-checkbox>Ajouter</button>";
+    </div><button class=add-column-checkbox>Ajouter une colonne</button>";
     $(this).parent().append(string);
     $(this).remove();
 });
@@ -142,21 +142,21 @@ $(document).on('change', '.select-choice', function () {
     if ($(this).children('option:selected').val() == "grid-multiple") {
         $(this).parent(".question-div").children(".question-content").html("<div class=line>\
                                                                                 <div class=multiple-choice><input name=sub_questions[]  type=hidden value='line'>\
-                                                                                <input class='check-namelist margin-list' name=sub_questions[] placeholder=Ligne></div><button class=add-line>Ajouter une option</button>\
+                                                                                <input class='check-namelist margin-list' name=sub_questions[] placeholder=Ligne></div><button class=add-line>Ajouter une ligne</button>\
                                                                             </div>\
                                                                             <div class=column>\
                                                                                 <div class=multiple-choice><input name=sub_questions[] type=hidden value='column-multiple'>\
-                                                                                <input class=check-button type=radio disabled><input class=check-name name=sub_questions[] placeholder=Colonne></div><button class=add-column-multiple>Ajouter une option</button>\
+                                                                                <input class=check-button type=radio disabled><input class=check-name name=sub_questions[] placeholder=Colonne></div><button class=add-column-multiple>Ajouter une colonne</button>\
                                                                             </div>");
     };
     if ($(this).children('option:selected').val() == "grid-checkbox") {
         $(this).parent(".question-div").children(".question-content").html("<div class=line>\
                                                                                 <div class=multiple-choice><input name=sub_questions[]  type=hidden value='line'>\
-                                                                                <input class='check-namelist margin-list' name=sub_questions[] placeholder=Ligne></div><button class=add-line>Ajouter une option</button>\
+                                                                                <input class='check-namelist margin-list' name=sub_questions[] placeholder=Ligne></div><button class=add-line>Ajouter une ligne</button>\
                                                                             </div>\
                                                                             <div class=column>\
                                                                                 <div class=multiple-choice><input name=sub_questions[] type=hidden value='column-checkbox'>\
-                                                                                <input class=check-button type=checkbox disabled><input class=check-name name=sub_questions[] placeholder=Colonne></div><button class=add-column-checkbox>Ajouter une option</button>\
+                                                                                <input class=check-button type=checkbox disabled><input class=check-name name=sub_questions[] placeholder=Colonne></div><button class=add-column-checkbox>Ajouter une colonne</button>\
                                                                             </div>");
     };
     if ($(this).children('option:selected').val() == "date") {

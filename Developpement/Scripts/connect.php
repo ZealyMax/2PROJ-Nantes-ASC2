@@ -23,9 +23,7 @@
             header("location:../Pages/home.php");
         }
         else{
-            // ICICIICICICIICICI
-            echo "Veuillez vérifier votre identifiant et votre mot de passe <br>
-            <a href='../Pages/login.php'>Retour à la connexion</a>";
+            header("location:../Pages/login.php?error=true");
         }
 
         if($res===false){

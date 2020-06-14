@@ -5,13 +5,6 @@
         $i = 0;
         while ( $resultQuestion = $resQuestion ->fetch_assoc()){
 
-/*
-*****
-*********
-            Penser à supprimer tous les commentaires inutiles (HTML & PHP compris)
-*********
-*****
-*/
 
             #Entête Question & Affichage des mustDo
             echo "
@@ -32,7 +25,7 @@
             if($resultQuestion['type'] == "short"){                                    
                 echo "
                 <div class=question-content>
-                    <input class='Underline reponseCourte' name=question_". $_GET['survey'] ."_".$resultQuestion['id_questions']  ."_".  $resultQuestion['type']. " placeholder=\"Réponse courte \">
+                    <input class='Underline reponseCourte' type=text name=question_". $_GET['survey'] ."_".$resultQuestion['id_questions']  ."_".  $resultQuestion['type']. " placeholder=\"Réponse courte \">
                 </div>";
                 
             }
@@ -41,7 +34,7 @@
             else if($resultQuestion['type'] == "long"){
                 echo "          
                 <div class=question-content>
-                    <input class='Underline reponseLongue' name=question_". $_GET['survey'] ."_".$resultQuestion['id_questions']. "_". $resultQuestion['type'] ." placeholder=\"Réponse longue\">
+                    <input class='Underline reponseLongue' type=text name=question_". $_GET['survey'] ."_".$resultQuestion['id_questions']. "_". $resultQuestion['type'] ." placeholder=\"Réponse longue\">
                     
                     <!-- <textarea name=question".$i." placeholder=\"Réponse longue\" ></textarea> -->
 
@@ -63,7 +56,7 @@
             else if($resultQuestion['type'] == "list"){
                 echo "
                 <div class='question-content listeDeroulante'>
-                    <select name=question_". $_GET['survey'] ."_".$resultQuestion['id_questions']."_". $resultQuestion['type'].">
+                    <select name=question_". $_GET['survey'] ."_".$resultQuestion['id_questions']."_". $resultQuestion['type']."  select=select>
                     <option>S&eacute;lectionnez</option>";
 
                 $sql = "SELECT id_sub_questions, type, value FROM sub_questions WHERE id_questions =". $resultQuestion['id_questions'];
@@ -151,20 +144,20 @@
             <div class='question-content flexColumn'>";
         $sql = "SELECT id_sub_questions,type, value FROM sub_questions WHERE id_questions =". $id_questions;
         $resSub = mysqli_query($conn, $sql);
-        //$select="checked";
+        $select="checked";
         while($resultSub = $resSub->fetch_assoc()){
             echo "
             <label class='btnContainer ".$cacBtnContainer."' for='chxMultipleOpt".$resultSub['id_sub_questions']."'>". $resultSub['value'];
                 if($type == "multiple"){
-                    echo "<input class=". $class ." id=chxMultipleOpt".$resultSub['id_sub_questions']." name=question_". $_GET['survey'] ."_".$id_questions."_". $resultSub['type']." type=". $typeInput . " value=".$resultSub['value']." >";//$select>
+                    echo "<input class=". $class ." id=chxMultipleOpt".$resultSub['id_sub_questions']." name=question_". $_GET['survey'] ."_".$id_questions."_". $resultSub['type']." type=". $typeInput . " value=".$resultSub['value']." ". $select. ">";
                 }
                 else{
-                    echo "<input class=". $class ." id=chxMultipleOpt".$resultSub['id_sub_questions']." name=question_". $_GET['survey'] ."_".$id_questions."_". $resultSub['type']."_". $resultSub['id_sub_questions'] ." type=". $typeInput . " value=".$resultSub['value']." >";//$select>   
+                    echo "<input class=". $class ." id=chxMultipleOpt".$resultSub['id_sub_questions']." name=question_". $_GET['survey'] ."_".$id_questions."_". $resultSub['type']."_". $resultSub['id_sub_questions'] ." type=". $typeInput . " value=".$resultSub['value'].">";   
 				}
                 echo "<span class='checkmark ". $classSpan."'></span>
             </label>
             ";	  
-            //$select="";
+            $select="";
         }
         echo "</div>";
 	}
@@ -207,15 +200,16 @@
                     echo "
                         <div style='grid-row:".$lineGrid."; grid-column:". $columnGrid.";'>";
                         echo "<label class='btnContainer ".$cacBtnContainer."' for='chxMultipleOpt_".$resultColumn['type']."_".$lineGrid."_".$columnGrid."_".$resultLine['id_sub_questions']."'>";
-                         
+                        $select = "checked"; 
                         if($type == "multiple"){ 
-                            echo "<input class=". $class ." id='chxMultipleOpt_".$resultColumn['type']."_".$lineGrid."_".$columnGrid."_".$resultLine['id_sub_questions']."' name=question_". $_GET['survey'] ."_".$id_questions."_grid-".$type."_". $resultLine['id_sub_questions']." type=". $typeInput ." value='".$resultColumn['value']."_". $resultLine['value'] . "'>";//$select>
+                            echo "<input class=". $class ." id='chxMultipleOpt_".$resultColumn['type']."_".$lineGrid."_".$columnGrid."_".$resultLine['id_sub_questions']."' name=question_". $_GET['survey'] ."_".$id_questions."_grid-".$type."_". $resultLine['id_sub_questions']." type=". $typeInput ." value='".$resultColumn['value']."_". $resultLine['value'] ."'" . $select .">";
                         }
                         else{
-                            echo "<input class=". $class ." id='chxMultipleOpt_".$resultColumn['type']."_".$lineGrid."_".$columnGrid."_".$resultLine['id_sub_questions']."' name=question_". $_GET['survey'] ."_".$id_questions."_grid-".$type."_". $resultLine['id_sub_questions']."_".$columnGrid." type=". $typeInput ." value='".$resultColumn['value']."_". $resultLine['value'] . "'>";//$select>
+                            echo "<input class=". $class ." id='chxMultipleOpt_".$resultColumn['type']."_".$lineGrid."_".$columnGrid."_".$resultLine['id_sub_questions']."' name=question_". $_GET['survey'] ."_".$id_questions."_grid-".$type."_". $resultLine['id_sub_questions']."_".$columnGrid." type=". $typeInput ." value='".$resultColumn['value'] ."_". $resultLine['value'] ."'>";
 						}
                             echo "<span class='checkmark ".$classSpan. "'></span>
-                        </label></div>";                                                                       
+                        </label></div>";
+                        $select = "";
 				}
                 $columnGrid++;
 

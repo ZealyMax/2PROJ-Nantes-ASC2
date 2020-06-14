@@ -55,33 +55,10 @@ body:after{
 	z-index: 2;
 }
 
-/*.Logo #rectangle {
-											Rectangle temporaire : remplacer par logo
-	transform: translate(-50%, -50%);
-	border: 1px solid rgb(112,112,112);
-	border-radius: 15px;
-	top: 20%;
-	left: 50%;
-	position: absolute;
-	width: 70px;
-	height: 70px;
-	background: white;
+.Back_to_overview{
+
 }
 
-.Logo .txt {
-	Font style
-	text-align: center;
-	font-size: 35px;
-	font-family: 'Segoe UI';
-	color: white;
-	font-weight: normal;
-
-	Font position
-	transform: translate(-50%, -50%);
-	top: 25%;
-	left: 50%;
-	position: absolute;
-}*/
 .Logo-div {
 	height: 40%;
 	display: flex;
@@ -242,9 +219,17 @@ form {
 .Other .links {
 	margin-top:20px;
 	position:relative;
+	display:flex;
+	justify-content:space-between;
 }
 
-.Other a {
+.Other .links div{
+	display:flex;
+	flex-direction:column;
+}
+
+a {
+	padding-top:15px;
 	color: white;
 	font-size: 14px;
 	text-decoration: none;
@@ -252,10 +237,22 @@ form {
 	cursor:pointer;
 }
 
-.Other a:hover {
+a:hover {
 	border-bottom: 1px solid;
 }
 
+#signIn{
+	width:81px;
+}
+
 .Other #fPassword{
-	float:right;
+	height:50%;
+}
+
+.errorConn{
+	color:crimson;
+}
+
+.error{
+	border-color:crimson;
 }

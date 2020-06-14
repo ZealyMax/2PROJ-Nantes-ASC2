@@ -7,14 +7,28 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=100%, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../CSS/Survey/Shared/sharedContent.css">
+        <link rel="stylesheet" type="text/css" href="../CSS/Survey/Shared/saving.css">
+        <!-- JQUERY -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
         <title>Repondre au Formulaire</title>
     </head>
     <body>
-
+        <?php
+            if (isset($_GET['capture'])){
+                echo "<div class=waitingForSave>
+                        <div class=contentSaving>
+                            <p>SAVING</p>
+                            <div class='lds-roller'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                        </div>
+                    </div>";
+            }
+        ?>
         <div class=Content>
             <div class=mainContent>
                 <div class="survey_shared">
                     <?php  
+                        
                         if(isset($_GET['survey'])){
                             $sql = "SELECT title, description FROM surveys WHERE id_surveys =". $_GET['survey'];
                             $resSurvey = mysqli_query($conn, $sql);
@@ -45,16 +59,24 @@
 </html>
 <script>
     function mustDoVerif(){
-
+        
         var mustDo = document.getElementsByClassName("mustDoStar");
-        var retry = false;          
-        for(var x = 0; x < mustDo.length; x++){
-            if(mustDo[x].parentNode.parentNode.children[1].children[0].value == "" && mustDo[x].parentNode.parentNode.children[1].children[0].value == "Sélectionnez"){
-                retry =true;
-                alert('retry = true loloololol');
-                break; 
+        var retry = false;  
+        $("form:first :input").each(function() {           
+            if($(this).closest(".question-div").children().children().attr('class') == "mustDoStar"){
+                if($(this).attr('type') == "text" || $(this).attr('type') == "date" || $(this).attr('type') == "time" ){
+                    if($(this).val() == ""){
+                        retry = true;
+					}
+                } 
+                else if($(this).attr('select') == 'select'){
+                    if($(this).val() == "Sélectionnez"){
+                        retry = true;
+                    }
+                }
             }
-        }
+        });
+
         if(retry == false){
             document.forms["answerForm"].submit();
         }
